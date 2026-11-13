@@ -17,3 +17,6 @@ research/*.log
 research/ninja_dump.json
 research/tree_us.json
 research/fb.min.js
+
+# Local AI workspace memory
+.workbuddy/
