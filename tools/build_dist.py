@@ -108,6 +108,10 @@ def main() -> int:
     shutil.copyfile(SRC / "style.css", EXT_DST / "content.css")
     shutil.copyfile(EXT_SRC / "popup.html", EXT_DST / "popup.html")
     shutil.copyfile(EXT_SRC / "popup.js", EXT_DST / "popup.js")
+    icons_dst = EXT_DST / "icons"
+    if icons_dst.exists():
+        shutil.rmtree(icons_dst)
+    shutil.copytree(EXT_SRC / "icons", icons_dst)
 
     manifest = json.loads(read(EXT_SRC / "manifest.json"))
     manifest["version"] = version

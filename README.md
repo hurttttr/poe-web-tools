@@ -115,7 +115,7 @@ poe-web-tools/
 │   ├── engine.js               核心翻译引擎
 │   ├── panel.js                悬浮控制面板
 │   ├── preview*.template.html  两个离线预览页模板
-│   └── extension/              manifest / popup 源码
+│   └── extension/              manifest / popup / icons（图标由 tools/make_icons.py 生成）
 ├── data/                       词典与构建中间产物（site_manual.json 为主维护文件）
 ├── tools/                      抓取 / 合并 / 校验 / 打包脚本
 ├── tests/                      词典校验 + jsdom 引擎与预览页测试
