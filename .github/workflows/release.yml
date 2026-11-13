@@ -45,10 +45,22 @@ jobs:
         id: notes
         run: |
           VERSION="${{ steps.version.outputs.version }}"
-          cat <<'EOF' > /tmp/release_notes.md
+
+          # 从 CHANGELOG 抽取当前版本段落
+          awk -v ver="$VERSION" '
+            index($0, "## [" ver "]") == 1 { flag = 1; next }
+            flag && /^## \[/ { exit }
+            flag { print }
+          ' CHANGELOG.md > /tmp/changelog_section.md
+
+          cat <<'EOF' > /tmp/release_notes_body.md
           ## PoE Web Tools v${{ steps.version.outputs.version }}
 
           流放之路网页工具——FilterBlade 与 poe.ninja 简体中文汉化 + 站点快捷跳转。
+
+          ### 🆕 本次更新
+
+          __CHANGELOG__
 
           ---
 
@@ -103,6 +115,16 @@ jobs:
           - 若文件夹路径改变，需在扩展页面重新「加载已解压的扩展程序」；
           - 本工具不收集任何数据，无需任何权限（扩展仅需 `activeTab` 用于弹窗读取当前标签）。
           EOF
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          body = Path('/tmp/release_notes_body.md').read_text(encoding='utf-8')
+          section = Path('/tmp/changelog_section.md').read_text(encoding='utf-8').strip()
+          if not section:
+              section = '本次发布以稳定性与文档为主，详见仓库 CHANGELOG.md。'
+          Path('/tmp/release_notes.md').write_text(body.replace('__CHANGELOG__', section), encoding='utf-8')
+          PY
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

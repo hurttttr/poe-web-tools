@@ -3,7 +3,7 @@
 // @name:zh-CN   PoE 网页工具 · FilterBlade / poe.ninja
 // @name:en      PoE Web Tools (FilterBlade & poe.ninja)
 // @namespace    poe-web-tools
-// @version      1.0.0
+// @version      1.0.1
 // @description  FilterBlade / poe.ninja 简体中文界面 + 站点快捷跳转；术语以流放之路编年史为准，支持中文 / 双语 / 原文切换，交互时自动还原英文。
 // @description:zh-CN 流放之路常用网页工具集：FilterBlade 与 poe.ninja 汉化、站点跳转，术语以编年史简体中文为准。
 // @author       WorkBuddy

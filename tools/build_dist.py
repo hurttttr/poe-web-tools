@@ -56,8 +56,9 @@ def main() -> int:
         + "window.FBZH_MOD_TPL = " + mod_tpl_js + ";\n"
         + "window.FBZH_MOD_PREFIX = " + mod_prefix_js + ";\n"
     )
-    # 版本号：优先命令行参数 -> 环境变量 BUILD_VERSION / GITHUB_REF_NAME -> 默认 1.0.0
-    version = "1.0.0"
+    # 版本号：命令行参数 -> 环境变量 BUILD_VERSION / GITHUB_REF_NAME -> manifest.json
+    manifest_src = json.loads(read(EXT_SRC / "manifest.json"))
+    version = str(manifest_src.get("version", "1.0.0"))
     if len(sys.argv) > 1 and sys.argv[1].strip():
         version = sys.argv[1].strip().lstrip("v")
     elif os.environ.get("BUILD_VERSION"):
@@ -113,7 +114,7 @@ def main() -> int:
         shutil.rmtree(icons_dst)
     shutil.copytree(EXT_SRC / "icons", icons_dst)
 
-    manifest = json.loads(read(EXT_SRC / "manifest.json"))
+    manifest = dict(manifest_src)
     manifest["version"] = version
     (EXT_DST / "manifest.json").write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2), encoding="utf-8"

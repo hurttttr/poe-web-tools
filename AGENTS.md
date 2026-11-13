@@ -51,6 +51,7 @@ python tools/build_dist.py
 6. **交互保护不可移除**：站点逻辑会读按钮 `innerText`，引擎在事件捕获阶段临时还原英文、事件结束再恢复。改引擎时保留该机制。
 7. **术语口径**默认国服（Unique → 暗金）；要贴合编年史只改 `data/overrides.json` 后重建。
 8. 词条数、覆盖率等数字变化后，同步更新 `README.md` 与 `data/dictionary.meta.json`。
+9. **发版流程**：改 `src/extension/manifest.json` 的 `version` → 在 `CHANGELOG.md` 顶部新增同名段落 → 提交并打 `vX.Y.Z` tag 推送，触发 Release 工作流。版本号不要在 `tools/build_dist.py` 或 `dist/` 里硬编码。
 
 ## 已知易错点
 

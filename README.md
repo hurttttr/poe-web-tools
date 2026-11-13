@@ -6,6 +6,7 @@
 FilterBlade 与 poe.ninja，一个扩展全部搞定</p>
 
 <p>
+  <img alt="version" src="https://img.shields.io/badge/version-1.0.1-f0b429?style=flat-square">
   <img alt="entries" src="https://img.shields.io/badge/entries-22%2C004-7c3aed?style=flat-square">
   <img alt="sites" src="https://img.shields.io/badge/sites-FilterBlade%20%C2%B7%20poe.ninja-f0b429?style=flat-square">
   <img alt="manifest" src="https://img.shields.io/badge/Manifest-V3-4285F4?style=flat-square&amp;logo=googlechrome&amp;logoColor=white">
@@ -17,6 +18,7 @@ FilterBlade 与 poe.ninja，一个扩展全部搞定</p>
   <a href="#-功能">功能</a> ·
   <a href="#-词典">词典</a> ·
   <a href="#-维护">维护</a> ·
+  <a href="CHANGELOG.md">更新日志</a> ·
   <a href="docs/AI-NOTES.md">开发笔记</a>
 </p>
 
