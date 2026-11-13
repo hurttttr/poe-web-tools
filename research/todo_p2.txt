@@ -1,0 +1,164 @@
+StyleSummary.options 61 range 0 - 60
+STATIC_UI 9 range 61 - 69
+index.html 155 range 70 - 224
+economies.json 2 range 225 - 226
+optionFile085d.options 204 range 227 - 430
+LootGenerator.options 2 range 431 - 432
+newsFile.txt.out 2 range 433 - 434
+faqContent.json.out 281 range 435 - 715
+--- index.html 全部（含索引）
+[70] The Customizer is built fail-save and it's hard to 'break' your filter by using it. You will see warnings if you're about to do something dangerous. There is also additional validation when exporting.
+[71] Modules are building blocks for filters. If you have multiple filters using common changes you can keep the common changes in a module! You can also use other people's modules on the Overview tab.
+[72] If you change a color here, it will affect every entry in the filter that uses that color. Items that have the default appearance won't be listed here and can't be changed using the Style Editor.
+[73] tab shows typical items with their current visuals and explanations of why they are special. Good to get an overview of the current filter and learn about its colors and highlights.
+[74] Edit every part of the filter: Colors, tierlists, sounds in a sorted structure. Every edit done is automatically saved and instantly reflected in all other parts of the website:
+[75] FilterBlade will ALWAYS give you the newest up-to-date filter. You can customize a filter now and load it again later and automatically get an updated version when you export!
+[76] The option-file defines the connections between a filter and the customizer and the whole customizer UI. You can read more or contribute on our
+[77] FilterBlade now supports mobile devices! You can open the navigation using the button at the very top left to access the different pages.
+[78] You can right-click e.g. an item to jump to its rule in the Customizer or a tierlist element to move it! (Long press on mobile)
+[79] to save the filter to your FilterBlade account and either download a filter-file or upload it directly into your PoE account.
+[80] Additional means to edit the filter. These are designed for experienced filterblade-users, developers and filter authors.
+[81] Want to test your filter? Verify your results? Find out why an item inGame is highlighted? Check out our tools on the
+[82] Quick edits that affect the whole filter and are applied BEFORE (i.e. have less priority than) your other changes.
+[83] A filter highlights items based on type and value (based on current inGame economy), and hides bad ones.
+[84] You can download it as backUp or to move it between the beta and live version of FilterBlade.
+[85] You can come back later to fine-tune when you notice things that you'd like to change!
+[86] Visualize every single change that you customized in the currently active filter.
+[87] Start customizing and head over to the 'Export to PoE' screen once you're done.
+[88] By default, most items look the same, no matter how rare or useful or valuable.
+[89] CAN'T reliably use the customizer with uploaded filters. There WILL be bugs.
+[90] CAN'T use the 'my filters' system with uploaded filters. Just doesn't work.
+[91] This will ALSO be buggy with filters created on FilterBlade. Please use the
+[92] When you return to FilterBlade, you will see all your saved filters on the
+[93] FilterBlade - PoE1&2 Filter Customizer - Finetuned for NeverSink's Filter
+[94] The shared AreaLevel and ItemLevel for all items/modules on this page.
+[95] Project Focus: Loot generation, layout and UI, save/load functions.
+[96] Project Focus: Customization, Layout and UI, General Development.
+[97] in the game. If you want, you can further fine-tune it using the
+[98] WARNING: This severely limits the functionality on FilterBlade:
+[99] This file contains your full FilterBlade filter and saveState.
+[100] Project Focus: Architecture, Domain Languages, Data Processing
+[101] FilterBlade is an online editor for loot-filters for the games
+[102] You can customize them to fit to your character and style!
+[103] economy updates for tierlists of uniques, currency, etc.
+[104] You CAN test the uploaded filters in the loot simulator
+[105] They are officially supported tools for Path of Exile!
+[106] and select your inGame character class, then apply and
+[107] Login with your PoE account to save your filter during
+[108] Planning a big rework of colors, sizes and sounds? The
+[109] tab has a lot of tool for large-scale edits like that!
+[110] YOU NEED TO HAVE JAVASCRIPT ENABLED TO USE THIS SITE.
+[111] Generate a filter specific to your inGame character!
+[112] Download the filter, or sync it to your PoE profile!
+[113] Only use these tools if you know what you are doing.
+[114] Change reoccurring colors and sounds of the filter.
+[115] Safely fine-tune the entire filter in detail.
+[116] Project Focus: Icons, Backgrounds, Videos.
+[117] Most users won't need to use any of them.
+[118] Upload Customizer Definition Option-File
+[119] Use the search bar at the top, check our
+[120] import to PoE via game files on your PC
+[121] Support us and get something in return,
+[122] system instead of re-uploading files!.
+[123] You can then use these modules on the
+[124] structure screen to change the filter
+[125] Developer, Designer, Content Creator.
+[126] continuous automated updates & fixes
+[127] support a small development team :)
+[128] one-time upload to your PoE account
+[129] Change loot pile background image
+[130] Legacy Global Color&Sound Editors
+[131] Support the FilterBlade Dev-Team,
+[132] Sync Auto (overwritten by code!)
+[133] Project Manager, Lead Developer.
+[134] Developer, data analyst, php dev
+[135] Filter loaded via sharing link!
+[136] Download (overwritten by code!)
+[137] Checking for filter to load...
+[138] Up- or Download your Save-File
+[139] 'My Modules' once you're done.
+[140] Version 1.1.6856, November 6th
+[141] A valuable item without filter
+[142] Select an item above to edit.
+[143] based on NeverSink's filters.
+[144] Configure generator settings
+[145] Premium Auto-Update feature:
+[146] when creating a new filter.
+[147] Sync (overwritten by code!)
+[148] screen to continue editing!
+[149] A valuable item with filter
+[150] instantly available inGame
+[151] to adjust it as you want.
+[152] Download current saveFile
+[153] Load filter from saveFile
+[154] no manual import required
+[155] NeverSink, Zoey & Haggis:
+[156] Not sure where to start?
+[157] You're done? Head to the
+[158] AlwaysFloat Technologies
+[159] Generate expensive items
+[160] 'Auto-Adjust for Build'
+[161] Default filter colors:
+[162] Global One-Click Edits
+[163] other player's filters
+[164] What is a loot-filter?
+[165] the filter. That's it!
+[166] Sound files download:
+[167] Path of Exile 1 and 2
+[168] manual file download
+[169] Get all strictnesses
+[170] Display hidden items
+[171] Upload Local Filter
+[172] your synced filters
+[173] Toggle item history
+[174] Sync regularly icon
+[175] from inGame in PoE
+[176] Upload Option File
+[177] no console support
+[178] Test Local Filter
+[179] You can also view
+[180] Create new module
+[181] Graphic Designer.
+[182] Download / Export
+[183] Filter Structure
+[184] Individual files
+[185] Play loot sounds
+[186] Load Auto-Save?
+[187] Where to start?
+[188] Premium feature
+[189] Eleni (MochiMM)
+[190] Our new design!
+[191] Useful features
+[192] Did I break it?
+[193] Test & Simulate
+[194] , or ask in our
+[195] Please wait...
+[196] Configure item
+[197] Review changes
+[198] How to update?
+[199] Do a redesign!
+[200] Business mail:
+[201] Zone Level: 80
+[202] Export filter
+[203] Back to Start
+[204] Generate loot
+[205] export screen
+[206] Learn and see
+[207] Download icon
+[208] Get started!
+[209] Expect bugs!
+[210] Resume later
+[211] 'My Filters'
+[212] How to use?
+[213] No, thanks
+[214] Game mode:
+[215] My Modules
+[216] My modules
+[217] SUPPORT US
+[218] For now...
+[219] Need help?
+[220] for build
+[221] Sync icon
+[222] About us
+[223] It turns
+[224] Open the

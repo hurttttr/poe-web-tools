@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PoE Web Tools</title>
+<style>
+  * { box-sizing: border-box; }
+  body { width: 288px; margin: 0; padding: 14px; font: 13px/1.5 "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; background: #161d2c; color: #e8ecf4; }
+  h1 { font-size: 14px; margin: 0 0 4px; color: #ffd980; }
+  .sub { font-size: 10px; color: #7f889b; margin: 0 0 12px; }
+  .section { font-size: 10px; letter-spacing: .06em; color: #8b95a8; text-transform: uppercase; margin: 12px 0 6px; }
+  .sites { display: flex; gap: 8px; }
+  .site { flex: 1; padding: 10px 8px; border: 1px solid rgba(255,255,255,.14); border-radius: 9px; background: rgba(255,255,255,.05); color: #e8ecf4; cursor: pointer; text-align: left; font: inherit; position: relative; }
+  .site:hover { background: rgba(255,255,255,.12); border-color: #d9a441; }
+  .site.current { border-color: #d9a441; background: rgba(217,164,65,.12); }
+  .site strong { display: block; font-size: 12px; color: #ffd980; }
+  .site small { display: block; font-size: 10px; color: #8b95a8; margin-top: 3px; }
+  .badge { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #161d2c; background: #d9a441; border-radius: 4px; padding: 0 4px; }
+  .row { display: flex; align-items: center; justify-content: space-between; margin: 8px 0; }
+  .seg { display: flex; gap: 4px; margin: 6px 0 10px; }
+  .seg button { flex: 1; padding: 6px 0; border: 0; border-radius: 6px; background: rgba(255,255,255,.08); color: #b9c2d2; cursor: pointer; }
+  .seg button.active { background: #3c4b6e; color: #fff; font-weight: 600; }
+  .stat { font-size: 11px; color: #8b95a8; padding: 8px; background: rgba(255,255,255,.05); border-radius: 6px; }
+  .actions { display: flex; gap: 6px; margin-top: 10px; }
+  .actions button { flex: 1; padding: 6px 0; border: 1px solid rgba(255,255,255,.16); border-radius: 6px; background: rgba(255,255,255,.06); color: #d7deea; cursor: pointer; font-size: 11px; }
+  input[type=checkbox] { accent-color: #d9a441; }
+  .mini { font-size: 10px; color: #8b95a8; display: flex; align-items: center; gap: 5px; margin-top: 8px; }
+  .foot { margin-top: 10px; font-size: 10px; color: #727c90; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <h1>PoE Web Tools</h1>
+  <p class="sub">流放之路网页工具 · 汉化 / 站点跳转</p>
+
+  <div class="section">站点快捷跳转</div>
+  <div class="sites">
+    <button class="site" id="site-fb" type="button">
+      <strong>FilterBlade</strong>
+      <small>过滤器定制 / 下载</small>
+    </button>
+    <button class="site" id="site-ninja" type="button">
+      <strong>poe.ninja</strong>
+      <small>物价 / 流派 / 数据</small>
+    </button>
+  </div>
+  <label class="mini"><input type="checkbox" id="same-tab"> 在当前标签跳转（默认新标签打开）</label>
+
+  <div class="section">当前页面汉化</div>
+  <div class="row"><span>启用汉化</span><input type="checkbox" id="enabled"></div>
+  <div class="seg">
+    <button data-mode="zh">中文</button>
+    <button data-mode="both">双语</button>
+    <button data-mode="en">原文</button>
+  </div>
+  <div class="stat" id="stat">读取状态中…</div>
+  <div class="actions">
+    <button id="refresh">重新翻译</button>
+    <button id="export">导出未译</button>
+  </div>
+  <div class="foot">Alt+Z 快速切换原文 · 页面右下角「汉」按钮含中英对照查询</div>
+  <script src="popup.js"></script>
+</body>
+</html>

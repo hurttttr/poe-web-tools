@@ -1,0 +1,29 @@
+{
+  "_meta": "最高优先级的译名覆写：统一术语口径、修正社区底稿中的明显瑕疵。编年史简中把 Unique 称作「传奇」，国服官方与主流中文社区称「暗金」，本项目默认采用国服习惯；如需完全贴合编年史，把下面两条改成「传奇 / 传奇物品」后重新构建即可。",
+  "terms": {
+    "Unique": "暗金",
+    "Uniques": "暗金物品",
+    "Misc. Currency": "杂项通货",
+    "Campaign (below lvl 68)": "剧情（68 级以下）",
+    "Endgame - Rare Tiering (lvl 68+)": "终局 - 稀有装备分级（68 级以上）",
+    "Endgame - Special Rares & Crafting (lvl 68+)": "终局 - 特殊稀有物品与制作（68 级以上）",
+    "UNIQUE EXCEPTION: TABULA RASA": "特殊暗金规则：白袍",
+    "Currency": "通货",
+    "Divination Card": "命运卡",
+    "Base Type": "基底类型",
+    "Item Level": "物品等级",
+    "Energy Shield": "能量护盾",
+    "Evasion Rating": "闪避值",
+    "Atlas": "异界图鉴",
+    "Loot Simulator": "掉落模拟器",
+    "Strictness": "过滤严格度",
+    "Semi-Strict": "半严格",
+    "Very Strict": "非常严格",
+    "Uber Strict": "极严格",
+    "Uber+Strict": "极致严格",
+    "Ascendancy": "升华",
+    "Amulets": "项链",
+    "Juggernaut": "勇士",
+    "Saboteur": "破坏者"
+  }
+}

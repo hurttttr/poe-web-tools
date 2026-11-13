@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PoE Web Tools · FilterBlade 汉化预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #11151f; color: #d9e0ec; font: 14px/1.6 "Segoe UI", "Microsoft YaHei", sans-serif; }
+  .banner { padding: 10px 20px; background: #24304a; border-bottom: 1px solid #3a4a6b; color: #ffd980; font-size: 13px; }
+  .topbar { display: flex; align-items: center; gap: 22px; padding: 14px 22px; background: #1a2130; border-bottom: 1px solid #2c3549; }
+  .logo { font-size: 19px; font-weight: 700; color: #ffd980; letter-spacing: .02em; }
+  .topbar a { color: #c3ccdd; cursor: pointer; }
+  .topbar a:hover { color: #fff; }
+  .wrap { display: flex; gap: 20px; padding: 22px; }
+  .side { width: 230px; flex: none; }
+  .main { flex: 1; min-width: 0; }
+  .card { background: #1a2130; border: 1px solid #2c3549; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  h2 { font-size: 15px; margin: 0 0 12px; color: #ffd980; }
+  h3 { font-size: 13px; margin: 0 0 10px; color: #9fb0cc; font-weight: 600; }
+  .strict { display: flex; flex-direction: column; gap: 6px; }
+  .strict button { text-align: left; padding: 7px 10px; border: 1px solid #33405c; border-radius: 6px; background: #202a3d; color: #d5dce9; cursor: pointer; }
+  .strict button:hover { background: #2c3a55; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { padding: 7px 9px; border-bottom: 1px solid #2a3346; text-align: left; }
+  th { color: #8fa0bd; font-weight: 600; }
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 4px; background: #2e3b58; color: #c9d6ee; font-size: 11px; }
+  .hint { color: #8b97ad; font-size: 12px; margin: 10px 0 0; }
+  input[type=text] { width: 100%; padding: 8px 10px; border: 1px solid #37445f; border-radius: 6px; background: #121826; color: #dde5f2; }
+  pre { background: #0d121c; border: 1px solid #2a3346; border-radius: 6px; padding: 12px; color: #9fd3a6; font-size: 12px; overflow: auto; }
+  .itembtn { padding: 6px 12px; border: 1px solid #d9a441; border-radius: 6px; background: #2a2c38; color: #ffd980; cursor: pointer; }
+  .foot { padding: 14px 22px 40px; color: #69758c; font-size: 11px; }
+</style>
+</head>
+<body>
+<div class="banner">离线效果预览：模拟 FilterBlade 3.29 界面，词典与汉化引擎已内联，无需联网。<a href="preview-ninja.html" style="color:#fff;text-decoration:underline;margin:0 8px">切换到 poe.ninja 预览 →</a>右下角「汉」按钮可切换中文 / 双语 / 原文，Alt+Z 快速切换；点击物品按钮可观察「交互时还原英文」行为。</div>
+
+<div class="topbar">
+  <span class="logo">FilterBlade</span>
+  <a>Start</a><a>Customize</a><a>Simulate</a><a>Themes</a><a>Advanced</a><a>My Filters</a>
+  <input type="text" placeholder="Search (Ctrl + K)" style="width:220px;margin-left:auto">
+  <a>Login with PoE</a>
+</div>
+
+<div class="wrap">
+  <div class="side">
+    <div class="card">
+      <h2>Strictness</h2>
+      <div class="strict">
+        <button>Soft</button><button>Regular</button><button>Semi-Strict</button>
+        <button>Strict</button><button>Very Strict</button><button>Uber Strict</button><button>Uber+Strict</button>
+      </div>
+      <p class="hint">Select how many items are shown.</p>
+    </div>
+    <div class="card">
+      <h2>Loot Simulator</h2>
+      <p class="hint">Preview how the filter looks in game.</p>
+    </div>
+    <div class="card">
+      <h2>EXPORT</h2>
+      <p class="hint">DISCORD</p>
+      <p class="hint">REPORT AN ISSUE</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Current League: 3.29 Allflame</h2>
+      <h3 style="text-transform:uppercase">Rare Currency</h3>
+      <p style="font-size:12px;color:#b8c2d4">Their powerful effects aside high currencies act as trade goods for players. Chaos Orbs and Divine Orbs are pretty much the standard way to pay for most trades. These are desired drops and it's almost always recommended to pick them up.</p>
+      <h3 style="text-transform:uppercase;margin-top:12px">Allflame League</h3>
+      <p style="font-size:12px;color:#b8c2d4">Dead Man's Sulphur, Ducats and all kind of precious items can be found on the seafloor!</p>
+      <p class="hint">Coral Reef Chart · 50x 亡者硫磺 · 1000x Gold</p>
+      <h3 style="text-transform:uppercase;margin-top:12px">Vestigial Uniques</h3>
+      <p style="font-size:12px;color:#b8c2d4">Consume uniques in the Timeless Conflict (Legion) with Enshrouding Crystals. A random 'vestigial' unique will hatch - empowered by the consumed unique.</p>
+      <h3 style="text-transform:uppercase;margin-top:12px">Gold</h3>
+      <p style="font-size:12px;color:#b8c2d4">You can find gold all throughout the game. It's picked up automatically as you walk over it.</p>
+    </div>
+
+    <div class="card">
+      <h2>Currency Tier List</h2>
+      <table>
+        <thead><tr><th>Item</th><th>Tier</th><th>Stack Size</th><th>Class</th></tr></thead>
+        <tbody>
+          <tr><td>Chaos Orb</td><td>Tier 1</td><td>Stack size: 10</td><td><span class="tag">Currency</span></td></tr>
+          <tr><td>Exalted Orb</td><td>Tier 1</td><td>Stack size: 20</td><td><span class="tag">Currency</span></td></tr>
+          <tr><td>Divine Orb</td><td>Tier 1</td><td>Stack size: 20</td><td><span class="tag">Currency</span></td></tr>
+          <tr><td>Orb of Alchemy</td><td>Tier 2</td><td>Stack size: 20</td><td><span class="tag">Currency</span></td></tr>
+          <tr><td>Scroll of Wisdom</td><td>Tier 5</td><td>Stack size: 40</td><td><span class="tag">Currency</span></td></tr>
+          <tr><td>Mirror of Kalandra</td><td>Tier 1</td><td>Stack size: 1</td><td><span class="tag">Currency</span></td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Recommendation: start with Semi-Strict and increase it one level at a time if you see too many items.</p>
+    </div>
+
+    <div class="card">
+      <h2>Divination Cards</h2>
+      <table>
+        <thead><tr><th>Card</th><th>Class</th><th>Base Type</th></tr></thead>
+        <tbody>
+          <tr><td>The Doctor</td><td>Divination Card</td><td>Headhunter</td></tr>
+          <tr><td>The Rite of Elements</td><td>Divination Card</td><td>Level 21 Golem Gem</td></tr>
+          <tr><td>Stacked Deck</td><td>Divination Card</td><td>Divination Card</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Base Types &amp; Attributes</h2>
+      <p>Vaal Regalia · Energy Shield · Evasion Rating · Armour / ES · Item Level · Corrupted · Identified</p>
+      <p><button class="itembtn" id="demo-btn">Chaos Orb</button> <span class="hint">← 点击这个按钮，鼠标按下瞬间会临时还原英文，站点逻辑读取的仍是 Chaos Orb。</span></p>
+    </div>
+
+    <div class="card">
+      <h2>Search &amp; Filter Code</h2>
+      <input type="text" placeholder="Search">
+      <h3 style="margin-top:14px">Filter Code（代码块不会被翻译）</h3>
+      <pre>Show
+    Class "Currency"
+    BaseType "Chaos Orb" "Exalted Orb"
+    SetTextColor 255 200 80
+    PlayAlertSound 1 300
+Hide
+    Rarity Normal</pre>
+    </div>
+  </div>
+</div>
+
+<div class="foot">Welcome to FilterBlade! · This site is fan-made and not affiliated with Grinding Gear Games in any way.</div>
+
+<script>
+window.FBZH_DICT = __DICT__;
+window.FBZH_SHORT_WORDS = __SHORT__;
+window.FBZH_HOST_DICT = __HOST__;
+window.FBZH_MOD_TPL = __MODTPL__;
+window.FBZH_MOD_PREFIX = __MODPREFIX__;
+window.FBZH_CSS = __CSS__;
+</script>
+<script>__ENGINE__</script>
+<script>__PANEL__</script>
+<script>
+document.getElementById('demo-btn').addEventListener('click', function () {
+  // 模拟站点逻辑：读取按钮文本作为物品名
+  console.log('[FilterBlade] baseType =', this.innerText.trim());
+});
+</script>
+</body>
+</html>

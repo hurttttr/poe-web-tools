@@ -1,0 +1,23 @@
+{
+  "_meta": "受控短词白名单：只用于「数字/中文 + 英文」混排文本中的局部替换（如 1000x Gold）。刻意不放 Tier / Class / Show / Hide / Rarity 等会被站点逻辑读取或属于过滤器语法的词。",
+  "terms": {
+    "Gold": "金币",
+    "Currency": "通货",
+    "Currencies": "通货",
+    "Uniques": "暗金物品",
+    "Rares": "稀有物品",
+    "Maps": "地图",
+    "Cards": "命运卡",
+    "Gems": "宝石",
+    "Jewels": "珠宝",
+    "Fragments": "碎片",
+    "Scarabs": "圣甲虫",
+    "Essences": "精华",
+    "Fossils": "化石",
+    "Incubators": "孕育石",
+    "Sulphur": "硫磺",
+    "Ducats": "杜卡特",
+    "League": "联盟",
+    "Charts": "海图"
+  }
+}

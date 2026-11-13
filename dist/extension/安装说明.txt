@@ -1,0 +1,4 @@
+Chrome / Edge：打开 chrome://extensions（Edge 为 edge://extensions），开启「开发者模式」，点击「加载已解压的扩展程序」，选择本 extension 文件夹即可。
+把扩展固定到工具栏后，点击图标即可在 FilterBlade 与 poe.ninja 之间跳转，并开关汉化 / 切换中文·双语·原文。
+支持站点：https://www.filterblade.xyz/?game=Poe1 与 https://poe.ninja/ 。
+页面右下角会出现「汉」按钮（中英对照查询、导出未译文本）。词典已内联，无需联网。

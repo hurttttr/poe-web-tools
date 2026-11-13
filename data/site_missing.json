@@ -1,0 +1,2196 @@
+{
+  "meta": {
+    "note": "从 FilterBlade 静态文案源提取的可见英文文本；missing 为词典尚未覆盖的条目",
+    "sources": [
+      "StyleSummary.options",
+      "STATIC_UI",
+      "index.html",
+      "economies.json",
+      "optionFile085d.options",
+      "LootGenerator.options",
+      "newsFile.txt.out",
+      "faqContent.json.out"
+    ],
+    "candidates": 866,
+    "covered": 648,
+    "missing": 218
+  },
+  "missing": [
+    {
+      "en": "AlwaysFloat Technologies",
+      "sources": [
+        "index.html"
+      ],
+      "priority": 2
+    },
+    {
+      "en": "Eleni (MochiMM)",
+      "sources": [
+        "index.html"
+      ],
+      "priority": 2
+    },
+    {
+      "en": "You can find more quality flasks rules in the 'Endgame -> Flasks' and 'Campaign -> Flasks' sections.",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "Hide <75 in 82+ Zones: Very-Strict",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "Hide <40 in 73+ Zones: Semi-Strict",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "Hide <60 in 82+ Zones: Strict",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "Hide <50 in 78+ Zones: Strict",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "], $text, [$suggestions,",
+      "sources": [
+        "optionFile085d.options"
+      ],
+      "priority": 4
+    },
+    {
+      "en": "The things a PoE loot filter can do are very limited. A good rule of thumb is: If you can't do it on FilterBlade, it's likely not possible in PoE. You can:Add colors (text, border, background) with opacity, but no gradients, and no changing the border widthAdd beams and minimap iconsPlay one from the 26 sounds with a given volume + NEW: play those sounds in a way that tells where in the game world that item dropped. + NEW: Play custom sound files on your PC.Set a size from 18 to 45. Nothing bigger or smaller than that.Things we can NOT do include but are not limited to:Filter by unique name. Only filtering by BaseType is possible. And many BaseTypes have multiple uniques. A filter cannot tell which one of those it is, even if it's identified.Change the font itselfEdit the font of chests, breach hands, masters, etc to be bigger or better visible.Detect the 'Tier' of an item (PoE2 only).Detect the mods of unidentified items, or the specific (corruption-) implicits of any item, not which mod is fractured.Only show items that are allocated to me when playing in groups.Only show items for a given time and hide them after x seconds.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The sync-to-poe feature saves the filter directly in your POE-account. You can find your filter in the ingame settings (click 'refresh' first). You need to login for the first (this is a safe login, search for OAUTH here for details, we don't get any of your credentials). Download gives you the filter file directly. You will then need to place the file into the \"%userprofile%/Documents/My Games/Path of Exile\" (or Path of Exile 2) repository for it to work. Both have their up and downsides. Sync is generally speaking more comfortable, but it 'caches' the filter if multiple syncs are done in quick succession and it might take up to 10 min to arrive ingame. New syncs seem to always arrive instantly. It also doesn't work when the POE servers are down/updating. Download on the other hand takes a few extra clicks and spams your download folder, but is very reliable.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "To give you a POE analogy. If filters would be a POE skilltree, modules would be jewels. A filter can include 0 to 15 modules and a single module can affect multiple filters. Modules are great if you want to have the same set of changes across multiple filters. For instance if you want to reuse the same style or tiering you can save these in a module and then apply them onto one or multiple filters. Every time you load a save, it fetches the latest version of the module. You can also browse for public and 'official' modules on the overview screen!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The Ruthless gamemode requires a completely different type of filter - both technically as well as regarding the logic of filtering. You can't use a normal filter in Ruthless or the other way around. Ruthless filters also don't allow you to fully hide items or make them transparent. You can select the Ruthless filter on the Overview page. It currently has NO styles or strictnesses. When exporting a Ruthless filter, we will automatically fix Hide-rules and also the file extension in order for it to work ingame.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Depends on which you are using:Normal / Positional sounds are built in to the game, you don't need to download anything. This includes the Shaper voice lines.Our Community sounds from PoE streamers are hosted on FilterBlade. You are offered to download them when downloading or syncing the filter.If you use a module, its creator should have provided a download link for the sound files in the module description, as we are unable to host these files ourselves due to copyright reasons.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Another tricky part are strictnesses. The strictness you used when creating a module doesn't directly matter, but it allows you to do changes that aren't possible otherwise. For example you can't have a module that disables Chancing Bases when you work on a low stirctness, because that section is already disabled, meaning it wouldn't be a change and therefore not saved. Changing to a high strictness allows you to do and save this change.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The SC and HC Economy filters adjust their tiering every 4 hours. Every section that is economy based is marked with 'chaos orbs'. This is done in order to keep the filter up-to-date with the live economy and meta state. If suddenly something becomes more expensive/cheaper (due to a build becoming popular, game changes or a new tech being discovered), you will know. However, you CAN control this behaviour:",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We added a lot of useful features into the right-click menu. Just rightclick e.g. a BaseType within a tierlist to have the option to move it into a different (or new) tier. Or right-click the class-selection GUI to see options to (de-)select all options with one click. There are a lot of options. The 'Show Priority' one can be very useful to check which rule has priority when you're not sure.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The Economy (Eco) filter tracks the live economy. Its tiering for currency, uniques, fragments, gems and 20+ other lists refreshes every 4 hours, and that's what most players want. The Stable filter ignores economy updates and only changes a couple of times per league, which makes it a good choice for SSF or if you simply want a fixed, predictable filter that doesn't move around on you.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Another reason for odd behaviors is the fact that your filter might already have changes in the section that the module edits and overwrites it. You can try Shift-Rightclicking a section to hard-reset it, which doesn't set the section back to its initial values, but instead deletes all of your local changes, causing the module to take effect again. This can sometimes make a difference.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "First of all ensure that you're using a somewhat up-to-date filter version. We're developers, not fortune-tellers. Then filters can NOT tell uniques of the same basetype apart. For instance 'leather belt' uniques can't be distinguished. Your belt might be a super-expensive headhunter or a worthless wurm's molt. These uniques are usually marked with a blue star on the minimap",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Like normal filter-saveStates, modules work not by saving the current, final state of the filter, but by saving the changes you made. Meaning if something is back on its initial value, it doesn't count as change and is therefore not applied in the filter. This can happen a lot in ever-changing parts like tierlists, where items move often and rules get disabled all the time.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Disable: This removes the rule from the filter, this means that rule will not and cannot catch any item and it leaves the other rules in the filter to handle the item. You should only be disabling rules if it is the default option in the rule or you know what you are doing. As this can lead to items being unfiltered and caught in the 'Catch All' error rule showing PINK.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The filter has many rules that are in a very specific order to implement priorities, as one item can always be only handled by one rule. You can always right-click rules to view their priority and compare it to other rules. Normal existing rules can not have their priority changed, but new additional custom rules that you can create can have their priority edited!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Importing someone else's filter: if follow a filter on PoE, you can go to their Profile page and check if they have their filter saved publicly on FilterBlade (include the '#1234' discriminator at the end of the username for most accounts, leave '#1234' off for older legacy accounts!). If it's private you may try asking them. Otherwise, you're out of luck.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Head to the FilterBlade Discord and post a message in the applicable PoE1/PoE2 filter questions channel with name of the filter, approximate last known good state that needs recovery, and your copied UUID. (Can wait for a reponse to send the UUID and delete after they've got it). One of the mods will attempt to recover the filter and provide a .save file.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can only upload into filterblade via a 'SaveFile' as this contains all the information on the changes made to the stock filter that got you to the current state. Think of the save file as a list of instructions on what to do for it to go from A - B. If you have the savefile you can go to Advanced > Test Local Filter > Load filter from saveFile.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We store filters by your account-name. If your name changed, you basically count as a different person. Your best option is to make all of your filters public on FilterBlade before changing your name and then loading them from the Profile page on FilterBlade into your new account. We value user privacy and will never migrate any private saves.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "No, we're not, and we keep blocking them, but Google keeps adding new ones into our pool of ads. We have already blocked 500+ different PoE-RMT ads from appearing on FilterBlade, but sadly Google has little interest (or ability) in correctly identifying/categorizing them so we can remove them altogether from the ads that appear on our site.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "No and there won't be. This adds several security issues, a lot of support and development overhead and we have made the architectural decision to focus on a website. You can install filterblade as a PWA (progressive web app) though. You can do that in chrome from the 'Add to Home Screen' button on the top-right of the filterblade website.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If FilterBlade says that the uploads succeeded, check your PoE-profile page (pathofexile.com/account/view-profile/YOUR_ACCOUNT_NAME/item-filters). If the filter shows up there but no inGame, then it's an issue on GGGs side and you should contact them. Right now, they seem to be having issues with account names that contain special symbols.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Every time you go to the export screen and download/sync it'll automatically save as well. This is faster for you, avoids the danger of accidently overwriting the old save and is easier to explain to beginners. You can also use the 'more' button on the export screen to access some advanced and exotic workflow options.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Uber Plus strict hides boss-drop-uniques to minimize clutter in maps. Check hidden items when bossing. Filters can't distinguish between uniques of the same basetype, even when they're identified. Uber-Plus-Strict will hide basetypes with multiple associated uniques that have non-boss-drops that are all cheap.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Load your filter and go to Advanced -> Upload filter. There, you can up- and download the 'save-file', which is your FilterBlade-filter in file-format. You can then upload the save-file on the other website-version of FilterBlade in the same UI. You can then also save it again as regular online-saved filter.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Selling specific items to a vendor will give you a special item in return. For example: Selling a random white body armour will give you a Scroll Fragment in return. But if that body armour happens to have 6 Sockets, you will instead get 7 Jeweller's Orb in return. All by simply selling items to the vendor.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Since SSF is all about your specific build and character and playstyle and economy, there is no 'One SSF filter' for everybody. There can't be. You can start with the 'Stable' NeverSink filter to opt-out of the regular economy tiering updates and then just start customizing it for your playthrough.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Ctrl+C the item from inventory (POE1: If you want the mods included use Ctrl+ALT+C) > Ctrl+V into Sim > Import tab, match the Area Level to your in game area level (if you don't have item or are on console, use Item Builder tab) > 'Find in Customizer' to see rule in context and safely edit.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Consoles work too, mostly the same as on PC: follow on the ladder (PoE1 / PoE2) or Sync on FilterBlade. There are two differences though: you have to use Sync and not Download, and you can't use CustomSounds, since those have to be placed into the game folder, which consoles don't allow.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "FilterBlade (filterblade.xyz) is the free website where you customize that filter. You can pick a strictness, change the styles, sounds and colors, retier individual items, then sync or download your own version. So NeverSink is the filter and FilterBlade is where you make it your own.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "For new leagues, the big base update goes live the day before launch (a few hours before). We use that window to refine it, and the new version wouldn't run in the old league anyway. Once the new version is live, just load your filter on FilterBlade to convert it over.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Load or create a filter and head to the 'Export' screen. You will have 3 export-options. 'Download', 'Upload once' and the Premium Auto Updater. Click it and it will guide you through the process of linking your Patreon account and enabling AutoUpdate for your filter.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can use your own MP3 sound files to play when an item drops inGame. Just select 'CustomSounds' as sound type on a filter rule and specify an mp3 file name. Then, put these mp3 files into the PoE filter folder (the same folder where you'd put the filter files).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "All of the tierlists: currency, uniques, gems, fragments and 20+ others, plus the Crafting Bases. The economy updates run through a bunch of safeguards and special rules that filter out market manipulation, bugs and noise, so the tiering stays clean and reliable.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "work behaviour behaving in game in-game unexpected error doesn't behave not like i want still shows hides hidden item but like different than from simulator simulated overview not matching simulated on filterblade simulator simulate matches match doesn't doesnt",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "login log in sign in signin signup signin with facebook with poe path of exile ggg grinding gear games oauth o auth 2 2.0 secure safety hack hacked leak leaked scared delete remove edit characters bank contact information personal private password keyword steal",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Search for them on the FilterBlade profile page or ask them for a 'Sharing link'. They can get it on the My Filters screen by clicking the Share button. Once you visit the link, you can further edit their filter and save and use this new version for yourself.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "It's not missing. It's caught by a general entry or by a class-based rule. There are several ways of highlighting items. That's why the filter will also always show new uniques/divination cards etc., even if you forget to update (you should still do that)",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "No! After customizing your filter, save it using the FilterBlade save & load feature. Simply load your save and if there's a new version, you will get the updated filter, with all your changes merged into it. You can read more in the My Filters screen.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "There are also 'Global Style Edits' that allow you to edit e.g. ALL minimap icons or beams, or scale or maximize all font sizes throughout the filter. If you're looking to do some large scale changes of the entire filter, this is the section to visit!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Those are 'MiniMap Icons'. You can edit them in the usual appearance editor by clicking the Icon button. InGame, they are only shown on the map/miniMap. Since FilterBlade doesn't have one of those, we display those icons next to the item name instead.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Your own changes always have priority. If you retier an item and I change it later, your version is kept when you reload, and new or renamed items are added and migrated automatically. If you want to freeze an entire tierlist, use the 'LOCK' tool.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Yes, but you will need to place the custom sounds into the filter folder (%userprofile%/Documents/My Games/Path of Exile) (or '/Path of Exile 2'). Note that users who subscribe to your filter via the POE ladder won't get the sounds automatically.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Also keep in mind that GGG releases console updates about a week after PC. Just after a league starts the PC version can be ahead, so grabbing a filter in that gap might cause a version mismatch. If that happens, just wait for the console update.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "This error means that you have a filter that uses custom sounds, but you didn't install all the sound files correctly into the PoE folder with their correct file names. If ANY of the files are missing or misnamed, the entire filter won't load.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Yes it's safe. We never receive your password, email or any other sensitive information. The connection is done using a protocol called OAUTH 2.0, which is the same way all the \"login with google\" and \"login with facebook\" buttons are working.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "A good next step is to import the In-Game item on the 'Simulate' tab on FilterBlade. It can show you why an item is highlighted and can give insight into where the error lies. Make sure to copy the mod-information by holding down the Alt key.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The latter can be removed by adding the 'DisableDropSound' command to the rule that handles the item. It can be added by removing the 'Drop' checkbox in the sound UI. You can also add or remove it from all rules with the Global Style Edits.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "While the 'questionList', 'question' and 'answer' fields are probably self-explanatory, the 'tags' field is used for the search method on the site. Use it to add additional keywords that are NOT already in the question or answer text.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can either fix this by placing a sound file with the EXACT name from the error message into the PoE filter folder, or edit the filter to no longer use this custom sound (you can search for the sound name in the Customizer search).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "No, and it likely won't ever be. It's an uncommon practice to open source websites. You reduce security and increase the risk copycat and phishing websites. However, filter itself is open source and can be found on NeverSinks GitHub.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "qol quality of life utility useful gadgets tools help faster quicker right-click rightClick right click move tierlist editing tier change select all turn off all every single individual one by one toggle jump reset copy paste",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Additionally, there are special sound effects for e.g. Unique items. Those have their own sound effect when they drop for the first time. This sound is none of the other two sound types and cannot be controlled with a filter.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you want to customize things, use FilterBlade to set your own strictness, styles, sounds and per-item edits. Both use the same base filter, so you can start by following and switch over to FilterBlade whenever you like.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "This is another one of GGGs special sound effects. Sadly, item filter have no control over these at all. This is neither a filter alert sound nor a drop-sound that can be disabled with the DisableDropSound filter command.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "When an item drops, it goes through all rules from top to bottom. When it finds a rule that accepts this item (i.e. it meets all of the rule's requirements) it uses that rule's actions and the search for this item stops.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "upload create re-create import paste from ingame poe game re-import lost find gone use into from someone else streamer ladder other people streamer adjustments edit from other people someone else else's their his her",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you want to have two filters that have the same 'base' set of changes, try out 'Modules'! They allow you to later update this 'base' set of changes and receive the update in all filters that use this 'Module'.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Nope. Those limits are set by GGG and there is nothing we can do about that. If you were to enter a bigger or smaller number into the code, it would be ignored and instead use the biggest/smallest valid number.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The 'Style' tab allows you to do just that. With a few clicks, you can change all reoccurring styles (i.e. colors and sounds) over the entire filter without having to go through every single rule individually.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "To save a module go to my modules and click 'save' there. To turn a filter into a module load the filter and save it under 'my modules'. However, you can't save a filter that uses a module into another module.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- Our frontend is a S3 storage bucket with all of our HTML, JS, CSS, filter, etc. files as static website. Distributed using AWS CloudFront CDN together with CloudFlare (where we also have our domain).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Yes, the live filters are always kept up-to-date. The economy tiering refreshes every 4 hours and I push base updates regularly: every couple of days early in a league, then every few weeks later on.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "b) Any item you have NOT moved may be adjusted by the economy, unless you 'LOCK' them. You can lock individual items or the whole tierlist by using the 'advanced toolbar' in economy-based sections.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Check what you are filtering for, comparing the item, the desired rule and the actual rule. Filtering by 'Links < 6' is a good idea, but will not affect Quivers because they have no links/sockets.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Pick up the item InGame and use the ItemReCreator on FilterBlade's Simulate tab to find out why it is highlighted. Jumping into the Customizer from there may provide more details and explanations.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Filters are NOT hacks or mods or cheats. They're a official feature/utility in POE. You will never get banned or get in trouble for using a filter. A filter in PoE is just a list of ordered rules.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "They're two different things. NeverSink's filter is the actual loot filter: a set of rules that highlights valuable items and hides the clutter. You can follow it in-game or grab it from GitHub.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We don't have a download button on the start page for the same reason. If you're not going to customize your filter, you're better off just following NeverSinks filters on the PoE filter ladder.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Please use this setting with care as we have explicitly added/hidden these buttons on certain rules for a reason, such as conflicts with other rules or the relative values of items caught by it.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- As database, we are using a NoSQL DynamoDB to store all the 'meta'-data about saveStates, while the actual content of them is stored as files in a separate S3 Storage to reduce database size.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can visit e.g. NeverSinks PoE Profile page and follow his filter on there. After doing that, you will be able to select the filter inGame, without having the file downloaded onto your PC.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- The backend is an array of serverless AWS Lambda Functions with API-Gateway, written in C#/.NET, which have proven to scale excellently with the varying demand over the course of a league.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "First load the filter. Then either click on 'my modules', find your module and click apply or browse the modules from the overview screen. You can also find public/official modules there.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The filter can use the area level for filtering, but not your character level. If you're in a low level zone, it will highlight the items that are good for this specific zone (level).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "On console there is no default keybind for this feature, however you can set a custom bind or go into settings and use the following checkbox to enable/disable this feature",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The filter alert sounds (Those loud \"bong\" and \"peng\" sounds, or the Shaper voicelines like \"Chaos Orb!\", or even Custom sounds, which are .mp3 files that you can provide.)",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- A new version of the filter changed some rules or sections so much that we can't apply your changes onto it anymore because it varies too much from the previous version.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "c) You can use the stable filter. The stable filter tiering only changes twice per league - at league start and 3-5 days in. These updates also respect points a) and b)",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Simply go to one of the custom rule section in the Customizer (there is one for endgame rares, one for leveling and one in the Misc. section for everything else).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We made a short video outlining the very basics of FilterBlade, what it is, how to use it, and everything else you need to know to get some basic editing going.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Next: Does FilterBlade show you a 'successfully uploaded filter' message? If not, you should receive some sort of error message that might already help you.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "update apply changes keep customization don't redo dont have to redo everything lose all lose everything lose changes lose customization new version league",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "So for most people Eco is the way to go, while Stable is great for SSF. Either way, remember to load and re-download or re-sync to get the changes in-game.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Make sure that the ItemLevel, AreaLevel or StackSize of the item isn't a factor. Currency for example has many variations depending on some of these.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding economy eco stable difference which choose recommended frozen fixed tiering github sc hc softcore hardcore ssf solo self found livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "When using the online Sync feature, check the 'Last modified' date and time inGame when loading the filter (the hour might differ due to timezones).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "upload create re-create import paste from ingame poe game re-import lost find gone ladder adjustments edit from account my profile pathofexile copy",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- There were errors or certain changes in the filter or FilterBlade and we explicitly deleted your changes so your filter won't have these errors.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "customsound custom sound customalertsound alert drop file download copy receive find my own mp3 missing path invalid error ingame wont load won't",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- The filter generation has a similar setup (AWS Lambda, C#/.NET) and generates the filters and all of it's styles from a domain language (.exo).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "GGG does not allow hiding items in Ruthless filters. The 'Hide' command is replaced by a 'Minimize' command and we can't do anything about it.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "tech technology stack development programming azure cloud aws stack online hosting server database infrastructure cost operate maintain",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "delete deleted recover restore backup get my old filter back version roll rollback previous undo change messed up dumb stupid bad wrong",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you don't have an example item for the Importer, try using the Item Builder below it to specify exactly what item you want to test.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding up to date current new league launch start release when day before patch base update timing fresh latest always livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Please note that some items, such as Quest Items, may not be hidden. This is a limit enforced by GGG that we can't do anything about.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "sounds geforce now geforcenow alert dropsound drop community mathil mp3 sound file folder install create add use voice music effects",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you get the first error, it means you're using the new 3.25 filter in the old 3.24 game. Wait for the game update and try again.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Use the search bar on the right side! You can enter the item name or relevant tags. This will usually resolve 95% of your searches.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "sound sounds alert alertsound unique uniques legendary legendaries first time only drop inventory not anymore back on ground single",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "poe migrate transfer move path of exile ggg account profile name username login support gone missing empty see any new renamed old",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding difference between neversink filterblade what is who relationship filter website tool customize versus vs livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "item how color understand filter find where locate which part section how location line section area entry rule can't cant right",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "no items drop item see visible hidden all every item hides all invisible cant short time period no longer too short gone seconds",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "filter item loot filterentry entry rules works algorithm behavior program strictness level strictnesses hack mod legal allowed",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding console konsole xbox playstation sony ps5 ps4 nvidia handheld download update sync follow sounds wait livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- The programming languages are vanilla JavaScript/CSS/HTML for frontend (yes, we're maniacs) and C#/.NET for the backend.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "It is not designed to create filters completely anew from scratch and therefore does not have the functionality to do so.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We also share some Public FilterBlade Assets that we'd appreciate any help with. Feel free to create pull requests there!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Note that, if you see any errors when selecting the filter inGame, the filter will not work and all items will be shown!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "a) Any item you have moved within the tierlist will stick to that tier. Your changes have priority over economy updates",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- The frontend heavily employs our own domain languages to generate the customizer, overview and loot simulator screens",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "domain versions environment beta prod live release deploy variation test internal alpha site save move migrate transfer",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "white broken working not doesnt doesn't hide hidden show shown is isn't lame generic random white normal items special",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "copy clone duplicate second similar endgame leveling build changes own individual separate customization share preset",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "search problem huge find where locate which part section how location line section area entry rule can't cant right",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Load your filter, go to 'Export To PoE', and click on 'More' -> 'Save As New' to effectively duplicate your filter.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you get the second error, you're using an outdated filter. Re-Download or Re-Sync the filter again to fix it.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Create your new filter with a new name and make sure you see and select this new name in the filter-list inGame.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding download get install obtain start begin follow copy ladder beginner experienced how do i livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "There may also be other rules that show the item in certain conditions, such as different levels or stackSizes.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Alternatively, you can use the Simulate tab to e.g. Import the item from inGame to find the rule that shows it.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "code open source github openSource help out wanna add need assistance closed source closed-source closedSource",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "One rule may be responsible for multiple items, in which case you can remove the specific item from the rule.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "There, you can add Show and Hide rules for specific BaseTypes, Item Slots (like Rings or Two-Hand-Axes), etc.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "and the games Drop-Sound-Effects (the inGame atmospheric sound effect of the axe or orb hitting the ground).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "In 2021, we moved from our initial small WebServer with PHP and SQL to the Amazon Web Services (AWS) Cloud:",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "custom sounds module filter subversion style base combination both at the same time together combine merge",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Consider turning ad-block off. We're only showing minimal ads and have disabled all the risky categories.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- We use DevOps pipelines to build and deploy front & backend while Trello is used for workItem-tracking.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "vendor recipe trade npc rgb 6sock 6 sockets socket quality chisel glassblower gemcutter trick tips useful",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you're on console or another platform without access to its file system, you can't use custom sounds.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "new empty filter without rules why not quicker to long annoying to sync export faster confusing complex",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "GGG limits limit api can do i possible to feature can i is it possible to do possible to have add make",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "It also means that the rules at the top of the filter have higher 'priority' than ones further below.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "In any case, you will see a list of all invalidated sections and need to re-edit them to your liking.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "This is not controlled by filterblade and is instead a setting in game called 'Toggle Highlighting'",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Onboarding how often frequency daily weekly when refresh manually renew league economy livecycling",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can use the filter color-style (like Velvet for example) and then add the CustomSounds module.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "solo self found self-found solo-self-found soloselffound selffound specific extra adapted special",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you have the item inGame, you can import it on the Simulate tab to pinpoint the exact ruling!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "NeverSink made a video about the basics on how to use FilterBlade to install custom drop sounds.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "real money cheat hack unethical € $ buy cheap currency orb trade purchase illegal ggg forbidden",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The 'question' and 'answer' fields can be filled with HTML code to add e.g. line-breaks with '",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- You edited a certain rule in the filter and that rules no longer exists in the new version.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The first one can be edited in the 'Sound' section of the rule editing UI or the 'Style' tab.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Each rule has requirements (like: ItemLevel > 83) and actions (like: Background color Red).",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "chaos recipe regal alchemy vendor full set of gear equipment every all slot rare one each",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "No. The squire has an additional rule that identifies it by it's iconic 3 white sockets.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "low level high level endgame early game go back to act 1 act one player level zone level",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "league update leagueUpdate error outdated old new version 3.25 3.24 necropolis settlers",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "remove show gone idol quest item question where find method option not possible no none",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "The strictness of the rule determines how many of the existing rules it will overwrite.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Just following the filter on their PoE profile or having the filter file is not enough.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "have their his her my friend filter file follow followed edit customize afterwards them",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "saveState save load filter error help invalid redo re-do edits edit gone message change",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Alternate click on your username at the top of the site and 'Copy UUID' as seen below.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Advanced > Local Filter > 'Load filter from saveFile' as shown below > save as usual.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "expensive rare cheap unique headhunter mageblood why highlight wrong bug blue star",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "show up work doesn't working see can't load list empty sync upload poe not updated",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "icon image next to left right item name base basetype loot dont cant see not there",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can go to Advanced -> Settings -> Always display all Show/Hide/Disable button.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Use the search bar in the Customizer to find the rule responsible for the item.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Adding custom rules to the filter is the perfect solution for tasks like this.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Go the the frontpage and scroll down, you will find most explanations there.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "hide display enable no option can't hide only show the other mode shd toggle",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "- The game changed so much that this section of the filter had to be redone",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "This means that every item can always be affected by only one single rule.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "module mod save socket tree workflow extract part piece add remove apply",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "This is not an error and expected behaviour in many situations, such as:",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Try selecting no filter at all, then switch back to the desired filter.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "show all hide all highlight unique valuable cheap boss drop expensive",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Hide: Hides the item which matches ALL the variables in the rule.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Show hide disable why mean 3 options what does difference between",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Show: Shows the item that matches ALL the variables in the rule.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "new ruth less game mode gamemode ruthlessfilter load error file",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "module odd broken bug not apply revert reset not saving saved",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "You can add additional filtering for ItemLevel, Rarity & Co.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "reset changes economy lock move random tier move eco stable",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "First and foremost, FilterBlade is a customization website.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "show all hide all highlight this that class classes only",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "custom filter upload edited use my own old upload filter",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "First, make sure you're actually using your new filter!",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "local app download offline pwa cloud storage autoupdate",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "tutorial guide help assist noob new beginner starter",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "sound sounds drop mp3 wav my own files effects audio",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "move high low more important order why instead of",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "size font fontsize big bigger small smaller huge",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "remove still appears gone stays removed go away",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "', links with 'Click here' and images with ''.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "utility quickly easy fast redesign design all",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "On PC this can be toggled with 'Z' by default",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "divination unique tier gem card key missing",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "save load my filters export more gone help",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Basically there are two types of sounds:",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "There are some module for chaos recipes.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "If you prefer, we also have a PayPal:",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Import, Export, Save, Load, Download",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "how can i hide disable toggle remove",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "elegant round shield unique squire",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "We made a video about modules.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "sound sounds drop sound effect",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "It depends on how you use it.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "First: re-starting your game.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "To put a short story long",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "module turn convert save",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "module add remove apply",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "Bonus features/modes",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "POE1's Wiki.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    },
+    {
+      "en": "POE2's Wiki.",
+      "sources": [
+        "faqContent.json.out"
+      ],
+      "priority": 7
+    }
+  ],
+  "covered": [
+    "Many Players also choose to use rares for the 'Chaos Recipe'. This is a safe and consistent way to make currency, especially early on in the league. For that you need to sell a full equipment of rares (boots, gloves, helm, 2 rings, 1 amulet, belt, armor, weapon+shield or a 2h weapon) of itemlevel 60+ (found in act 9 or later). The vendor will reward you with a Chaos Orb. If all items are unidentified, he'll give you 2 Chaos Orbs.",
+    "Rare items can be crazy strong. That being said it's very tedious to pick, identify and treat (sell/price/keep) rare items. It takes a lot of practice and knowledge to quickly price rare items and there's a lot of factors, such as league type, age, meta, itemlevel, that affects it.",
+    "'Rare accessories' are a fairly common drop, but they are tiny and most builds cover their stats and resists through rare accessories. This makes these rares a much more lucrative pick-ups than non-accessoires rares. On top of that they are usually the bottleneck for chaos recipes.",
+    "All top tier items have the same white background and drop-sound. They also come with a red beam and a huge red star on the minimap. These items include top tier currencies, valuable uniques, great divination cards, reliquary keys and everything else that is worth a LOT.",
+    "It should be noted that other items without the white background can be just as, if not more valuable. However, with other items it often comes down to mods, luck and crafting, while the white background items are pretty much always great!",
+    "There are hundreds of uniques! Some are in high demand, others are worthless or very niche. The filter can't distinguish between uniques with the same baseType. Bases with a blue or purple beam/map icon could potentially be very expensive.",
+    "Their powerful effects aside high currencies act as trade goods for players. Chaos Orbs and Divine Orbs are pretty much the standard way to pay for most trades. These are desired drops and it's almost always recommended to pick them up.",
+    "Divination cards grant you a specific item reward upon completing the set. Each card type drops in specific zones or by specific enemies, allowing players to farm them (although some cards can be super rare regardless).",
+    "The site is updated every 4 hours and the tiering of the items may differ. Items might change their tier based on high or low demand. Note that you have to redownload/sync the filter to get the latest economy data!",
+    "The blue or purple map icons and beams signalize that are drop CAN be quite valuable... if you're lucky. A unique Leather Belt can very very rarely be an expensive headhunter and the filter can't tell them apart.",
+    "Note that you can corrupt a skillgem for a chance to receive extra gemlevels. This way you can create level 21 gems. You can also sell a level 20 gem and a gemcutter Prisms to receive a level 1 20% quality gem.",
+    "Items have a sound that is linked to their value-tier. All high tier currencies make the same sound. When you hear it - you know 'something dropped'. You can click on the currency preview to hear the sound",
+    "Map fragment open a unique encounter if used if the other pieces of the set. Most scarabs on the other hand add both challenge and reward to a map encounter. Some of these can be very pricy!",
+    "Generally speaking the purple icon is used for the items with a higher chance to be good. On top of that the small blue stars are usually indicative of a basetypes with good boss-drops.",
+    "You can change all of these settings in the customizer screen here. To quickly jump to the settings for a certain item, right click the item label or CTRL+click the item.",
+    "Most fragments can also be added onto a map to increase it's quantity, if you're not interested in the encounter itself. This is commonly done with sacrifice fragments.",
+    "Maps gain more highlight as they gain tiers. High tier (11+) and top tier (16) maps have different sounds. The filter highlights map tier upgrades with an extra color.",
+    "Currently expensive gems are highlighted by the filter. Additionally the filter will highlight gems with special properties, such as higher levels, quality etc.",
+    "Useful currency that drops while leveling. These rules have priority over normal currency rules, but only apply in areas under level 68. Great for new leagues!",
+    "The Text color is orange, instead of yellow, if the itemLevel is 75 or above, meaning that you can use the item for the Regal recipe instead of the chaos one.",
+    "The divination card economy is quite volatile. Periodically returning to FilterBlade and redownloading the latest filter is recommended to stay up-to-date.",
+    "Consume uniques in the Timeless Conflict (Legion) with Enshrouding Crystals. A random 'vestigial' unique will hatch - empowered by the consumed unique.",
+    "These rares are popular in the current meta and are often small pickups. Getting the right stats on these makes them quite valuable.",
+    "Don't underrate chance orbs! You can buy maps from Kirac at the start of the league to quickly progress through the atlas!",
+    "The filter highlights map drops of a higher tier than the one you're in with extra highlight (disabled on some styles)",
+    "The economy sometimes has large meta-shifts! A cheap unique can become very expensive very fast (or vice versa)!",
+    "Note: random non-quality skillgems are hidden on higher strictnesses, since they can be purachased from an NPC.",
+    "They also come with a minimap-icon. The icons can be seen next to the item preview labels on FilterBlade.",
+    "Filterblade tiering is based on the ingame economy. It's a good practice to update the filter weekly.",
+    "Divination Cards have vastly different price and rarity ranges and are tiered based on their value.",
+    "Alterations, jeweller's and chromatics can also be reliably obtained by doing vendor recipes.",
+    "You can find gold all throughout the game. It's picked up automatically as you walk over it.",
+    "Rather common, but unless sold in bulk, not too expensive. Often used in basic crafting.",
+    "Dead Man's Sulphur, Ducats and all kind of precious items can be found on the seafloor!",
+    "Quality on gems influences each gem in a different way. Consult the wiki for details.",
+    "Quality gems can be sold in bulk to NPCs to get gemcutter prisms",
+    "T1 rare jewellery - best implicits",
+    "T3 rare jewellery - poor implicits",
+    "T2 rare jewellery - OK implicits",
+    "Map Drops of a higher Map Tier",
+    "Current League: 3.29 Allflame",
+    "T2 rare - suboptimal bases",
+    "LEVELING: Transmutations",
+    "Vaal Enshrouding Crystal",
+    "MIRROR OF KALANDRA!!!",
+    "T4 rare - worst bases",
+    "Rings, Amulets, Belts",
+    "Ye Trusty Chaos Orbs",
+    "Orb of Transmutation",
+    "T1 rare - meta bases",
+    "T3 rare - poor bases",
+    "Weapon&Armour Tier 1",
+    "Fragments & Scarabs",
+    "Mirror of Kalandra",
+    "Dead Man's Sulphur",
+    "Generic Random Gem",
+    "T1 rare - ilvl 75+",
+    "MID-TIER CURRENCY",
+    "Orb of Alteration",
+    "LEVELING CURRENCY",
+    "LEVELING: Portals",
+    "LEVELING: Wisdoms",
+    "Brinehook's Ducat",
+    "Vestigial Uniques",
+    "Dragonscale Boots",
+    "Brutality Support",
+    "Wyrmscale Doublet",
+    "Arcanist Slippers",
+    "Scroll of Wisdom",
+    "House of Mirrors",
+    "Coral Reef Chart",
+    "DIVINATION CARDS",
+    "Exceptional Gems",
+    "Jeweller's Orbs",
+    "TOP-VALUE ITEMS",
+    "Allflame League",
+    "SOMETIMES LUCKY",
+    "Empower Support",
+    "High Qual. Gems",
+    "Orb of Alchemy",
+    "Jeweller's Orb",
+    "Glorious Plate",
+    "Any Qual. Gems",
+    "RARE CURRENCY",
+    "Orb of Chance",
+    "Portal Scroll",
+    "Notable Drops",
+    "T14+ Red Maps",
+    "Map Upgrades!",
+    "Exalted Orbs",
+    "Alchemy Orbs",
+    "Unique items",
+    "Stun Support",
+    "Endgame Maps",
+    "Divine Orbs",
+    "Exalted Orb",
+    "Ancient Orb",
+    "Chance Orbs",
+    "Yellow Maps",
+    "Rare Colors",
+    "Gemini Claw",
+    "Slink Boots",
+    "Onyx Amulet",
+    "Divine Orb",
+    "Skill Gems",
+    "White Maps",
+    "Rare Items",
+    "Chain Belt",
+    "Chaos Orb",
+    "Ruby Ring",
+    "Red Maps",
+    "Please consider supporting us by disabling AdBlock.",
+    "Requesting files from server...",
+    "Initializing FilterBlade...",
+    "Detailed explanation",
+    "Search (Ctrl + K)",
+    "REPORT AN ISSUE",
+    "Login with PoE",
+    "Current League",
+    "Report Ad",
+    "New here?",
+    "DISCORD",
+    "EXPORT",
+    "The Customizer is built fail-save and it's hard to 'break' your filter by using it. You will see warnings if you're about to do something dangerous. There is also additional validation when exporting.",
+    "Modules are building blocks for filters. If you have multiple filters using common changes you can keep the common changes in a module! You can also use other people's modules on the Overview tab.",
+    "If you change a color here, it will affect every entry in the filter that uses that color. Items that have the default appearance won't be listed here and can't be changed using the Style Editor.",
+    "tab shows typical items with their current visuals and explanations of why they are special. Good to get an overview of the current filter and learn about its colors and highlights.",
+    "Edit every part of the filter: Colors, tierlists, sounds in a sorted structure. Every edit done is automatically saved and instantly reflected in all other parts of the website:",
+    "FilterBlade will ALWAYS give you the newest up-to-date filter. You can customize a filter now and load it again later and automatically get an updated version when you export!",
+    "The option-file defines the connections between a filter and the customizer and the whole customizer UI. You can read more or contribute on our",
+    "FilterBlade now supports mobile devices! You can open the navigation using the button at the very top left to access the different pages.",
+    "You can right-click e.g. an item to jump to its rule in the Customizer or a tierlist element to move it! (Long press on mobile)",
+    "to save the filter to your FilterBlade account and either download a filter-file or upload it directly into your PoE account.",
+    "Additional means to edit the filter. These are designed for experienced filterblade-users, developers and filter authors.",
+    "Want to test your filter? Verify your results? Find out why an item inGame is highlighted? Check out our tools on the",
+    "Quick edits that affect the whole filter and are applied BEFORE (i.e. have less priority than) your other changes.",
+    "A filter highlights items based on type and value (based on current inGame economy), and hides bad ones.",
+    "You can download it as backUp or to move it between the beta and live version of FilterBlade.",
+    "You're done customizing and want to save and download/sync the current filter? Click here!",
+    "You can come back later to fine-tune when you notice things that you'd like to change!",
+    "Visualize every single change that you customized in the currently active filter.",
+    "Start customizing and head over to the 'Export to PoE' screen once you're done.",
+    "By default, most items look the same, no matter how rare or useful or valuable.",
+    "This site is fan-made and not affiliated with Grinding Gear Games in any way.",
+    "CAN'T reliably use the customizer with uploaded filters. There WILL be bugs.",
+    "CAN'T use the 'my filters' system with uploaded filters. Just doesn't work.",
+    "This will ALSO be buggy with filters created on FilterBlade. Please use the",
+    "When you return to FilterBlade, you will see all your saved filters on the",
+    "FilterBlade - PoE1&2 Filter Customizer - Finetuned for NeverSink's Filter",
+    "The shared AreaLevel and ItemLevel for all items/modules on this page.",
+    "Project Focus: Loot generation, layout and UI, save/load functions.",
+    "Project Focus: Customization, Layout and UI, General Development.",
+    "in the game. If you want, you can further fine-tune it using the",
+    "WARNING: This severely limits the functionality on FilterBlade:",
+    "This file contains your full FilterBlade filter and saveState.",
+    "Project Focus: Architecture, Domain Languages, Data Processing",
+    "FilterBlade is an online editor for loot-filters for the games",
+    "You can customize them to fit to your character and style!",
+    "economy updates for tierlists of uniques, currency, etc.",
+    "You CAN test the uploaded filters in the loot simulator",
+    "They are officially supported tools for Path of Exile!",
+    "and select your inGame character class, then apply and",
+    "Login with your PoE account to save your filter during",
+    "Planning a big rework of colors, sizes and sounds? The",
+    "tab has a lot of tool for large-scale edits like that!",
+    "YOU NEED TO HAVE JAVASCRIPT ENABLED TO USE THIS SITE.",
+    "Generate a filter specific to your inGame character!",
+    "Download the filter, or sync it to your PoE profile!",
+    "Only use these tools if you know what you are doing.",
+    "Change reoccurring colors and sounds of the filter.",
+    "Change specific settings and appearance of a filter",
+    "Safely fine-tune the entire filter in detail.",
+    "Project Focus: Icons, Backgrounds, Videos.",
+    "Most users won't need to use any of them.",
+    "Upload Customizer Definition Option-File",
+    "Use the search bar at the top, check our",
+    "import to PoE via game files on your PC",
+    "Support us and get something in return,",
+    "system instead of re-uploading files!.",
+    "You can then use these modules on the",
+    "structure screen to change the filter",
+    "Developer, Designer, Content Creator.",
+    "continuous automated updates & fixes",
+    "support a small development team :)",
+    "one-time upload to your PoE account",
+    "Change loot pile background image",
+    "Legacy Global Color&Sound Editors",
+    "Support the FilterBlade Dev-Team,",
+    "Select how many items are shown.",
+    "Sync Auto (overwritten by code!)",
+    "Project Manager, Lead Developer.",
+    "Developer, data analyst, php dev",
+    "Filter loaded via sharing link!",
+    "Download (overwritten by code!)",
+    "Checking for filter to load...",
+    "Up- or Download your Save-File",
+    "'My Modules' once you're done.",
+    "Version 1.1.6856, November 6th",
+    "A valuable item without filter",
+    "Select an item above to edit.",
+    "based on NeverSink's filters.",
+    "Configure generator settings",
+    "Premium Auto-Update feature:",
+    "when creating a new filter.",
+    "Sync (overwritten by code!)",
+    "screen to continue editing!",
+    "A valuable item with filter",
+    "instantly available inGame",
+    "to adjust it as you want.",
+    "Download current saveFile",
+    "Load filter from saveFile",
+    "no manual import required",
+    "NeverSink, Zoey & Haggis:",
+    "Not sure where to start?",
+    "You're done? Head to the",
+    "Generate expensive items",
+    "Welcome to FilterBlade!",
+    "'Auto-Adjust for Build'",
+    "Default filter colors:",
+    "Global One-Click Edits",
+    "other player's filters",
+    "What is a loot-filter?",
+    "the filter. That's it!",
+    "Sound files download:",
+    "Path of Exile 1 and 2",
+    "manual file download",
+    "Get all strictnesses",
+    "Display hidden items",
+    "Upload Local Filter",
+    "your synced filters",
+    "Toggle item history",
+    "Sync regularly icon",
+    "from inGame in PoE",
+    "Upload Option File",
+    "Save as new filter",
+    "no console support",
+    "Test Local Filter",
+    "Create new filter",
+    "You can also view",
+    "Create new module",
+    "Graphic Designer.",
+    "Download / Export",
+    "Filter Structure",
+    "Individual files",
+    "Play loot sounds",
+    "Load Auto-Save?",
+    "Where to start?",
+    "Premium feature",
+    "Our new design!",
+    "Useful features",
+    "Did I break it?",
+    "Test & Simulate",
+    ", or ask in our",
+    "Please wait...",
+    "Configure item",
+    "We also made a",
+    "Review changes",
+    "How to update?",
+    "Do a redesign!",
+    "Business mail:",
+    "Privacy Policy",
+    "Zone Level: 80",
+    "Export filter",
+    "Back to Start",
+    "Generate loot",
+    "export screen",
+    "Learn and see",
+    "Download icon",
+    "Get started!",
+    "Expect bugs!",
+    "Resume later",
+    "'My Filters'",
+    "about them.",
+    "How to use?",
+    "No, thanks",
+    "Game mode:",
+    "My Modules",
+    "My Filters",
+    "My filters",
+    "My modules",
+    "SUPPORT US",
+    "For now...",
+    "Need help?",
+    "for build",
+    "Sync icon",
+    "About us",
+    "It turns",
+    "Open the",
+    "Specifically and exclusively hand-tailored for the Ruthless game mode",
+    "Tiering based on current softcore economy. Updated every 4 hours.",
+    "Tiering based on current hardcore economy. Updated every 4 hours.",
+    "Tiering based on last handmade update.",
+    "3.25 Settlers League",
+    "Solo Self-Found",
+    "League Softcore",
+    "League Hardcore",
+    "This section is designed to be foolproof. It will have no effect on 6-links, endgame items, elder/shaper items, uniques etc), abyss belts, fishing rods and other special bases. These sections frequently feature the 'strictness' dropdown menu. This tool defines how many rules are overwritten by your custom rules. I recommend playing around with the loot simulator, while switching back and forth to the customizer to get familiar with this section",
+    "It's recommended to at least use the threshold of 14. This allows you to get 1 glassblower per 3 mid quality flasks. Note that glassblowers can also be acquired by buying it for 8 whetstones from vendors and drop naturally, so the recipe is not very efficient. That being said, glassblowers are in high demand at the start of the league, not only for quality, but also to apply instilling orb recipes onto the player flasks.",
+    "The filter will check identified rares for interesting mod combinations and highlight these items. By setting this rule to HIDE all items that have NOT passed the 'interesting identified mods check' will be hidden. This is useful if you're still searching for specific rare combinations, but would like to reduce the number of items visible.",
+    "By selling a total of 40% quality worth of gems with a specific tag (such as fire) together with a Wand, Sceptre, Rune Dagger or Staff you will be rewarded with a weapon with a +1 GLOBAL level to ALL tagged spell gems. This is a powerful caster weapon early in the endgame.",
+    "It's more efficient to pick up small RGB-items. This recipe is mostly useful during the early stages of a league/character progression. Later on the player usually finds enough natural chromatic orbs to sustain their coloring needs, without needing to do recipes.",
+    "By adding e.g. 'GG', all 4-links will need to at least have 2 green colors to get highlighted. You can add one or multiple combinations of 'R', 'G' and 'B'. This is very useful to hide uninteresting linked items.",
+    "The filter comes with a system to check if an identified rare has interesting stat combos. Identified rares drop rarely, but if NO statcombo was detected, you might consider hiding them. This can be done here.",
+    "1 Chromatic orb - reward for selling an item with a Red-Green-Blue socket group. The 3 colors need to be linked in order and other sockets don't matter. Hover over the scroll left for more info.",
+    "High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.",
+    "Disabling recipe item rules will NOT hide uniques, 6links, interesting synthesised items etc. Priorities are handled internally and you don't need to worry about them.",
+    "By default the filter will hide all (unidentified) corrupted/mirrored rares without an implicit. This of course excludes 6-links and all kinds of other exotic items",
+    "Designed to highlight lower tiers (Tier C and lower) divination cards if they drop in a stack. Useful, if you want to see the cards only if they're stacked.",
+    "Note: The section 'hide and highlight rares by type' section can be used to achieve the same result, while also having control over classes and levels.",
+    "Some item classes like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.",
+    "1 Gemcutter's Prism - reward for selling a single gem with 20% quality gem or multiple gems with a combined total of 40% quality to a vendor.",
+    "Quickly highlight bases by adding a custom rule! If you need more power and options, there's a lot more custom rules lower in the customizer",
+    "This section combines 30 different rules that will highlight the best available life, mana and hybrid flasks, during your Campaign progress.",
+    "Decorators highlight specific characteristics of an item, by changing the appearance, without deciding whether it is hidden or shown.",
+    "Augment the filter with entirely new rules, such as 'only show AR and AR/EV armors', 'highlight all rare axes' and 'hide all wands'",
+    "Itemlevel matters a LOT. Crafting bases are grouped by level. Example: Any Gloves will be part of and ONLY of the level 85 rules.",
+    "1 Glassblower's Bauble - reward for selling a single 20% quality flask or multiple quality flasks with a total quality of 40%.",
+    "These rules are enabled in higher strictness. They hide lower rares if they drop in high level zones.",
+    "By default rares have a higher evaluation priority than chromatic recipes. This can be changed here.",
+    "Hide uninteresting items, such as bows for melee characters or melee weapons for casters.",
+    "Hide all remaining identified items that were not highlighted by the mod filtering rules.",
+    "Card added here will receive a higher highlight if dropped in a stack!",
+    "7 Jeweller's Orbs - reward for selling an item with 6 sockets.",
+    "LEVEL 86: Body Armours, Boots, Shields, Bows, Belts, Quivers",
+    "Unidentified Corrupted rares with 0 custom mods",
+    "Unidentified Mirrored rares with 0 custom mods",
+    "Endgame - Special Rares & Crafting (lvl 68+)",
+    "Cluster Jewels: Custom Any Enchantment Rule",
+    "Leveling RGB Chromatic recipe (small 2x2)",
+    "Leveling RGB Chromatic recipe (small 1x3)",
+    "Hide Corrupted, Outleveled, [...] Rares",
+    "Leveling RGB Chromatic recipe (medium)",
+    "Current League: Curse of the Allflame",
+    "Highlight specific item classes here.",
+    "Add custom Show/Hide rules (campaign)",
+    "Leveling RGB Chromatic recipe (large)",
+    "Endgame rare deco corrupted implicit",
+    "Control WHAT items are in what tier:",
+    "Creating the Perfect Campaign Filter",
+    "Gemcutter recipe high quality gems",
+    "Endgame - Special Bases & Crafting",
+    "Control IF and HOW a tier is shown",
+    "LEVEL 85: Amulets, Gloves, Helmets",
+    "Endgame - Highlight specific bases",
+    "Gemcutter recipe mid quality gems",
+    "Gemcutter recipe low quality gems",
+    "Jeweller recipe 6 sockets (large)",
+    "Niche and NOT recommended recipes",
+    "Unid corrupted rares: no implicit",
+    "Unid mirrorred rares: no implicit",
+    "RGB Chromatic recipe EG small2x2",
+    "RGB Chromatic recipe EG small1x3",
+    "LEVEL 84: Caster Weapons & Rings",
+    "+1 Skill Gem Recipe (Lightning)",
+    "Hide Lower Rares in High Maps 1",
+    "Hide Lower Rares in High Maps 2",
+    "Hide Lower Rares in High Maps 3",
+    "Hide Lower Rares in High Maps 4",
+    "Hide: T3 lower identified rares",
+    "Hide remaining identified rares",
+    "RGB Chromatic recipe EG medium",
+    "+1 Skill Gem Recipe (Physical)",
+    "Glassblower recipe top quality",
+    "Glassblower recipe mid quality",
+    "Glassblower recipe low quality",
+    "Highlight items by Armour Type",
+    "Leveling rare boots high speed",
+    "RGB Chromatic recipe EG large",
+    "Leveling Magic/Normal 4 links",
+    "Campaign Utility: Quicksilver",
+    "Leveling rare boots low speed",
+    "Vivid Crystallised Lifeforce",
+    "Jeweller recipe 6sock-5links",
+    "Build & Special-Item Recipes",
+    "+1 Skill Gem Recipe (Minion)",
+    "Settlers Gold - Medium Stack",
+    "Highlight rares by item slot",
+    "Corrupted Rares Custom Rules",
+    "LEVEL 83: All Attack Weapons",
+    "Campaign Utility: Handpicked",
+    "High Quality leveling flasks",
+    "Wild Crystallised Lifeforce",
+    "Exotics: Stacked Card Drops",
+    "Stacked High Tier Div Cards",
+    "+1 Skill Gem Recipe (Chaos)",
+    "Settlers Gold - Small Stack",
+    "Endgame rare deco corrupted",
+    "86 normal crafting bases T1",
+    "85 normal crafting bases T1",
+    "84 normal crafting bases T1",
+    "83 normal crafting bases T1",
+    "86 normal crafting bases T2",
+    "85 normal crafting bases T2",
+    "84 normal crafting bases T2",
+    "83 normal crafting bases T2",
+    "86 normal crafting bases T3",
+    "85 normal crafting bases T3",
+    "84 normal crafting bases T3",
+    "83 normal crafting bases T3",
+    "Max Quality leveling flasks",
+    "Low Quality leveling flasks",
+    "Leveling rare deco medium 1",
+    "Leveling rare deco medium 2",
+    "Stacked Low Tier Div Cards",
+    "+1 Skill Gem Recipe (Cold)",
+    "+1 Skill Gem Recipe (Fire)",
+    "Settlers Gold - Huge Stack",
+    "Settlers Gold - Tiny Stack",
+    "Endgame rare deco medium 1",
+    "Endgame rare deco medium 2",
+    "Rank D, high strands, High",
+    "Jeweller recipe 6 sockets",
+    "Highlight chromatic Rares",
+    "Hide rares by Armour Type",
+    "Hide ALL identified rares",
+    "Endgame rare deco ilvl 86",
+    "Endgame rare deco ilvl 85",
+    "Endgame rare deco ilvl 84",
+    "Endgame rare deco ilvl 83",
+    "Endgame rare deco ilvl 75",
+    "Endgame rare deco ilvl 68",
+    "Endgame rare deco 4 links",
+    "High Level Crafting Bases",
+    "Additional Campaign Rules",
+    "Hide items by Armour Type",
+    "Small RBG Items: 1x3, 1x4",
+    "Leveling 3 links lvl 1-24",
+    "Tinctures during campaign",
+    "Leveling Rare Rustic Sash",
+    "Stacked Divination Cards",
+    "Medium-sized Items (2x3)",
+    "Settlers Gold - No Stack",
+    "Identified endgame rares",
+    "Custom Linked item rules",
+    "Hybrid Flask Progression",
+    "Campaign Utility: Others",
+    "Leveling rare deco large",
+    "Special Noteworthy Drops",
+    "Currency Reward Recipes",
+    "Hide rares by item slot",
+    "Endgame rare deco large",
+    "Corrupted - No implicit",
+    "Fractured items, tier 1",
+    "Fractured items, tier 2",
+    "Fractured items, tier 3",
+    "Fractured items, others",
+    "Highlight items by Base",
+    "Highlight items by slot",
+    "Leveling rare deco tiny",
+    "Small Items (1x3, 1x4)",
+    "Endgame rare deco tiny",
+    "Rank A - Rings/Amulets",
+    "Rank B - Rings/Amulets",
+    "Rank C - Rings/Amulets",
+    "Chromatic Recipe Items",
+    "Leveling 3 links early",
+    "Life Flask Progression",
+    "Mana Flask Progression",
+    "Large (leveling only)",
+    "Rare rings/amulets T1",
+    "Rare rings/amulets T2",
+    "Rare rings/amulets T3",
+    "Memory-Stranded Items",
+    "Campaign (level 1-67)",
+    "Medium RGB Items: 2x3",
+    "Leveling Rare 4 links",
+    "4-Links: magic/normal",
+    "+1 Skill Gem Recipes",
+    "Glassblower's Bauble",
+    "Endgame Tier 4 Rares",
+    "Endgame Tier 5 Rares",
+    "Enable&Disable Tiers",
+    "Rank A, high strands",
+    "Rank B, high strands",
+    "Rank C, high strands",
+    "Medium Cluster Jewel",
+    "Small RGB Items: 2x2",
+    "Large RGB Items: 2x4",
+    "Leveling rare veiled",
+    "Add Custom Decorator",
+    "Weapons and Armours",
+    "Large Cluster Jewel",
+    "Campaign & Leveling",
+    "Racing Socket Group",
+    "Custom Socket rules",
+    "High Quality Flasks",
+    "Tinctures: Leveling",
+    "Jewellery & Armours",
+    "Glassblower Recipe",
+    "Max quality flasks",
+    "Mid Quality flasks",
+    "Low Quality flasks",
+    "Stacked T4 Scarabs",
+    "Hide rares by Base",
+    "Hide rares by Tier",
+    "Hide Rares By Tier",
+    "Corrupted Implicit",
+    "Hide items by slot",
+    "Max Quality Flasks",
+    "Low Quality Flasks",
+    "Small Items (2x2)",
+    "Large Items (2x4)",
+    "Gemcutter's Prism",
+    "6 sockets (large)",
+    "Flask Progression",
+    "Divination Cards",
+    "Max Quality Gems",
+    "Mid Quality Gems",
+    "Low Quality Gems",
+    "Rank A - ILVL86+",
+    "Rank B - ILVL86+",
+    "Rank C - ILVL86+",
+    "Rank A - ILVL85+",
+    "Rank B - ILVL85+",
+    "Rank C - ILVL85+",
+    "Rank A - ILVL84+",
+    "Rank B - ILVL84+",
+    "Rank C - ILVL84+",
+    "Rank A - ILVL83+",
+    "Rank B - ILVL83+",
+    "Rank C - ILVL83+",
+    "Influenced Items",
+    "Colors and Links",
+    "Leveling 5 links",
+    "3-Links: Act 2-3",
+    "One Hand Swords",
+    "Two Hand Swords",
+    "Corrupted Rares",
+    "Fractured Items",
+    "Rank D/Untiered",
+    "Any Enchantment",
+    "Add Misc. Rules",
+    "Vendor Recipes",
+    "Misc Map Items",
+    "One Hand Maces",
+    "Two Hand Maces",
+    "Rank A - Belts",
+    "Rank B - Belts",
+    "Rank C - Belts",
+    "Utility Flasks",
+    "3-Links: Act 1",
+    "Racing Sockets",
+    "Quality Flasks",
+    "Chromatic Orb",
+    "One Hand Axes",
+    "Two Hand Axes",
+    "Rare belts T1",
+    "Rare belts T2",
+    "Rare belts T3",
+    "4-Links: rare",
+    "Hybrid Flasks",
+    "Body Armours",
+    "Tier 1 rares",
+    "Tier 2 rares",
+    "Tier 3 rares",
+    "Abyss Jewels",
+    "Kinetic Wand",
+    "Hybrid Flask",
+    "'RGB' items",
+    "Rune Dagger",
+    "Bone Helmet",
+    "Life Flasks",
+    "Mana Flasks",
+    "Linked Gear",
+    "Steel Ring",
+    "Rare items",
+    "Lion Pelt",
+    "Thrusting One Hand Swords",
+    "Scarab of Stability",
+    "Stackable Currency",
+    "SubGroup Tier",
+    "Steel Circlet",
+    "Map Fragments",
+    "Section Name",
+    "Rune Daggers",
+    "3.29 Update in progress... We are currently working on the filter update for the 3.29 Allflame league. It will be ready on Friday, a few hours before the league starts. You can start customizing your filter now and, once the update is live, just load your filter to update it to the new version! More details here. There will be a live-stream of the final update step on NeverSinks Twitch on Friday. Check out the Twitter, as well as our Discord for news and update notifications!",
+    "PoE1 3.29 Allflame Update is LIVE! To update your filter, just load it. This will automatically merge your customization into the new filter version. Details Check out the FAQ if you have troubles.",
+    "The filter doesn't work: Line 235: No base types found exactly matching \"Arcane Vestment\" or Line 307: No base types found exactly matching \"Debilitation Gauntlets\"",
+    "I'm having trouble installing custom drop sounds! 'Error: Failed to load item filter. Reason: Line 1234: Invalid sound filepath \"someName.mp3\".",
+    "What's the difference between the 'My Filters' page on FilterBlade and the 'Item Filters' page on my POE account? Why are they not the same?",
+    "I want to show/hide ALL items of a certain type or a specific item. How do I do that without editing entire sections of the filter?",
+    "Can I use FilterBlade to create a completely new filter? Why is there no download button on the start page?",
+    "Why does the filter show so many items when I go back to a low level zone, even though I have a high level?",
+    "There is a special sound when unique items drop for the first time. Can I edit or remove this sound?",
+    "How can I import a filter from the PoE ladder to FilterBlade if I only have/follow it in PoE?",
+    "I found a very expensive unique, but it's not shown in an expensive way (or vice versa). Why?",
+    "What are those icons next to the item name on FilterBlade? Why don't I see them in the game?",
+    "Some changes in my filter could not be loaded due to conflicts and have been 'invalidated'?",
+    "Can I use the CustomSounds filter style and a color-changing filter style at the same time?",
+    "My filter doesn't behave inGame as I expected it to or unlike simulated on FilterBlade.",
+    "How can I move a filter from Beta.FilterBlade.xyz to www.FilterBlade.xyz or vice versa?",
+    "How does a filter generally work? Is this a hack or mod? What is a Loot Filter?",
+    "Why are there RMT-Ads on FilterBlade? Do you support/are okay with RTM in PoE??",
+    "I deleted a filter from FilterBlade/PoE site but it still shows up on the other",
+    "I searched the filter and can't find a certain divination card/unique/gem/item.",
+    "Can I set the size of an item to something smaller than 18 or bigger than 45?",
+    "What's the difference between filter Download and Sync? What's recommended?",
+    "Is the sync-to-poe feature safe? Am I sharing any account details this way?",
+    "Do I have to re-customize my filter every league/time I visit the website?",
+    "Is there a local version of FilterBlade? Can I get it as an offline app?",
+    "The filter hides unique elegant round shields! Does it hide the SQUIRE?!",
+    "Can I upload a filter? Even if it is just a customized NeverSink filter?",
+    "I don't know where to start. How do I use FilterBlade? What even is it?",
+    "My filter doesn't show up inGame when using the Sync-With-PoE feature.",
+    "What are modules? What's the difference between modules and filters?",
+    "Another rule is overwriting my rule because it has higher priority!",
+    "I changed my PoE account name and now all of my filters are gone!",
+    "How can I hide or disable rules that don't have a button for it?",
+    "Show/Hide/Disable. Why are there 3 states and what do they mean?",
+    "I can't see any items. // My items disappear after a short time",
+    "An item moved in a tierlist! How do I prevent/control that?",
+    "I have a problem with the different types of sounds in PoE.",
+    "How do I save a module? Can I turn a filter into a module?",
+    "How can I change EVERY occurrence of a color/style/sound?",
+    "What's the difference between NeverSink and FilterBlade?",
+    "How do I set up a 2nd filter based on my current one?",
+    "Why does uber-plus-strict hide valuable boss-drops?",
+    "Does the sync-to-poe feature support custom sounds?",
+    "Is the filter up-to-date? What about new leagues?",
+    "Why isn't my Patreon subscription not recognized?",
+    "Why can't I save in the 'my filters' tab anymore?",
+    "The customizer is huge! How do I find anything?",
+    "I want to understand what all the colors mean!",
+    "How does the Filter Subscription service work?",
+    "Is FilterBlade Open-Source? Can I contribute?",
+    "What kind of technology does FilterBlade use?",
+    "What are Custom Sounds and how do I use them?",
+    "What is a 'Vendor Recipe' and how do I do it?",
+    "How does the login with my PoE account work?",
+    "I deleted my filter... How do i get it back?",
+    "My module is behaving weirdly, why is that?",
+    "Why can't I hide items in Ruthless filters?",
+    "How do I best get NeverSink's item filter?",
+    "How can I support the project/development?",
+    "Why do I need a new filter for Ruthless?",
+    "Why does the filter show certain items?",
+    "How can I update someone else's filter?",
+    "Economy vs Stable: which should I use?",
+    "How often should I update my filter?",
+    "How do I add a module to a filter?",
+    "Where do I get custom sound files?",
+    "Is there an easier way to do ...?",
+    "Is there a Chaos-Recipe filter?",
+    "Can you make the filter do ...?",
+    "How can I hide a certain item?",
+    "How do I use the Auto-Updater?",
+    "Is there a filter for SSF?",
+    "What about consoles?"
+  ]
+}

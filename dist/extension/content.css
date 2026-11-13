@@ -1,0 +1,48 @@
+/* FilterBlade 汉化面板样式：类名全部加 fbzh- 前缀，避免与站点样式冲突 */
+.fbzh-ui, .fbzh-ui * { box-sizing: border-box; font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", system-ui, sans-serif; }
+.fbzh-ui { position: fixed; right: 18px; bottom: 18px; z-index: 2147483000; color: #e8ecf4; font-size: 13px; line-height: 1.5; }
+.fbzh-fab {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,.18);
+  background: linear-gradient(145deg, #2b3a5c, #1a2338); color: #ffd980;
+  font-size: 18px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 18px rgba(0,0,0,.45);
+  display: block; margin-left: auto; transition: transform .15s ease;
+}
+.fbzh-fab:hover { transform: scale(1.06); }
+.fbzh-ui.off .fbzh-fab { color: #8b95a8; filter: grayscale(.65); }
+.fbzh-panel {
+  width: 330px; max-height: min(76vh, 640px); overflow: auto; margin-bottom: 10px;
+  background: rgba(20, 26, 40, .97); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px; padding: 14px; box-shadow: 0 18px 48px rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+}
+.fbzh-panel[hidden] { display: none; }
+.fbzh-head { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.fbzh-head strong { font-size: 14px; color: #ffd980; }
+.fbzh-head-stat { margin-left: auto; font-size: 11px; color: #8b95a8; }
+.fbzh-close { background: none; border: 0; color: #aab3c4; font-size: 20px; cursor: pointer; line-height: 1; padding: 0 2px; }
+.fbzh-row { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+.fbzh-label { color: #cbd3e1; }
+.fbzh-row input[type=checkbox], .fbzh-check input { accent-color: #d9a441; width: 15px; height: 15px; cursor: pointer; }
+.fbzh-section { margin: 12px 0 6px; font-size: 11px; letter-spacing: .06em; color: #8b95a8; text-transform: uppercase; }
+.fbzh-segment { display: flex; gap: 4px; background: rgba(255,255,255,.05); padding: 3px; border-radius: 8px; }
+.fbzh-seg { flex: 1; border: 0; border-radius: 6px; padding: 6px 0; background: transparent; color: #b9c2d2; cursor: pointer; font-size: 12px; }
+.fbzh-seg.active { background: #3c4b6e; color: #fff; font-weight: 600; }
+.fbzh-hint { font-size: 11px; color: #7f889b; margin: 7px 0 0; }
+.fbzh-options { margin-top: 12px; display: grid; gap: 6px; }
+.fbzh-check { display: flex; align-items: center; gap: 7px; color: #cbd3e1; font-size: 12px; cursor: pointer; }
+.fbzh-stat { margin-top: 12px; padding: 8px 10px; border-radius: 7px; background: rgba(255,255,255,.05); color: #a9b4c6; font-size: 11px; }
+.fbzh-input { width: 100%; padding: 8px 10px; border-radius: 7px; border: 1px solid rgba(255,255,255,.15); background: rgba(0,0,0,.28); color: #eef2f8; outline: none; font-size: 12px; }
+.fbzh-input:focus { border-color: #d9a441; }
+.fbzh-results { margin-top: 6px; max-height: 168px; overflow: auto; }
+.fbzh-result { display: flex; align-items: baseline; gap: 6px; padding: 5px 6px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+.fbzh-result:hover { background: rgba(255,255,255,.08); }
+.fbzh-en { color: #e7edf7; }
+.fbzh-arrow { color: #6c768a; }
+.fbzh-zh { color: #ffd980; }
+.fbzh-empty { color: #7f889b; font-size: 11px; padding: 6px; }
+.fbzh-actions { display: flex; gap: 8px; margin-top: 12px; }
+.fbzh-btn { flex: 1; padding: 7px 0; border-radius: 7px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); color: #d7deea; font-size: 12px; cursor: pointer; }
+.fbzh-btn:hover { background: rgba(255,255,255,.13); }
+.fbzh-foot { margin-top: 12px; font-size: 10px; color: #727c90; line-height: 1.6; }
+.fbzh-toast { position: fixed; right: 18px; bottom: 72px; background: #2b3a5c; color: #fff; padding: 8px 12px; border-radius: 7px; font-size: 12px; opacity: 0; pointer-events: none; transition: opacity .2s ease; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+.fbzh-toast.show { opacity: 1; }

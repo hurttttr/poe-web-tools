@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-11-13T22:36:32+08:00",
+  "entries": 22004,
+  "by_source": {
+    "ninja_terms": 939,
+    "site_terms": 505,
+    "community": 2952,
+    "mod_plain": 8125,
+    "gem_desc": 1421,
+    "poedb": 6480,
+    "manual": 297,
+    "passive_names": 1261,
+    "overrides": 24
+  },
+  "traditional_to_simplified": 315,
+  "filtered_out": 27,
+  "conflicts_poedb_vs_community": 95,
+  "sources": {
+    "poedb": "流放之路编年史 / 流亡编年史 https://poedb.tw/cn/ (简体中文版), 与 /us/ 英文版按条目链接对齐",
+    "poedb_generated_at": "2026-11-13T20:45:01+08:00",
+    "community": "GreasyFork #496758 filterblade汉化脚本 v2.7 (MIT), 作者 Rayforward / GodParadise 公会",
+    "manual": "人工校对的 FilterBlade 界面词条",
+    "site_terms": "从站点 .options / index.html / faqContent 提取后人工翻译的界面文案（见 site_terms.json）",
+    "gem_desc": "编年史宝石详情页 og:title / og:description 中英对齐的技能名与技能说明（见 gem_desc.json）",
+    "mod_plain": "官方交易站词缀统计（国服中文版按 stat id 对齐）中不含数值占位符的整句词缀，以及编年史星团珠宝天赋描述（见 mod_templates.json 的 plain）",
+    "passive_names": "编年史天赋树（关键天赋 / 名人 / 专精 / 符文嫁接）的译名（见 passive_terms.json 的 names）",
+    "ninja_terms": "poe.ninja 官方繁體中文语言包按 Lingui id 与英文 message 配对、转简并校正术语（见 ninja_terms.json）"
+  },
+  "policy": "物品/道具译名以编年史简体中文为准；界面文案以站点原文精翻与人工校对表为准；overrides 优先级最高"
+}

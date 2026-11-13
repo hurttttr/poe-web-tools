@@ -1,0 +1,60 @@
+[0] Many Players also choose to use rares for the 'Chaos Recipe'. This is a safe and consistent way to make currency, especially early on in the league. For that you need to sell a full equipment of rares (boots, gloves, helm, 2 rings, 1 amulet, belt, armor, weapon+shield or a 2h weapon) of itemlevel 60+ (found in act 9 or later). The vendor will reward you with a Chaos Orb. If all items are unidentified, he'll give you 2 Chaos Orbs.
+
+[1] Rare items can be crazy strong. That being said it's very tedious to pick, identify and treat (sell/price/keep) rare items. It takes a lot of practice and knowledge to quickly price rare items and there's a lot of factors, such as league type, age, meta, itemlevel, that affects it.
+
+[2] 'Rare accessories' are a fairly common drop, but they are tiny and most builds cover their stats and resists through rare accessories. This makes these rares a much more lucrative pick-ups than non-accessoires rares. On top of that they are usually the bottleneck for chaos recipes.
+
+[3] All top tier items have the same white background and drop-sound. They also come with a red beam and a huge red star on the minimap. These items include top tier currencies, valuable uniques, great divination cards, reliquary keys and everything else that is worth a LOT.
+
+[4] It should be noted that other items without the white background can be just as, if not more valuable. However, with other items it often comes down to mods, luck and crafting, while the white background items are pretty much always great!
+
+[5] There are hundreds of uniques! Some are in high demand, others are worthless or very niche. The filter can't distinguish between uniques with the same baseType. Bases with a blue or purple beam/map icon could potentially be very expensive.
+
+[6] Their powerful effects aside high currencies act as trade goods for players. Chaos Orbs and Divine Orbs are pretty much the standard way to pay for most trades. These are desired drops and it's almost always recommended to pick them up.
+
+[7] Divination cards grant you a specific item reward upon completing the set. Each card type drops in specific zones or by specific enemies, allowing players to farm them (although some cards can be super rare regardless).
+
+[8] The site is updated every 4 hours and the tiering of the items may differ. Items might change their tier based on high or low demand. Note that you have to redownload/sync the filter to get the latest economy data!
+
+[9] The blue or purple map icons and beams signalize that are drop CAN be quite valuable... if you're lucky. A unique Leather Belt can very very rarely be an expensive headhunter and the filter can't tell them apart.
+
+[10] Note that you can corrupt a skillgem for a chance to receive extra gemlevels. This way you can create level 21 gems. You can also sell a level 20 gem and a gemcutter Prisms to receive a level 1 20% quality gem.
+
+[11] Items have a sound that is linked to their value-tier. All high tier currencies make the same sound. When you hear it - you know 'something dropped'. You can click on the currency preview to hear the sound
+
+[12] Map fragment open a unique encounter if used if the other pieces of the set. Most scarabs on the other hand add both challenge and reward to a map encounter. Some of these can be very pricy!
+
+[13] Generally speaking the purple icon is used for the items with a higher chance to be good. On top of that the small blue stars are usually indicative of a basetypes with good boss-drops.
+
+[14] You can change all of these settings in the customizer screen here. To quickly jump to the settings for a certain item, right click the item label or CTRL+click the item.
+
+[15] Most fragments can also be added onto a map to increase it's quantity, if you're not interested in the encounter itself. This is commonly done with sacrifice fragments.
+
+[16] Maps gain more highlight as they gain tiers. High tier (11+) and top tier (16) maps have different sounds. The filter highlights map tier upgrades with an extra color.
+
+[17] The Text color is orange, instead of yellow, if the itemLevel is 75 or above, meaning that you can use the item for the Regal recipe instead of the chaos one.
+
+[18] The divination card economy is quite volatile. Periodically returning to FilterBlade and redownloading the latest filter is recommended to stay up-to-date.
+
+[19] Consume uniques in the Timeless Conflict (Legion) with Enshrouding Crystals. A random 'vestigial' unique will hatch - empowered by the consumed unique.
+
+[20] Don't underrate chance orbs! You can buy maps from Kirac at the start of the league to quickly progress through the atlas!
+
+[21] The economy sometimes has large meta-shifts! A cheap unique can become very expensive very fast (or vice versa)!
+
+[22] Note: random non-quality skillgems are hidden on higher strictnesses, since they can be purachased from an NPC.
+
+[23] They also come with a minimap-icon. The icons can be seen next to the item preview labels on FilterBlade.
+
+[24] Filterblade tiering is based on the ingame economy. It's a good practice to update the filter weekly.
+
+[25] Alterations, jeweller's and chromatics can also be reliably obtained by doing vendor recipes.
+
+[26] You can find gold all throughout the game. It's picked up automatically as you walk over it.
+
+[27] Dead Man's Sulphur, Ducats and all kind of precious items can be found on the seafloor!
+
+[28] Quality on gems influences each gem in a different way. Consult the wiki for details.
+
+[29] Quality gems can be sold in bulk to NPCs to get gemcutter prisms
+

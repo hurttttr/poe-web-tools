@@ -1,0 +1,106 @@
+{
+    "economyGroups":
+    [
+        {
+            "displayName": "3.25 Settlers League",
+            "filterBranches": [
+                {
+                    "name": "NeverSink_AutoEcoUpdate_tmpstandard",
+                    "displayName": "Softcore",
+                    "description": "Tiering based on current softcore economy. Updated every 4 hours.",
+                    "shortName": "Eco-SC",
+                    "economyLeagueName": "tmpstandard",
+                    "styleOptions": "NS",
+                    "strictnessLevels": "NS_Poe1",
+                    "isOfferedInSelection": true,
+                    "isSaveLoadAllowed": true,
+                    "isUploadedByUser": false,
+                    "buttonPicture": "/assets/img/FilterPics/SC.jpg"
+                },
+                {
+                    "name": "NeverSink_AutoEcoUpdate_tmphardcore",
+                    "displayName": "Hardcore",
+                    "description": "Tiering based on current hardcore economy. Updated every 4 hours.",
+                    "shortName": "Eco-HC",
+                    "economyLeagueName": "tmphardcore",
+                    "styleOptions": "NS",
+                    "strictnessLevels": "NS_Poe1",
+                    "isOfferedInSelection": true,
+                    "isSaveLoadAllowed": true,
+                    "isUploadedByUser": false,
+                    "buttonPicture": "/assets/img/FilterPics/HC.jpg"
+                },
+                {
+                    "name": "NeverSink",
+                    "displayName": "Solo Self-Found",
+                    "description": "Tiering based on last handmade update.",
+                    "shortName": "SSF",
+                    "economyLeagueName": "tmpstandard",
+                    "styleOptions": "NS",
+                    "strictnessLevels": "NS_Poe1",
+                    "isOfferedInSelection": true,
+                    "isSaveLoadAllowed": true,
+                    "isUploadedByUser": false,
+                    "buttonPicture": "/assets/img/FilterPics/Stable.jpg"
+                },
+                {
+                    "name": "Custom",
+                    "displayName": "Custom",
+                    "description": "Custom",
+                    "shortName": "Custom",
+                    "economyLeagueName": "tmpstandard",
+                    "styleOptions": "none",
+                    "strictnessLevels": "none",
+                    "isOfferedInSelection": false,
+                    "isSaveLoadAllowed": false,
+                    "isUploadedByUser": true
+                },
+                {
+                    "name": "Ruthless",
+                    "displayName": "Ruthless",
+                    "description": "Specifically and exclusively hand-tailored for the Ruthless game mode",
+                    "shortName": "Ruthless",
+                    "economyLeagueName": "tmpstandard",
+                    "styleOptions": "none",
+                    "strictnessLevels": "none",
+                    "isOfferedInSelection": true,
+                    "isSaveLoadAllowed": true,
+                    "isUploadedByUser": false,
+                    "buttonPicture": "/assets/img/FilterPics/Ruthless.jpg",
+                    "type": "ruthlessfilter",
+                    "hiddenPresets": {
+                        "prod": ["PSS5RXW5LPX63O"],
+                        "beta": ["G88S10QG56OQVG"]
+                    }
+                }
+            ],
+            "tierLists": [
+                {"nameId": "DeliriumOrb", "apiTypeOverwrite": "currency"},
+                {"nameId": "Currency", "apiTypeOverwrite": "currency", "queryOverwrite": ["Currency", "Astrolabe", "Fragment", "Artifact", "EnshroudingCrystal"]},
+                {"nameId": "DivinationCard", "apiTypeOverwrite": "currency"},
+                {"nameId": "Uniques", "queryOverwrite": ["UniqueFlask", "UniqueWeapon", "UniqueArmour", "UniqueAccessory", "UniqueJewel", "UniqueRelic", "UniqueTincture"]},
+                {"nameId": "Fossil", "apiTypeOverwrite": "currency", "queryOverwrite": ["Fossil", "Resonator"]},
+                {"nameId": "Essence", "apiTypeOverwrite": "currency"},
+                {"nameId": "Vial" },
+                {"nameId": "SkillGem" },
+                {"nameId": "Fragment", "apiTypeOverwrite": "currency", "queryOverwrite": ["Fragment", "Invitation"]},
+                {"nameId": "Resonator", "apiTypeOverwrite": "currency"},
+                {"nameId": "Scarab", "apiTypeOverwrite": "currency", "queryOverwrite": ["Scarab", "AllflameEmber"]},
+                {"nameId": "UniqueMap"},
+                {"nameId": "Omen", "apiTypeOverwrite": "currency"},
+                {"nameId": "Tattoo", "apiTypeOverwrite": "currency"},
+                {"nameId": "Oil", "apiTypeOverwrite": "currency"}
+            ],
+            "customizerOptionFile": "optionFile085d.options"
+        }
+    ],
+    "defaultFilterBranch": "NeverSink_AutoEcoUpdate_tmpstandard",
+    "defaultStrictness": "Semi-Strict",
+    "defaultStyle": "Normal",
+    "leagueNameTranslations": [
+        {"id": "tmpstandard", "displayName": "League Softcore"},
+        {"id": "tmphardcore", "displayName": "League Hardcore"},
+        {"id": "Standard", "displayName": "Standard"},
+        {"id": "Hardcore", "displayName": "Hardcore"}
+    ]
+}

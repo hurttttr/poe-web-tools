@@ -1,0 +1,11 @@
+{
+  "_meta": "站点专属词条。只在匹配的域名下参与翻译，避免与另一站点的语法/逻辑冲突（例如 poe.ninja 的 Class 列头 vs FilterBlade 的 Class 过滤器关键字）。",
+  "poe.ninja": {
+    "MASTERS": "专精",
+    "Masters": "专精",
+    "Class": "职业",
+    "Gem": "宝石",
+    "Socket": "插槽",
+    "Sockets": "插槽"
+  }
+}

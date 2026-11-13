@@ -1,0 +1,680 @@
+//==================================================================================================
+// NeverSink's Filter - Weighting File
+//==================================================================================================
+// AUTHOR:      Haggis, NeverSink
+// TYPE:        Default
+//===================================================================================================
+    //Item_Has ( "Class" );                                       // True if item HAS stat
+    //Item_Has ( "Height", 3 , > );                               // True if item has numeric stat that fullfills condition
+    //Item_Has ( "BaseType", Orb , * );                           // True if property includes the following statement
+    //Item_Not ( "BaseType", Mirror, * );                         // Negates an expression
+    //Final_        <- Syntax for finalizer commands
+    //Add_          <- Syntax for decorator commands
+
+//Add_Quality();
+Item_Has ( "DropLevel", #ALVL, <= );                         // Negates an expression
+Item_UtilNot ( "SubGroup A", "disa" );
+Item_UtilNot ( "SubGroup A", "nonDrop" );
+Add_AreaLevel();
+
+
+// [NormalWeight,LuckyLootWeight], "Section Name", "SectionIcon", true/false (enabled/disabled state, optional, default true)
+Section ( [800,1200], "Currency", "Divine Orb")
+{
+    Item_Has ( "Class", "Stackable Currency" );
+    Item_UtilHas ( "SubGroup A", "defa" );
+    Add_StackSize();
+
+    Section ( [1,1] ){
+        Item_UtilHas ( "SubGroup Tier", 1 );
+    }
+    Section ( [500,70] ){
+        Item_UtilHas ( "SubGroup Tier", 2 );
+    }
+    Section ( [1100,600] ){ //Chaos
+        Item_UtilHas ( "SubGroup Tier", 3 );
+    }
+    Section ( [18000, 1200] ){ //Fusing
+        Item_UtilHas ( "SubGroup Tier", 4 );
+    }
+    Section ( [80000, 1500] ){ //Alteration
+        Item_UtilHas ( "SubGroup Tier", 5 );
+    }
+    Section ( [300000, 1500] ){ //Augment
+        Item_UtilHas ( "SubGroup Tier", 6 );
+    }
+    Section ( [525000, 1500] ){ //Scrolls
+        Item_UtilHas ( "SubGroup Tier", 7 );
+    }
+}
+
+Section ( [8000,5000], "Gear", "Steel Circlet")
+{
+    Item_UtilNot ( "SubGroup A", "heis" );
+    Item_UtilNot ( "SubGroup A", "ritual" );
+    Item_UtilNot ( "SubGroup A", "expe" );
+
+    Add_AllSockets(0, 500, 500, 500, 500, 100, 15, 500, 500, 500, 500, 50, 10);
+    Add_AllSockets(1, 500, 500, 500, 500, 200, 80, 500, 500, 500, 500, 150, 70);
+    Add_Rarity(0, 2000, 600, 300, 20);
+    Add_Rarity(1, 200, 200, 300, 25);
+    Add_ItemLevel();
+    Add_Corrupted_False();
+
+    Add_ShaperElder(0, 2, "SE");
+    Add_ShaperElder(1, 3, "SE");
+    Add_MemoryStrands();
+
+    Section ( [50,50] ){
+        Item_Has ( "Class", "One Hand Axes" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Two Hand Axes" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Bows" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Claws" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Daggers" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Rune Daggers" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "One Hand Maces" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Sceptres" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Two Hand Maces" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Staves" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Warstaves" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "One Hand Swords" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Thrusting One Hand Swords" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Two Hand Swords" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Wands" );
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [180,180] ){
+        Item_Has ( "Class", "Body Armours" );
+        Add_Perfection();
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [180,180] ){
+        Item_Has ( "Class", "Boots" );
+        Add_Perfection();
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [180,180] ){
+        Item_Has ( "Class", "Gloves" );
+        Add_Perfection();
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [180,180] ){
+        Item_Has ( "Class", "Helmets" );
+        Add_Perfection();
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [120,120] ){
+        Item_Has ( "Class", "Shields" );
+        Add_Perfection();
+        Add_Quality();
+        Final_ClassBases();
+    }
+    Section ( [25,25] ){
+        Item_Has ( "Class", "Amulets" );
+        Item_Not ( "BaseType", "Talisman" , "*" );
+    }
+    Section ( [25,25] ){
+        Item_Has ( "Class", "Belts" );
+    }
+    Section ( [50,50] ){
+        Item_Has ( "Class", "Quivers" );
+        Final_ClassBases();
+    }
+    Section ( [25,25] ){
+        Item_Has ( "Class", "Rings" );
+        Final_ClassBases();
+    }
+    Section ( [3,20] ){
+        Item_Has ( "Class", "Jewels" );
+        Final_ClassBases();
+    }
+}
+
+Section ( [35,60], "Maps", "Map")
+{
+    Item_Has ( "Class", "Maps" );
+    Item_UtilNot ( "SubGroup A", "maven" );
+    Item_Not ( "BaseType", "Harbinger Map" );
+    Add_Rarity(*, 20, 4, 2, 1);
+    Add_Quality();
+    Add_ItemLevel();
+    Add_MapTier();
+    Add_Corrupted_False();
+}
+
+Section ( [50,85], "Divination Cards", "StackedDeck")
+{
+    Item_Has ( "Class", "Divination Cards" );
+
+    Section ( [2,10] ){
+        Item_UtilHas ( "SubGroup Tier", 1 );
+    }
+    Section ( [100,50] ){
+        Item_UtilHas ( "SubGroup Tier", 2 );
+    }
+    Section ( [1000,300] ){
+        Item_UtilHas ( "SubGroup Tier", 3 );
+    }
+    Section ( [400,100] ){
+        Item_UtilHas ( "SubGroup Tier", 4 );
+    }
+}
+
+Section ( [5,10], "Map Fragments", "SacrificeAtMidnight", false)
+{
+    Item_UtilNot ( "SubGroup A", "necro" );
+
+    Section ( [100,20] ){
+        Item_UtilHas ( "SubGroup A", "maven" );
+        Add_Rarity(0, 0, 0, 1, 0);
+        Add_Rarity(1, 0, 0, 1, 0);
+        }
+    Section ( [50,20] ){
+        Item_Has ( "Class", "Map Fragments" );
+        Item_Has ( "BaseType", "Offering", "*");
+    }
+    Section ( [400,200] ){
+        Item_Has ( "Class", "Map Fragments" );
+        Item_UtilHas ( "SubGroup A", "defa" );
+    }
+    Section ( [5,20] ){
+        Item_Has ( "Class", "Misc Map Items" );
+        Item_UtilNot ( "SubGroup A", "maven" );
+    }
+    Section ( [10,150] ){
+        Item_Has ( "Class", "Labyrinth Map Item" );
+    }
+    Section ( [10,150] ){
+            Item_Has ( "BaseType", "An Audience With The King" );
+        }
+    Section ( [100,150] ){
+        Item_Has ( "Class", "Atlas Region Upgrade Item"); // todo
+        Add_Rarity(0, 1, 1, 0, 20);
+        Add_Rarity(1, 1, 1, 0, 25);
+        Add_ItemLevel();
+    }
+}
+
+Section ( [35,35], "Flasks", "Flask")
+{
+    Add_Rarity(*, 20, 15, 0, 1);
+    Add_Quality();
+    Add_ItemLevel();
+
+    Section ( [10,30] ){
+        Item_Has ( "Class", "Tinctures" );
+    }
+    Section ( [50,30] ){
+        Item_Has ( "Class", "Life Flasks" );
+    }
+    Section ( [50,30] ){
+        Item_Has ( "Class", "Mana Flasks" );
+    }
+    Section ( [30,30] ){
+        Item_Has ( "Class", "Hybrid Flasks" );
+    }
+    Section ( [15,20] ){
+        Item_Has ( "Class", "Utility Flasks" );
+    }
+}
+
+Section ( [35,35], "Skill Gems", "Empower")
+{
+    Item_Has ( "Class", "Gems" , "*");
+    Add_Quality();
+    Add_Corrupted_False();
+    Add_GemLevel();
+}
+
+/////// Leagues
+
+Section ( [30, 80], "Heist", "HeistGrandBlueprint", false)
+{
+    Section ( [200,250] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Contracts" );
+        Add_Rarity(0, 900, 600, 300, 20);
+        Add_Rarity(1, 200, 200, 300, 25);
+        Add_ItemLevel();
+        Final_ClassBases();
+    }
+    Section ( [200,250] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Stackable Currency" );
+    }
+    Section ( [200,250] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Trinket" );
+        Add_Rarity(0, 0, 0, 3, 20);
+        Add_Rarity(1, 0, 0, 3, 25);
+        Add_Corrupted_True();
+    }
+    Section ( [150,200] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Heist Target" );
+    }
+    Section ( [150,200] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Contracts" );
+        Add_Rarity(0, 900, 600, 300, 20);
+        Add_Rarity(1, 200, 200, 300, 25);
+    }
+    Section ( [150,200] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Blueprints" );
+        Add_Rarity(0, 900, 600, 300, 20);
+        Add_Rarity(1, 200, 200, 300, 25);
+    }
+    Section ( [30,50] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_Has ( "Class", "Quest Item" );
+    }
+    Section ( [250,200] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_UtilHas ( "SubGroup B", "hItem" );
+
+        Add_Rarity(0, 900, 600, 300, 20);
+        Add_Rarity(1, 200, 200, 300, 25);
+        Add_ItemLevel();
+        Final_ClassBases();
+    }
+
+    Section ( [200,250] ){
+        Item_UtilHas ( "SubGroup A", "heis" );
+        Item_UtilHas ( "SubGroup B", "exp" );
+
+        Add_AllSockets(0, 50, 50, 50, 50, 10, 1, 50, 50, 50, 50, 5, 1);
+        Add_AllSockets(1, 50, 50, 50, 50, 10, 1, 50, 50, 50, 50, 5, 1);
+        Add_Rarity(0, 0, 0, 3, 20);
+        Add_Rarity(1, 0, 0, 3, 25);
+        Add_ItemLevel();
+        Add_Corrupted_False();
+
+            Section ( [50,50] ){
+                Item_Has ( "Class", "One Hand Axes" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Two Hand Axes" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Bows" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Claws" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Daggers" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Rune Daggers" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "One Hand Maces" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Sceptres" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Two Hand Maces" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Staves" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Warstaves" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "One Hand Swords" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Thrusting One Hand Swords" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Two Hand Swords" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Wands" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [180,180] ){
+                Item_Has ( "Class", "Body Armours" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [180,180] ){
+                Item_Has ( "Class", "Boots" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [180,180] ){
+                Item_Has ( "Class", "Gloves" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [180,180] ){
+                Item_Has ( "Class", "Helmets" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [120,120] ){
+                Item_Has ( "Class", "Shields" );
+                Add_Quality();
+                Final_ClassBases();
+            }
+            Section ( [25,25] ){
+                Item_Has ( "Class", "Amulets" );
+                Item_Not ( "BaseType", "Talisman" , "*" );
+            }
+            Section ( [25,25] ){
+                Item_Has ( "Class", "Belts" );
+            }
+            Section ( [50,50] ){
+                Item_Has ( "Class", "Quivers" );
+                Final_ClassBases();
+            }
+            Section ( [25,25] ){
+                Item_Has ( "Class", "Rings" );
+                Final_ClassBases();
+            }
+
+    }
+}
+
+Section ( [15,40], "Delirium", "DeliriumOrb", false)
+{
+    Item_UtilHas ( "SubGroup A" , "deli" );
+    Item_Not( "Class", "Divination Cards");
+    Item_Not( "Class", "Gem", "*");
+
+    Section ( [10,200] ){
+        Item_Has ( "Class", "Stackable Currency" );
+        Add_StackSize();
+    }
+    Section ( [3,20] ){
+        Item_Has ( "Class", "Jewels" );
+        Item_Has ( "BaseType", "Cluster", "*");
+        Add_Rarity(0, 2000, 600, 300, 20);
+        Add_Rarity(1, 200, 200, 300, 25);
+    }
+}
+
+Section ( [15,40], "Abyss", "AbyssJewel", false)
+{
+    Item_UtilHas ( "SubGroup A", "abyss" );
+    Item_Not( "Class", "Divination Cards");
+    Item_Not( "Class", "Gem", "*");
+
+    Section ( [8,20] ){
+        Item_Has ( "Class", "Abyss Jewels" );
+        Final_ClassBases();
+        Add_Rarity(*, 0, 200, 300, 25);
+    }
+    Section ( [2,4] ){
+        Item_Has ("BaseType", "Stygian Vise");
+        Add_Rarity(*, 0, 0, 300, 25);
+
+    }
+}
+
+Section ( [15,40], "Delve", "DelveResonator", false)
+{
+    Item_UtilHas ( "SubGroup A", "delve" );
+    Item_Not( "Class", "Divination Cards");
+    Item_Not( "Class", "Gem", "*");
+    Add_StackSize();
+
+    Section ( [1,1] ){
+         Item_UtilHas ( "SubGroup Tier", 1 );
+    }
+    Section ( [300,70] ){
+        Item_UtilHas ( "SubGroup Tier", 2 );
+    }
+    Section ( [9000,600] ){
+        Item_UtilHas ( "SubGroup Tier", 3 );
+    }
+    Section ( [15000, 1200] ){
+        Item_UtilHas ( "SubGroup Tier", 4 );
+    }
+}
+
+Section ( [15,40], "Essence", "Essence", false){
+    Item_UtilHas ( "SubGroup A", "ess" );
+    Add_StackSize();
+}
+
+//Section ( [15,40], "Breach", "BreachRing", false){
+//    Item_UtilHas ( "SubGroup A", "brea" );
+//    Add_StackSize();
+//}
+
+Section ( [15,40], "Blight", "BlightOil", false){
+    Item_UtilHas ( "SubGroup A", "blight" );
+    Item_Not( "Class", "Divination Cards");
+    Item_Not( "Class", "Gem", "*");
+    Add_StackSize();
+
+    Section ( [1,1] ){
+       Item_UtilHas ( "SubGroup Tier", 1 );
+    }
+    Section ( [30,7] ){
+       Item_UtilHas ( "SubGroup Tier", 2 );
+    }
+    Section ( [900,60] ){
+       Item_UtilHas ( "SubGroup Tier", 3 );
+    }
+    Section ( [1500, 120] ){
+       Item_UtilHas ( "SubGroup Tier", 4 );
+    }
+}
+
+Section ( [15,40], "Legion", "LegionEmblem", false)
+{
+    Item_UtilHas ( "SubGroup A", "legion" );
+    Item_Not( "Class", "Divination Cards");
+    Item_Not( "Class", "Gem", "*");
+    
+    Section ( [150,150] ){
+            Item_Has ( "Class", "Incubators" );
+            Add_ItemLevel();
+    }
+    Section ( [300,400] ){
+        Item_Has ( "Class", "Stackable Currency" );
+        Item_Has ( "BaseType", "Timeless" , "*");
+        Add_StackSize();
+    }
+    Section ( [100,20] ){
+        Item_Has ( "Class", "Map Fragments" );
+        Item_Has ( "BaseType", "Timeless" , "*");
+    }
+    Section ( [20,10] ){
+        Item_Has ( "Class", "Jewels" );
+        Add_Rarity(*, 0, 0, 0, 1);
+    }
+}
+
+Section ( [15,40], "Talisman", "Talisman", false){
+    // aug 2026: current talismans share the CotA subgroup with unrelated loot, so match the base name
+    Item_Has ( "BaseType", "Talisman", "*" );
+    Add_Rarity(*, 0, 0, 20, 1);
+    Add_Any_Enchantment();
+    Section ( [1,1] ){
+        Item_Has( "BaseType", "Black Maw Talisman");
+        Add_AllSockets(0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        Add_AllSockets(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+    }
+    Section ( [100,100] ){
+        Item_Not( "BaseType", "Black Maw Talisman");
+    }
+}
+
+Section ( [1,1], "Quest Items", "GoldenKey", false)
+{
+    Item_Has ( "Class", "Quest Items" );
+}
+
+Section ( [15,40], "Expedition", "ExpeditionArtifact", false){
+    Item_UtilHas ( "SubGroup A", "expe" );
+    Item_Not( "Class", "Gem", "*");
+    Item_Not( "Class", "Divination", "*");
+    Section ( [4,3] ){
+        Item_Has( "Class", "Currency", "*");
+        Add_StackSize();
+    }
+    Section ( [4,3] ){
+        Item_Not( "Class", "Currency", "*");
+        Add_AllSockets(0, 50, 50, 50, 50, 10, 1, 50, 50, 50, 50, 5, 1);
+        Add_AllSockets(1, 50, 50, 50, 50, 10, 1, 50, 50, 50, 50, 5, 1);
+        Add_Rarity(0, 1, 2, 3, 20);
+        Add_Rarity(1, 1, 2, 3, 25);
+        Add_ItemLevel();
+        //Add_Corrupted_False();
+    }
+}
+
+Section ( [150,400], "Curse of the Allflame", "RotmothersDucat"){
+    Item_UtilHas ( "SubGroup A", "CotA" );
+    Section ( [2,2] ){
+        Item_Has ( "Class", "Chart" );
+        Add_Rarity(0, 1, 2, 3, 20);
+        Add_Rarity(1, 1, 2, 3, 25);
+        Add_StackSize();
+    }
+    Section ( [2,3] ){
+        Item_Has ( "Class", "Enshrouded Items", "*");
+        Add_Rarity(0, 1, 2, 3, 20);
+        Add_Rarity(1, 1, 2, 3, 25);
+        Add_ItemLevel();
+    }
+    Section ( [4,2] ){
+       Item_Has ( "Class", "Map Fragments" );
+       Add_StackSize();
+    }
+    Section ( [4,20] ){
+        Item_Has ( "Class", "Stackable Currency" );
+        Add_StackSize();
+    }
+}
+
+Section ( [20,35], "Scarabs","Scarab of Stability"){
+    Item_UtilHas ( "SubGroup A", "necro" );
+    Item_Has ( "Class", "Map Fragments" );
+    Section ( [1,1] ){
+        Section ( [1,2] ){
+           Item_UtilHas ( "SubGroup Tier", 1 );
+           Add_StackSize();
+        }
+        Section ( [10,10] ){
+           Item_UtilHas ( "SubGroup Tier", 2 );
+           Add_StackSize();
+        }
+        Section ( [40,20] ){
+           Item_UtilHas ( "SubGroup Tier", 3 );
+           Add_StackSize();
+        }
+        Section ( [50,20] ){
+           Item_UtilHas ( "SubGroup Tier", 4 );
+           Add_StackSize();
+        }
+    }
+}
+
+
+Section ( [500,1000], "Gold", "Gold_inventory_icon"){
+    Item_UtilHas ( "SubGroup A", "kalgu" );
+    Section ( [1,1] ){
+        Section ( [1,2] ){
+            Add_StackSize_Gold();
+            Item_Has ( "Class", "Gold" );
+        }
+    }
+}

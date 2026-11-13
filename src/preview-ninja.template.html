@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PoE Web Tools · poe.ninja 汉化预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #12161f; color: #d9e0ec; font: 14px/1.55 "Segoe UI", "Microsoft YaHei", sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  .switch { display: flex; gap: 10px; align-items: center; padding: 9px 20px; background: #24304a; border-bottom: 1px solid #3a4a6b; font-size: 12px; color: #cbd5e8; }
+  .switch b { color: #ffd980; }
+  .switch a { padding: 3px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 5px; }
+  .switch a:hover { background: rgba(255,255,255,.1); }
+  .topbar { display: flex; align-items: center; gap: 20px; padding: 13px 22px; background: #1b2231; border-bottom: 1px solid #2c3549; }
+  .logo { font-size: 19px; font-weight: 700; color: #e8b45a; }
+  .topbar a { color: #c3ccdd; cursor: pointer; font-size: 13px; }
+  .topbar .spacer { flex: 1; }
+  .pill { padding: 3px 9px; border: 1px solid #3a4761; border-radius: 5px; font-size: 11px; color: #9fb0cc; }
+  .wrap { display: flex; gap: 18px; padding: 20px; }
+  .side { width: 210px; flex: none; }
+  .main { flex: 1; min-width: 0; }
+  .card { background: #1a2130; border: 1px solid #2c3549; border-radius: 8px; padding: 14px; margin-bottom: 14px; }
+  h2 { font-size: 16px; margin: 0 0 4px; color: #ffd980; }
+  h3 { font-size: 12px; margin: 0 0 10px; color: #9fb0cc; font-weight: 600; letter-spacing: .04em; }
+  .side a { display: block; padding: 6px 9px; border-radius: 5px; font-size: 12px; color: #c3ccdd; }
+  .side a:hover, .side a.on { background: #2c3a55; color: #fff; }
+  .tabs { display: flex; gap: 6px; margin: 10px 0 12px; flex-wrap: wrap; }
+  .tab { padding: 4px 11px; border: 1px solid #37445f; border-radius: 5px; background: #202a3d; color: #c9d3e4; font-size: 11px; }
+  .tab.on { background: #3c4b6e; color: #fff; }
+  input[type=text] { width: 100%; padding: 7px 10px; border: 1px solid #37445f; border-radius: 6px; background: #121826; color: #dde5f2; font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th, td { padding: 7px 8px; border-bottom: 1px solid #2a3346; text-align: left; }
+  th { color: #8fa0bd; font-weight: 600; }
+  td.num { color: #e8b45a; }
+  .hint { color: #8b97ad; font-size: 11px; margin-top: 10px; }
+  .items { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 4px 12px; }
+  .items li { font-size: 12px; color: #d9e0ec; padding: 3px 0; }
+  .tooltip { color: #c8b273; }
+  .skilldesc { color: #b9c3d4; font-size: 12px; line-height: 1.6; margin: 8px 0 0; max-width: 720px; }
+  .foot { padding: 10px 22px 40px; color: #69758c; font-size: 11px; }
+  .poe-tip { width: 360px; max-width: 100%; border: 1px solid #6b5a2e; background: rgba(10,10,14,.92); padding: 10px 14px; font-size: 12px; line-height: 1.6; text-align: center; border-radius: 3px; }
+  .tip-name { color: #d0a84c; font-weight: 700; font-size: 15px; }
+  .tip-base { color: #d0a84c; font-size: 12px; }
+  .tip-sep { height: 1px; background: linear-gradient(90deg, transparent, #6b5a2e, transparent); margin: 6px 0; }
+  .tip-prop { color: #b6b6b6; }
+  .tip-mod { color: #8f9bd0; }
+  .tip-mod.tip-notable { color: #a98fe0; }
+  .tip-desc { color: #b6b6b6; text-align: left; font-size: 11px; }
+  .tip-section { color: #7c8798; letter-spacing: .08em; font-size: 11px; text-align: left; margin: 2px 0 2px; }
+  .tip-mname { text-align: left; color: #d0a84c; font-weight: 700; }
+  .tip-count { display: inline-block; min-width: 16px; padding: 0 4px; margin-left: 6px; border-radius: 2px; background: #2f4f3f; color: #9fe0b6; font-weight: 400; font-size: 11px; }
+  .tip-mod.left { text-align: left; }
+</style>
+</head>
+<body>
+<div class="switch">
+  <b>离线预览</b>
+  <span>当前：poe.ninja</span>
+  <a href="preview.html">切换到 FilterBlade 预览 →</a>
+  <span>右下角「汉」可切换中文 / 双语 / 原文</span>
+</div>
+
+<div class="topbar">
+  <span class="logo">poe.ninja</span>
+  <a>Economy</a><a>Builds</a><a>Atlas Trees</a><a>More</a>
+  <span class="spacer"></span>
+  <span class="pill">POE 1</span><span class="pill">POE 2</span>
+  <span class="pill">Language : English</span>
+  <a>Log in</a>
+</div>
+
+<div class="wrap">
+  <div class="side">
+    <div class="card">
+      <h3>General</h3>
+      <a class="on">Currency</a>
+      <a>Fragments</a>
+      <a>Wombgifts</a>
+      <a>Runegrafts</a>
+      <a>Allflame Embers</a>
+      <a>Divination Cards</a>
+      <a>Unique Items</a>
+      <a>Skill Gems</a>
+      <a>Maps</a>
+      <a>Scarabs</a>
+      <a>Essences</a>
+      <a>Fossils</a>
+      <a>Incubators</a>
+      <a>Delirium Orbs</a>
+    </div>
+    <div class="card">
+      <h3>League</h3>
+      <a>Allflame</a><a>Standard</a><a>Hardcore</a>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Currency - Allflame - Path of Exile 1</h2>
+      <div class="hint">Last updated · 3.29 Allflame · POE 1</div>
+      <div class="tabs">
+        <span class="tab on">1 day</span><span class="tab">3 days</span><span class="tab">1 week</span>
+        <span class="tab on" style="margin-left:auto">Exchange</span><span class="tab">Stash</span>
+        <span class="tab">Chart</span><span class="tab">Table</span>
+      </div>
+      <input type="text" placeholder="Filter by name">
+      <table style="margin-top:12px">
+        <thead><tr><th>Name</th><th>Chaos Value</th><th>Divine Value</th><th>Change</th><th>Listings</th><th>Price</th><th>Confidence</th></tr></thead>
+        <tbody>
+          <tr><td>Chaos Orb</td><td class="num">1.0</td><td class="num">0.006</td><td>+0.0%</td><td>12,480</td><td class="num">1 c</td><td>High confidence</td></tr>
+          <tr><td>Divine Orb</td><td class="num">168.4</td><td class="num">1.0</td><td>+2.3%</td><td>3,120</td><td class="num">168 c</td><td>High confidence</td></tr>
+          <tr><td>Exalted Orb</td><td class="num">12.7</td><td class="num">0.075</td><td>-1.1%</td><td>8,940</td><td class="num">13 c</td><td>Medium confidence</td></tr>
+          <tr><td>Orb of Alchemy</td><td class="num">0.3</td><td class="num">0.002</td><td>+0.4%</td><td>21,300</td><td class="num">0.3 c</td><td>High confidence</td></tr>
+          <tr><td>Mirror of Kalandra</td><td class="num">78,900</td><td class="num">468.0</td><td>+0.8%</td><td>18</td><td class="num">78,900 c</td><td>Low confidence</td></tr>
+          <tr><td>The Doctor</td><td class="num">9,450</td><td class="num">56.1</td><td>-3.2%</td><td>62</td><td class="num">9,450 c</td><td>Medium confidence</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Low confidence. Price is based on a low number of listings.</p>
+      <p class="hint">Not enough data · Show more · View all · Details</p>
+    </div>
+
+    <div class="card">
+      <h3>Builds</h3>
+      <table>
+        <thead><tr><th>Class</th><th>Ascendancy</th><th>Main Skill</th><th>Level</th><th>Rank</th></tr></thead>
+        <tbody>
+          <tr><td>Ranger</td><td>Deadeye</td><td>Spark</td><td>100</td><td>1</td></tr>
+          <tr><td>Witch</td><td>Necromancer</td><td>Lightning Arrow</td><td>99</td><td>2</td></tr>
+        </tbody>
+      </table>
+      <p class="hint">Passive Skill Tree · Atlas Trees · Keystones · Skill Gems</p>
+    </div>
+
+    <div class="card">
+      <h3>Character</h3>
+      <div class="hint">Latest snapshot · Level 100 · Hierophant</div>
+      <table>
+        <thead><tr><th>Name</th><th>Level</th><th>Life</th><th>Energy Shield</th><th>EHP</th><th>DPS</th><th>Keystones</th></tr></thead>
+        <tbody>
+          <tr><td>MihoStormborn</td><td>100</td><td>7021</td><td>116</td><td>71k</td><td>6.3M</td><td>Chaos Inoculation</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:14px">Item</h3>
+      <ul class="items">
+        <li>Magic Flask</li>
+        <li>Rare Jewel</li>
+        <li>Rare Gloves</li>
+        <li>Rare Boots</li>
+        <li>Rare Ring</li>
+        <li>Rare Helmet</li>
+        <li>Rare Body Armour</li>
+        <li>Rare Amulet</li>
+        <li>Rare Belt</li>
+        <li>Rare Shield</li>
+        <li>Kaom's Heart</li>
+      </ul>
+      <p class="hint tooltip">Character is using any <span>Rare Helmet</span>.</p>
+
+      <h3 style="margin-top:14px">Main Skills</h3>
+      <ul class="items">
+        <li>Righteous Fire</li>
+        <li>Fire Trap</li>
+        <li>Summon Holy Relic</li>
+        <li>Lightning Strike</li>
+        <li>Vaal Righteous Fire</li>
+        <li>Shield Charge</li>
+        <li>Leap Slam</li>
+        <li>Frostblink</li>
+      </ul>
+      <p class="hint">Spell · AoE · Duration · Fire · Minion · Attack · Projectile</p>
+      <p class="skilldesc">Engulfs you in magical fire that rapidly burns you and nearby enemies. Your spell damage is substantially increased while under this effect. The effect ends when you have 1 life remaining.</p>
+    </div>
+
+    <div class="card" id="jewel-tip">
+      <h3>Jewel Tooltip</h3>
+      <div class="poe-tip">
+        <div class="tip-name">Loathe Spark</div>
+        <div class="tip-base">Medium Cluster Jewel</div>
+        <div class="tip-sep"></div>
+        <div class="tip-prop">Item Level: 80</div>
+        <div class="tip-sep"></div>
+        <div class="tip-prop">Requires Level 54</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">Adds 5 Passive Skills</div>
+        <div class="tip-mod">1 Added Passive Skill is a Jewel Socket</div>
+        <div class="tip-mod">Added Small Passive Skills grant: 10% increased Damage while affected by a Herald</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod ">Added Small Passive Skills also grant: +3% to Fire Resistance</div>
+        <div class="tip-mod ">Added Small Passive Skills also grant: Regenerate 0.15% of Life per Second</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod tip-notable">1 Added Passive Skill is Empowered Envoy</div>
+        <div class="tip-mod tip-notable">1 Added Passive Skill is Endbringer</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod tip-notable">Herald Skills deal 40% increased Damage</div>
+        <div class="tip-mod tip-notable">20% increased Effect of Herald Buffs on you</div>
+        <div class="tip-mod tip-notable">5% increased Damage for each Herald affecting you</div>
+        <div class="tip-mod tip-notable">20% increased Damage while affected by a Herald</div>
+        <div class="tip-sep"></div>
+        <div class="tip-desc">Place into an allocated Medium or Large Jewel Socket on the Passive Skill Tree. Added passives do not interact with jewel radii. Right click to remove from the Socket.</div>
+      </div>
+      <p class="hint">星团珠宝提示框：词缀带随机数值，由模板按 # 占位回填。</p>
+    </div>
+
+    <div class="card" id="passive-tip">
+      <h3>Passive Tooltip</h3>
+      <div class="poe-tip">
+        <div class="tip-section">MASTERS</div>
+        <div class="tip-mname">Life Mastery <span class="tip-count">1</span></div>
+        <div class="tip-mod left">15% increased maximum Life if there are no Life Modifiers on Equipped Body Armour</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mname">Projectile Mastery <span class="tip-count">1</span></div>
+        <div class="tip-mod left">1% increased Projectile Damage per 16 Dexterity</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mname">Reservation Mastery <span class="tip-count">1</span></div>
+        <div class="tip-mod left">8% increased Damage for each of your Aura or Herald Skills affecting you</div>
+      </div>
+      <div class="poe-tip" style="margin-top:12px">
+        <div class="tip-name">Pain Attunement</div>
+        <div class="tip-base">Keystone</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">30% more Spell Damage when on Low Life</div>
+        <div class="tip-sep"></div>
+        <div class="tip-name">Supreme Ostentation</div>
+        <div class="tip-base">Keystone</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">Ignore Attribute Requirements</div>
+      </div>
+      <div class="poe-tip" style="margin-top:12px">
+        <div class="tip-name">Runegraft of the Spellbound</div>
+        <div class="tip-prop">Replaces one Mastery Passive Skill</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">Spells have Added Spell Damage equal to 30% of Physical Damage of your Equipped Two handed Weapon</div>
+      </div>
+      <p class="hint">天赋 / 专精 / 符文嫁接提示框：说明文字来自编年史天赋树数据（官方英文原文）与编年史简体页面，数值固定的走整句、带占位符的走模板。</p>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  Account · Contribute · Support the site · About · Docs &amp; FAQ · Statistics · Data dumps · Resources · Privacy Policy · Privacy Settings<br>
+  poe.ninja is not affiliated with or endorsed by Grinding Gear Games.
+</div>
+
+<script>
+window.FBZH_DICT = __DICT__;
+window.FBZH_SHORT_WORDS = __SHORT__;
+window.FBZH_HOST_DICT = __HOST__;
+window.FBZH_MOD_TPL = __MODTPL__;
+window.FBZH_MOD_PREFIX = __MODPREFIX__;
+window.FBZH_CSS = __CSS__;
+</script>
+<script>__ENGINE__</script>
+<script>__PANEL__</script>
+</body>
+</html>

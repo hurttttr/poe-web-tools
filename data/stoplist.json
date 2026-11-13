@@ -1,0 +1,15 @@
+{
+  "_meta": "这些词是 PoE 过滤器文件语法 / 代码标识，绝不能出现在翻译词典里，否则界面上的代码块会被改写、站内搜索与规则匹配也会受影响。构建时会从最终词典中剔除。",
+  "keys": [
+    "Show", "Hide", "Class", "BaseType", "Rarity", "ItemLevel", "DropLevel",
+    "LinkedSockets", "SocketGroup",
+    "ShaperItem", "ElderItem", "CrusaderItem", "RedeemerItem", "HunterItem", "WarlordItem",
+    "FracturedItem", "SynthesisedItem", "AnyEnchantment", "HasExplicitMod", "HasInfluence",
+    "AreaLevel", "GemLevel", "GemQualityType", "MapTier", "StackSize", "SetFontSize",
+    "SetTextColor", "SetBorderColor", "SetBackgroundColor", "PlayAlertSound",
+    "PlayAlertSoundPositional", "DisableDropSound", "EnableDropSound", "CustomAlertSound",
+    "MinimapIcon", "PlayEffect", "SetAlertSound", "Continue", "Prophecy", "ElderMap",
+    "ShapedMap", "BlightedMap", "HasSearingExarchImplicit", "HasEaterOfWorldsImplicit",
+    "Replica", "AlternateQuality", "VisualIdentity", "Font", "true", "false", "null", "undefined"
+  ]
+}

@@ -1,0 +1,19 @@
+# Python / Node
+__pycache__/
+*.pyc
+.DS_Store
+tests/node_modules/
+tests/package-lock.json
+
+# Built zip packages (attached to GitHub Releases, not committed to git)
+dist/*.zip
+
+# Scraper caches and large sample dumps (regenerable via tools/)
+research/*_cache/
+research/ninja_chunks/
+research/ninja_pages/
+research/*.html
+research/*.log
+research/ninja_dump.json
+research/tree_us.json
+research/fb.min.js

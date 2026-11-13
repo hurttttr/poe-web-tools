@@ -1,0 +1,208 @@
+[227] This section is designed to be foolproof. It will have no effect on 6-links, endgame items, elder/shaper items, uniques etc), abyss belts, fishing rods and other special bases. These sections frequently feature the 'strictness' dropdown menu. This tool defines how many rules are overwritten by your custom rules. I recommend playing around with the loot simulator, while switching back and forth to the customizer to get familiar with this section
+[228] It's recommended to at least use the threshold of 14. This allows you to get 1 glassblower per 3 mid quality flasks. Note that glassblowers can also be acquired by buying it for 8 whetstones from vendors and drop naturally, so the recipe is not very efficient. That being said, glassblowers are in high demand at the start of the league, not only for quality, but also to apply instilling orb recipes onto the player flasks.
+[229] The filter will check identified rares for interesting mod combinations and highlight these items. By setting this rule to HIDE all items that have NOT passed the 'interesting identified mods check' will be hidden. This is useful if you're still searching for specific rare combinations, but would like to reduce the number of items visible.
+[230] By selling a total of 40% quality worth of gems with a specific tag (such as fire) together with a Wand, Sceptre, Rune Dagger or Staff you will be rewarded with a weapon with a +1 GLOBAL level to ALL tagged spell gems. This is a powerful caster weapon early in the endgame.
+[231] It's more efficient to pick up small RGB-items. This recipe is mostly useful during the early stages of a league/character progression. Later on the player usually finds enough natural chromatic orbs to sustain their coloring needs, without needing to do recipes.
+[232] By adding e.g. 'GG', all 4-links will need to at least have 2 green colors to get highlighted. You can add one or multiple combinations of 'R', 'G' and 'B'. This is very useful to hide uninteresting linked items.
+[233] The filter comes with a system to check if an identified rare has interesting stat combos. Identified rares drop rarely, but if NO statcombo was detected, you might consider hiding them. This can be done here.
+[234] 1 Chromatic orb - reward for selling an item with a Red-Green-Blue socket group. The 3 colors need to be linked in order and other sockets don't matter. Hover over the scroll left for more info.
+[235] High level, specific crafting bases are in high demand early in the league and can be useful in SSF environments. This section handles non-influenced versions of these items.
+[236] Disabling recipe item rules will NOT hide uniques, 6links, interesting synthesised items etc. Priorities are handled internally and you don't need to worry about them.
+[237] By default the filter will hide all (unidentified) corrupted/mirrored rares without an implicit. This of course excludes 6-links and all kinds of other exotic items
+[238] Designed to highlight lower tiers (Tier C and lower) divination cards if they drop in a stack. Useful, if you want to see the cards only if they're stacked.
+[239] Some item classes like 'Jewels' are completely covered through the class-based filtering below and don't need representing through the matrix.
+[240] 1 Gemcutter's Prism - reward for selling a single gem with 20% quality gem or multiple gems with a combined total of 40% quality to a vendor.
+[241] Quickly highlight bases by adding a custom rule! If you need more power and options, there's a lot more custom rules lower in the customizer
+[242] This section combines 30 different rules that will highlight the best available life, mana and hybrid flasks, during your Campaign progress.
+[243] Augment the filter with entirely new rules, such as 'only show AR and AR/EV armors', 'highlight all rare axes' and 'hide all wands'
+[244] Itemlevel matters a LOT. Crafting bases are grouped by level. Example: Any Gloves will be part of and ONLY of the level 85 rules.
+[245] 1 Glassblower's Bauble - reward for selling a single 20% quality flask or multiple quality flasks with a total quality of 40%.
+[246] These rules are enabled in higher strictness. They hide lower rares if they drop in high level zones.
+[247] You can find more quality flasks rules in the 'Endgame -> Flasks' and 'Campaign -> Flasks' sections.
+[248] Card added here will receive a higher highlight if dropped in a stack!
+[249] 7 Jeweller's Orbs - reward for selling an item with 6 sockets.
+[250] LEVEL 86: Body Armours, Boots, Shields, Bows, Belts, Quivers
+[251] Unidentified Corrupted rares with 0 custom mods
+[252] Unidentified Mirrored rares with 0 custom mods
+[253] Cluster Jewels: Custom Any Enchantment Rule
+[254] Leveling RGB Chromatic recipe (small 2x2)
+[255] Leveling RGB Chromatic recipe (small 1x3)
+[256] Hide Corrupted, Outleveled, [...] Rares
+[257] Leveling RGB Chromatic recipe (medium)
+[258] Current League: Curse of the Allflame
+[259] Leveling RGB Chromatic recipe (large)
+[260] Endgame rare deco corrupted implicit
+[261] Control WHAT items are in what tier:
+[262] Creating the Perfect Campaign Filter
+[263] Hide <75 in 82+ Zones: Very-Strict
+[264] Hide <40 in 73+ Zones: Semi-Strict
+[265] Endgame - Special Bases & Crafting
+[266] Control IF and HOW a tier is shown
+[267] LEVEL 85: Amulets, Gloves, Helmets
+[268] Endgame - Highlight specific bases
+[269] Niche and NOT recommended recipes
+[270] Unid corrupted rares: no implicit
+[271] Unid mirrorred rares: no implicit
+[272] RGB Chromatic recipe EG small2x2
+[273] RGB Chromatic recipe EG small1x3
+[274] LEVEL 84: Caster Weapons & Rings
+[275] Hide Lower Rares in High Maps 1
+[276] Hide Lower Rares in High Maps 2
+[277] Hide Lower Rares in High Maps 3
+[278] Hide Lower Rares in High Maps 4
+[279] Hide: T3 lower identified rares
+[280] RGB Chromatic recipe EG medium
+[281] Highlight items by Armour Type
+[282] Leveling rare boots high speed
+[283] RGB Chromatic recipe EG large
+[284] Hide <60 in 82+ Zones: Strict
+[285] Hide <50 in 78+ Zones: Strict
+[286] Leveling Magic/Normal 4 links
+[287] Campaign Utility: Quicksilver
+[288] Leveling rare boots low speed
+[289] Build & Special-Item Recipes
+[290] Settlers Gold - Medium Stack
+[291] Corrupted Rares Custom Rules
+[292] LEVEL 83: All Attack Weapons
+[293] Campaign Utility: Handpicked
+[294] High Quality leveling flasks
+[295] Exotics: Stacked Card Drops
+[296] Stacked High Tier Div Cards
+[297] Settlers Gold - Small Stack
+[298] Endgame rare deco corrupted
+[299] 86 normal crafting bases T1
+[300] 85 normal crafting bases T1
+[301] 84 normal crafting bases T1
+[302] 83 normal crafting bases T1
+[303] 86 normal crafting bases T2
+[304] 85 normal crafting bases T2
+[305] 84 normal crafting bases T2
+[306] 83 normal crafting bases T2
+[307] 86 normal crafting bases T3
+[308] 85 normal crafting bases T3
+[309] 84 normal crafting bases T3
+[310] 83 normal crafting bases T3
+[311] Max Quality leveling flasks
+[312] Low Quality leveling flasks
+[313] Leveling rare deco medium 1
+[314] Leveling rare deco medium 2
+[315] Stacked Low Tier Div Cards
+[316] Settlers Gold - Huge Stack
+[317] Settlers Gold - Tiny Stack
+[318] Endgame rare deco medium 1
+[319] Endgame rare deco medium 2
+[320] Rank D, high strands, High
+[321] Hide ALL identified rares
+[322] Endgame rare deco ilvl 86
+[323] Endgame rare deco ilvl 85
+[324] Endgame rare deco ilvl 84
+[325] Endgame rare deco ilvl 83
+[326] Endgame rare deco ilvl 75
+[327] Endgame rare deco ilvl 68
+[328] Endgame rare deco 4 links
+[329] High Level Crafting Bases
+[330] Additional Campaign Rules
+[331] Hide items by Armour Type
+[332] Small RBG Items: 1x3, 1x4
+[333] Leveling 3 links lvl 1-24
+[334] Tinctures during campaign
+[335] Leveling Rare Rustic Sash
+[336] Medium-sized Items (2x3)
+[337] Settlers Gold - No Stack
+[338] Identified endgame rares
+[339] Hybrid Flask Progression
+[340] Campaign Utility: Others
+[341] Leveling rare deco large
+[342] Special Noteworthy Drops
+[343] ], $text, [$suggestions,
+[344] Currency Reward Recipes
+[345] Endgame rare deco large
+[346] Corrupted - No implicit
+[347] Fractured items, tier 1
+[348] Fractured items, tier 2
+[349] Fractured items, tier 3
+[350] Fractured items, others
+[351] Highlight items by Base
+[352] Highlight items by slot
+[353] Leveling rare deco tiny
+[354] Small Items (1x3, 1x4)
+[355] Endgame rare deco tiny
+[356] Rank A - Rings/Amulets
+[357] Rank B - Rings/Amulets
+[358] Rank C - Rings/Amulets
+[359] Leveling 3 links early
+[360] Life Flask Progression
+[361] Mana Flask Progression
+[362] Large (leveling only)
+[363] Rare rings/amulets T1
+[364] Rare rings/amulets T2
+[365] Rare rings/amulets T3
+[366] Memory-Stranded Items
+[367] Campaign (level 1-67)
+[368] Medium RGB Items: 2x3
+[369] Leveling Rare 4 links
+[370] 4-Links: magic/normal
+[371] Endgame Tier 4 Rares
+[372] Endgame Tier 5 Rares
+[373] Enable&Disable Tiers
+[374] Rank A, high strands
+[375] Rank B, high strands
+[376] Rank C, high strands
+[377] Small RGB Items: 2x2
+[378] Large RGB Items: 2x4
+[379] Leveling rare veiled
+[380] Add Custom Decorator
+[381] Campaign & Leveling
+[382] Racing Socket Group
+[383] High Quality Flasks
+[384] Tinctures: Leveling
+[385] Jewellery & Armours
+[386] Max quality flasks
+[387] Mid Quality flasks
+[388] Low Quality flasks
+[389] Stacked T4 Scarabs
+[390] Corrupted Implicit
+[391] Hide items by slot
+[392] Max Quality Flasks
+[393] Low Quality Flasks
+[394] Small Items (2x2)
+[395] Large Items (2x4)
+[396] Flask Progression
+[397] Max Quality Gems
+[398] Mid Quality Gems
+[399] Low Quality Gems
+[400] Rank A - ILVL86+
+[401] Rank B - ILVL86+
+[402] Rank C - ILVL86+
+[403] Rank A - ILVL85+
+[404] Rank B - ILVL85+
+[405] Rank C - ILVL85+
+[406] Rank A - ILVL84+
+[407] Rank B - ILVL84+
+[408] Rank C - ILVL84+
+[409] Rank A - ILVL83+
+[410] Rank B - ILVL83+
+[411] Rank C - ILVL83+
+[412] Leveling 5 links
+[413] 3-Links: Act 2-3
+[414] Rank D/Untiered
+[415] Rank A - Belts
+[416] Rank B - Belts
+[417] Rank C - Belts
+[418] 3-Links: Act 1
+[419] Racing Sockets
+[420] Quality Flasks
+[421] Rare belts T1
+[422] Rare belts T2
+[423] Rare belts T3
+[424] 4-Links: rare
+[425] Tier 1 rares
+[426] Tier 2 rares
+[427] Tier 3 rares
+[428] Hybrid Flask
+[429] Rune Dagger
+[430] Linked Gear
+[431] SubGroup Tier
+[432] Section Name
+[433] 3.29 Update in progress... We are currently working on the filter update for the 3.29 Allflame league. It will be ready on Friday, a few hours before the league starts. You can start customizing your filter now and, once the update is live, just load your filter to update it to the new version! More details here. There will be a live-stream of the final update step on NeverSinks Twitch on Friday. Check out the Twitter, as well as our Discord for news and update notifications!
+[434] PoE1 3.29 Allflame Update is LIVE! To update your filter, just load it. This will automatically merge your customization into the new filter version. Details Check out the FAQ if you have troubles.
