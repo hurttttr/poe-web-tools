@@ -20,3 +20,6 @@ research/fb.min.js
 
 # Local AI workspace memory
 .workbuddy/
+
+# MCP 本地生成物（过滤器快照 / 同步页 / 页面状态 dump）
+mcp/out/

@@ -185,3 +185,104 @@ EN 模板  Adds # Passive Skills   →  CN 模板  增加 # 个天赋技能
 - `research/` 是抓取缓存与来源样本，已被 `.gitignore` 忽略大部分内容，可删除。
 - 仍可能看到英文：FAQ **答案长段落**（innerHTML + `<br>` / `<li>` 碎片，只翻了问题标题）、实时拼接的动态文案（如 `Current League: 3.30 …`）、流派页**装备词缀明细**（逐条随机数值命中率低）、未收录的新物品名。用面板「导出未译文本」拿清单继续补。
 - 不翻译：`<script>` / `<style>` / `<textarea>` / `<pre>` / `<code>` / 代码块、输入框 value、下拉选项、广告 iframe、过滤器语法。
+
+---
+
+## 8. MCP 操控 FilterBlade（配置层，不模拟点击）
+
+### 8.1 为什么不点 UI
+
+用户嫌 Customizer 层层菜单复杂，想让 MCP 直接操控。§1 已确认站点不开源，但 `research/fb.min.js`（约 1.5 MB）**未混淆**，`FilterBlade.prototype` / `ChangeStorage.prototype` 都可读，因此可以从配置层介入，而不是模拟点击。
+
+三个插入点：模拟 UI 点击（DOM 每赛季易变，且等于把复杂度搬进代码）、改 saveState（官方导入格式）、直接生成 `.filter`（最稳，但失去 FilterBlade「新赛季加载旧存档自动合并改动」的能力）。选第二条。
+
+### 8.2 逆向得到的存档格式
+
+| 位置 | 事实 |
+| --- | --- |
+| `ChangeStorage.prototype.updateAutoSave` | `localStorage.setItem("ChangeSave:0", JSON.stringify(e))` |
+| `simplifySaveStateContent()` | 内层 = `{version:1, filterName, strictness, style, metaData, changeGroups}` |
+| `ChangeGroup.prototype.simplifyChangeGroup` | `{presetMetaData, presetDataObj, groupChanges, isHidden, changeGroupVersion:4}`，且会 `delete presetDataObj.saveStateContent` |
+| `AbstractChange.prototype.simplifyChange` | 单条 = `{changeType, changeValue}`；`readSimplifiedChange` 也接受 `[changeType, changeValue]` 简写 |
+| `BackendFacade.createSimpleSaveStateObject` | 外层 = `{display_name, is_preset, date_modified, saveStateContent:"<内层 JSON 字符串>", meta_json_string, tags}` |
+| Advanced → Upload filter | `case "saveFile"` = `JSON.parse → receiveProfileSaveState → updateAutoSave → loadSaveState`，官方自带「喂 JSON 即生效」入口 |
+| 分享链接 | `?profile=X&saveState=Y` 是按 ID 从 Lambda 拉取、需登录，**本地造不出来** |
+| 全局对象 | 顶层 `var gFilterBlade`，MAIN world 可见；`changeUI.loadAutoSave()` 走同一条路径 |
+
+**关键教训**：`changeValue` 结构随 `changeType`（`tier` / `dynamic` / …）变化，`sanitizeValue` 各子类还不同。不要从 `optionFile` 反向臆造 change，否则会被 `prepareChangeGroups` 静默丢掉。工程上改成「读站点真实存档 → 只做字段级修改 → 整体回写」，格式永远由站点提供；要新建规则，先用 `fb_import_sample` 解析一份官方下载的 save-file 当模板。
+
+### 8.3 桥接架构与两个坑
+
+- MCP Server 是独立进程，**碰不到浏览器标签页**，必须有桥：`MCP(stdio) ↔ HTTP 127.0.0.1:8765 ↔ 扩展 ↔ window.postMessage ↔ MAIN world ↔ gFilterBlade`。
+- MV3 三层：`bridge-main.js`（`world: MAIN`，唯一能看到 `gFilterBlade` 的一层）、`bridge-content.js`（ISOLATED，直连本地桥）、`background.js`（service worker，页面直连被 mixed content / CSP 拦下时降级代发，`chrome.alarms` 负责被回收后唤醒）。需 Chrome 111+。
+- `loadSaveState` 开头检查 `isCurrentlyLoadingSaveState || getCurrentlyLoadedSaveState()`，重复调用直接 `return false` 并弹「Another filter is already loaded!」。回写前先 `clearStorage(false)` 清标记，并检查返回值 `=== false` 时立刻报错，别等 30 秒超时。
+- 配置项索引从 `optionFile*.options` 的 `Section(...)` 抽取（当前 232 项），中文名复用 `dictionary.json` + 少量人工补词；文件名哈希动态发现，不硬编码。
+
+### 8.4 当前能力边界与待验证项
+
+能：读当前配置、改 `strictness` / `style` / 已有 change 的数值、导出官方 save-file、中文检索可配项、解析样本存档。
+
+还不能：凭空新建任意 Customizer 规则（需要模板）；**回写链路 `fb_apply_state` 尚未在真实页面验证**（`clearStorage(false) + loadSaveState` 组合需实测）。读取链路已于 2026-11-15 晚跑通，见 §8.5。
+
+### 8.5 首次实测（2026-11-15 晚）
+
+- 桥接链路跑通：`fb_status` 返回 connected=true，`fb_get_state` 成功返回页面真实存档。MAIN world 对 `gFilterBlade` 可见，https 页面直连 `http://127.0.0.1` 也走通了，未触发 background 降级。
+- **`strictness` 不是字符串**，是对象 `{name:"Semi-Strict", isCustom:false, description, version:1}`。用 `fb_apply_state` 改严格度要改 `state.strictness.name`，不要整个替换成字符串。
+- `changeValue` 真实形态比预想复杂：`normal` 带 `identifier{identifier,mode,index,version,isReal}` + `newValue` + `items[].utilStats.cName/itemTag`；`conditional` 靠 `entryId` 关联到前面的 `tier add`；向导生成的规则名带 `wizardRule_` 前缀。`metaData.preConfigWizardCampaign` 标记是否走了练级向导。
+- 一份向导配方实测 70 条改动：`normal 22 / conditional 39 / tier 6 / multi 1 / progression 1 / progressionAppearance 1`。数量看着吓人，实际只是 4 组语义 —— 总结配方时按 `entryId` / `itemTag` 聚合比逐条读有效得多。
+- `displayName` 为 `"Untitled filter"` 时说明是本地未命名配置，不是账号存档；`optionFileVersion` 可能为 null，别依赖它判断页面就绪。
+
+---
+
+## 9. PoE Planner 异界天赋树汉化
+
+### 9.1 站点结构（先摸清楚再动手）
+
+`poeplanner.com/atlas-tree` 是 Vue 2 + Vuetify 的 SPA，HTML 只有 `<div id="app"></div>`，全部文案在两个 JS bundle（`app.<hash>.js` / `chunk-vendors.<hash>.js`）和 CDN 的二进制数据里。
+
+- `app.<hash>.js`：界面文案，Vue 编译后藏在 `_v("...")` 调用里（约 336 条静态文本）。
+- `https://cdn.poeplanner.com/json/versions.json`：版本清单，`atlasVersions[0].version` 给出数据目录（本次 61 / PoE 3.30.0）。**注意 `/json/versions.json` 在 poeplanner.com 主域会 fallback 成 index.html，必须走 cdn 子域。**
+- `https://cdn.poeplanner.com/bin/<v>/atlastree.bin`：节点数据（坐标 + 字符串表）。
+- `https://cdn.poeplanner.com/bin/<v>/atlastranslations.bin`：天赋效果英文原文（338 条，`{0}` 占位）。
+- `readTranslations()` 只加载 `passivetreetranslations.bin` 之类的英文翻译表，**站点自己没有中文包**，所以中文必须外部找。
+
+### 9.2 中文数据源：编年史三版按 slug 对齐
+
+这是本次最关键的发现。编年史有 `https://poedb.tw/{us,cn,tw}/Atlas_passive_skill`：
+
+| 版本 | 条目 | 用途 |
+| --- | ---: | --- |
+| `/us/` | 352 | 英文天赋名 + 英文说明（基准） |
+| `/cn/` | 150 | **国服简体译名**，优先采用 |
+| `/tw/` | 352 | 繁中，覆盖全部条目，补齐剩余并转简 |
+
+每张卡片形如 `<a class="PassiveSkills" href="Slug">Name</a>` + 若干 `<div class="implicitMod">说明</div>`，**href 的 slug 是英文的、跨语言一致**，所以按 slug 对齐，绝不按页面顺序配对（cn 与 us 顺序完全不同）。
+
+术语口径：`cn` 给「未行之路」「隐秘跳跃点」「毁灭游戏」，`tw` 给「未履之道路」「神秘大门」，差异明显。构建脚本优先 cn，tw 补齐，再做繁转简 + 术语纠偏（精髓→精华、裂痕→裂隙、綢帶→记忆丝缕、頭目→首领…），并把台服语序「增加#%…」改成「#% 提高…」。
+
+### 9.3 二进制字符串提取
+
+`atlastranslations.bin` 是「长度/标记字节 + NUL 结尾字符串」混合结构。用 `[ -~]{4,}` 正则直接抓会把前面的长度字节吞进正文（出现 `&#% chance...`、`=Immortal Syndicate...` 这类脏键）。
+
+**正确做法**：按 `\x00` 切分，每段解码 ASCII 后从第一个字母或 `{` 开始截取。这样得到干净的 338 条效果描述。
+
+### 9.4 三个必须同时处理的坑
+
+1. **`#` 骨架的两套形态**：说明里的数字在 poeplanner 是 `{0}`、在编年史是实际值（如 `4%`）。统一 `数字 / {0} → #` 后比较，且**中英 `#` 数量必须一致**，否则丢弃（宁可保持英文）。覆盖率报告也要先把连续空白折成单空格，对齐引擎 `normalize()`。
+2. **跨行说明**：bin 把一段说明拆成多行（如 Maven 的赌注加码 5 行）。DOM 里既可能是多个文本节点，也可能是一个含换行的节点。所以词典里要**同时有逐行片段译文和拼接后的整串译文**。构建脚本自动按行查 `atlas_extra.json` 拼接，本次合并出 24 条，覆盖率从 92.9% 提到 100%。
+3. **Vuetify 图标 ligature**：`<i class="v-icon material-icons">expand_more</i>` 靠文本内容渲染图标。翻译它会让图标直接消失。引擎 `SKIP_SELECTOR` 加了 `.v-icon,.material-icons,[class*="v-icon"]`，构建脚本另设 `ICON_LIGATURES` 黑名单过滤 `folder` / `warning` / `search` 等小写图标词。**双保险，缺一不可**。
+
+### 9.5 站点专属作用域，而不是塞进主词典
+
+- 整句词条（620 条）写进 `atlas_terms.json`，由 `build_dist.py` 以 `{"poeplanner.com": {...}}` 注入 `FBZH_HOST_DICT`。引擎 `buildIndex()` 后处理 host 词条，因此**可以覆盖主词典同名键**：主词典 `Clear=清澈`（物品词缀语境），PoE Planner 用 `Clear=清除`；其他站点不受影响。
+- 带数值的模板（288 条）合并进 `FBZH_MOD_TPL`，但**只补现有词典没有的骨架**（`setdefault`），因为模板表是全局的，覆盖会伤到 FilterBlade。
+- `# 模板` 是全局表而 `host_terms` 是站点表的这个不对称，是刻意设计：模板键本身已经高度特化（句子级），撞车概率极低。
+
+### 9.6 已知边界
+
+天赋树本体是 canvas / WebGL，节点名与说明只在悬浮提示（DOM）里，DOM 注入能覆盖；但**站内「搜索节点」按英文匹配**，中文搜不到 —— 这是运行时显示层汉化的固有限制，README 与安装说明里都提示用户按 `Alt+Z` 切原文模式搜索。不要为了这个去改站点逻辑。
+
+### 9.7 离线预览页的一个测试陷阱
+
+预览页把整份词典内联在 `<script>` 里，`document.body.textContent` **包含词典 JSON 文本**。用它做断言会出现假阳性（词典里本来就有中文）和假阴性（切原文模式后 `Collapse all` 仍能在词典里找到）。测试必须先 clone body、移除 `script/style/noscript/.fbzh-ui` 再取 `textContent`。本次差点被这个坑误导。
+

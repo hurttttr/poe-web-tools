@@ -56,7 +56,7 @@ jobs:
           cat <<'EOF' > /tmp/release_notes_body.md
           ## PoE Web Tools v${{ steps.version.outputs.version }}
 
-          流放之路网页工具——FilterBlade 与 poe.ninja 简体中文汉化 + 站点快捷跳转。
+          流放之路网页工具——FilterBlade、poe.ninja 与 PoE Planner 异界天赋树简体中文汉化 + 站点快捷跳转。
 
           ### 🆕 本次更新
 
@@ -70,7 +70,7 @@ jobs:
 
           1. 浏览器安装 [Tampermonkey](https://www.tampermonkey.net/) 或 [Violentmonkey](https://violentmonkey.github.io/)；
           2. 下载 Release 附件中的 **`poe-web-tools-v${{ steps.version.outputs.version }}.user.js`**，拖入扩展管理页面（或复制内容新建脚本）；
-          3. 访问 [filterblade.xyz](https://www.filterblade.xyz/?game=Poe1) 或 [poe.ninja](https://poe.ninja/)，右下角出现「汉」按钮即生效。
+          3. 访问 [filterblade.xyz](https://www.filterblade.xyz/?game=Poe1)、[poe.ninja](https://poe.ninja/) 或 [poeplanner.com/atlas-tree](https://poeplanner.com/atlas-tree)，右下角出现「汉」按钮即生效。
 
           > 脚本完全自包含（词典内联），不联网、不依赖任何外部库。
 
@@ -79,7 +79,7 @@ jobs:
           1. 下载 Release 附件中的 **`poe-web-tools-v${{ steps.version.outputs.version }}-extension.zip`** 并解压；
           2. 打开 `chrome://extensions`（Edge 为 `edge://extensions`），开启右上角「**开发者模式**」；
           3. 点击「**加载已解压的扩展程序**」，选择解压后的文件夹；
-          4. 把扩展固定到工具栏，点击图标即可在 FilterBlade / poe.ninja 之间跳转，并开关汉化、切换模式。
+          4. 把扩展固定到工具栏，点击图标即可在 FilterBlade / poe.ninja / PoE Planner 之间跳转，并开关汉化、切换模式。
 
           ---
 
@@ -87,16 +87,17 @@ jobs:
 
           | 功能 | 说明 |
           |------|------|
-          | 简体中文汉化 | FilterBlade 界面、规则名、FAQ 标题、poe.ninja 物价表 / 流派页全面汉化 |
+          | 简体中文汉化 | FilterBlade 界面、规则名、FAQ 标题、poe.ninja 物价表 / 流派页、PoE Planner 异界天赋树全面汉化 |
           | 中文 / 双语 / 原文 切换 | 面板或扩展弹窗切换；`Alt+Z` 快速在中文 ↔ 原文间切换 |
-          | 站点快捷跳转 | 扩展弹窗卡片点击，在 FilterBlade 与 poe.ninja 间一键切换 |
+          | 站点快捷跳转 | 扩展弹窗卡片点击，在 FilterBlade / poe.ninja / PoE Planner 间一键切换 |
           | 中英对照查询 | 面板输入中文或英文，列出对照，点击复制英文名 |
           | 物品词缀翻译 | 带数值占位（`#`）的 7830 条词缀模板，运行时自动回填实际数值 |
           | 天赋 / 专精 / 符文嫁接说明 | poe.ninja 流派页天赋提示框完整汉化 |
+          | 异界天赋树汉化 | 352 个天赋名 + 338 条天赋说明（数值自动回填）+ 界面文案，悬浮提示内完整中文化 |
           | 交互还原 | 点击交互元素瞬间自动还原英文，站点逻辑不受影响 |
           | 导出未译文本 | 导出当前页面仍是英文的文本清单（JSON），用来补词典 |
 
-          **词典规模**：22,004 条，来源：编年史 · 官方交易站词缀 · poe.ninja 官方繁中转简 · 社区底稿 · 人工校对
+          **词典规模**：主词典 22,004 条 + poeplanner 站点专属 620 条整句 / 288 条数值模板，来源：编年史 · 官方交易站词缀 · poe.ninja 官方繁中转简 · 社区底稿 · 人工校对
 
           ---
 
@@ -113,6 +114,7 @@ jobs:
 
           - 扩展以**开发者模式**加载，属于本地扩展，不会上架 Chrome Web Store，每次启动浏览器可能提示「停用开发者模式扩展」，点「取消」忽略即可；
           - 若文件夹路径改变，需在扩展页面重新「加载已解压的扩展程序」；
+          - PoE Planner 的天赋树本体是 canvas / WebGL，节点名与说明只在**悬浮提示**里汉化；站内「搜索节点」按英文匹配，中文搜不到时按 `Alt+Z` 切原文模式再搜；
           - 本工具不收集任何数据，无需任何权限（扩展仅需 `activeTab` 用于弹窗读取当前标签）。
           EOF
 

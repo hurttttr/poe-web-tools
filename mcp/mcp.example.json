@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "filterblade": {
+      "command": "C:/Users/Administrator/.workbuddy/binaries/python/versions/3.13.12/python.exe",
+      "args": ["D:/YY/Documents/Code/poe-web-tools/mcp/fb_mcp.py"]
+    }
+  }
+}

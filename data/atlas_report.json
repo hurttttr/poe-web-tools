@@ -1,0 +1,12 @@
+{
+  "poedb_aligned": 352,
+  "node_names": 352,
+  "poedb_descriptions": 358,
+  "skipped_mismatch": 46,
+  "ui_manual": 161,
+  "extra_manual": 152,
+  "terms": 620,
+  "templates": 288,
+  "stat_total": 338,
+  "stat_covered": 338
+}

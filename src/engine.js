@@ -15,7 +15,9 @@
   var DICT = global.FBZH_DICT || {};
   var SETTINGS_KEY = 'fbzh.settings.v1';
   var SKIP_TAGS = /^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA|CODE|PRE|SVG|CANVAS|IFRAME|INPUT|SELECT|OPTION|META|LINK)$/;
-  var SKIP_SELECTOR = 'script,style,noscript,textarea,code,pre,svg,canvas,iframe,input,select,option,[contenteditable],[data-fbzh-skip],.CodeMirror,.ace_editor,.fbzh-ui';
+  // Vuetify / Material Icons 用 ligature 文本渲染图标（<i class="v-icon">expand_more</i>），
+  // 改掉这些文本会让图标直接消失，因此整棵 .v-icon 子树都不参与翻译。
+  var SKIP_SELECTOR = 'script,style,noscript,textarea,code,pre,svg,canvas,iframe,input,select,option,[contenteditable],[data-fbzh-skip],.CodeMirror,.ace_editor,.fbzh-ui,.v-icon,.material-icons,[class*="v-icon"]';
   var ATTRS = ['placeholder', 'title', 'aria-label'];
   var WHITESPACE = /\s+/g;
 

@@ -10,8 +10,9 @@
   h1 img { width: 18px; height: 18px; vertical-align: -4px; margin-right: 6px; }
   .sub { font-size: 10px; color: #7f889b; margin: 0 0 12px; }
   .section { font-size: 10px; letter-spacing: .06em; color: #8b95a8; text-transform: uppercase; margin: 12px 0 6px; }
-  .sites { display: flex; gap: 8px; }
-  .site { flex: 1; padding: 10px 8px; border: 1px solid rgba(255,255,255,.14); border-radius: 9px; background: rgba(255,255,255,.05); color: #e8ecf4; cursor: pointer; text-align: left; font: inherit; position: relative; }
+  .sites { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sites .site:last-child { grid-column: 1 / -1; }
+  .site { padding: 10px 8px; border: 1px solid rgba(255,255,255,.14); border-radius: 9px; background: rgba(255,255,255,.05); color: #e8ecf4; cursor: pointer; text-align: left; font: inherit; position: relative; }
   .site:hover { background: rgba(255,255,255,.12); border-color: #d9a441; }
   .site.current { border-color: #d9a441; background: rgba(217,164,65,.12); }
   .site strong { display: block; font-size: 12px; color: #ffd980; }
@@ -42,6 +43,10 @@
     <button class="site" id="site-ninja" type="button">
       <strong>poe.ninja</strong>
       <small>物价 / 流派 / 数据</small>
+    </button>
+    <button class="site" id="site-planner" type="button">
+      <strong>PoE Planner</strong>
+      <small>异界天赋树规划 / 150 点配置</small>
     </button>
   </div>
   <label class="mini"><input type="checkbox" id="same-tab"> 在当前标签跳转（默认新标签打开）</label>

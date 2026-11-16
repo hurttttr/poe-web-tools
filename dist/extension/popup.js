@@ -9,6 +9,10 @@
     ninja: {
       url: 'https://poe.ninja/poe1/economy',
       match: 'poe.ninja'
+    },
+    planner: {
+      url: 'https://poeplanner.com/atlas-tree',
+      match: 'poeplanner.com'
     }
   };
 
@@ -41,7 +45,7 @@
   // 站点跳转：默认新标签打开，勾选后在当前标签跳转
   function markCurrent(url) {
     Object.keys(SITES).forEach(function (key) {
-      var btn = document.getElementById(key === 'fb' ? 'site-fb' : 'site-ninja');
+      var btn = document.getElementById('site-' + key);
       var isCurrent = url && url.indexOf(SITES[key].match) >= 0;
       btn.classList.toggle('current', !!isCurrent);
       var old = btn.querySelector('.badge');
@@ -65,6 +69,7 @@
 
   document.getElementById('site-fb').addEventListener('click', function () { openSite('fb'); });
   document.getElementById('site-ninja').addEventListener('click', function () { openSite('ninja'); });
+  document.getElementById('site-planner').addEventListener('click', function () { openSite('planner'); });
 
   document.getElementById('enabled').addEventListener('change', function (e) {
     send({ type: 'set', patch: { enabled: e.target.checked } }, render);

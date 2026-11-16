@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>PoE Web Tools · PoE Planner 异界天赋树汉化预览</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #1e1e1e; color: #e0e0e0; font: 13px/1.55 "Segoe UI", "Microsoft YaHei", sans-serif; }
+  a { color: inherit; text-decoration: none; cursor: pointer; }
+  .switch { display: flex; gap: 10px; align-items: center; padding: 9px 20px; background: #24304a; border-bottom: 1px solid #3a4a6b; font-size: 12px; color: #cbd5e8; flex-wrap: wrap; }
+  .switch b { color: #ffd980; }
+  .switch a { padding: 3px 10px; border: 1px solid rgba(255,255,255,.2); border-radius: 5px; }
+  .switch a:hover { background: rgba(255,255,255,.1); }
+  .appbar { display: flex; align-items: center; gap: 16px; padding: 10px 20px; background: #272727; border-bottom: 1px solid #383838; }
+  .logo { font-size: 17px; font-weight: 700; color: #e8b45a; letter-spacing: .02em; }
+  .appbar a { font-size: 12px; color: #c9c9c9; }
+  .appbar .spacer { flex: 1; }
+  .pill { padding: 3px 9px; border: 1px solid #4a4a4a; border-radius: 5px; font-size: 11px; color: #a9a9a9; }
+  .layout { display: flex; gap: 14px; padding: 14px 18px; align-items: flex-start; }
+  .nav { width: 178px; flex: none; }
+  .main { flex: 1; min-width: 0; }
+  .side { width: 268px; flex: none; }
+  .card { background: #2b2b2b; border: 1px solid #3d3d3d; border-radius: 6px; padding: 12px; margin-bottom: 12px; }
+  h2 { font-size: 17px; margin: 0 0 10px; color: #e8b45a; font-weight: 600; }
+  h3 { font-size: 11px; margin: 0 0 9px; color: #9aa3b4; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+  .nav a { display: block; padding: 6px 9px; border-radius: 4px; font-size: 12px; color: #c9c9c9; }
+  .nav a:hover, .nav a.on { background: #3c465e; color: #fff; }
+  .nav hr { border: 0; border-top: 1px solid #454545; margin: 8px 0; }
+  .toolbar { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+  .btn { padding: 5px 12px; border: 1px solid #555; border-radius: 4px; background: #333; color: #ddd; font-size: 11px; }
+  .btn.primary { background: #4a3d20; border-color: #8a7137; color: #f0d68a; }
+  input[type=text] { padding: 6px 10px; border: 1px solid #4a4a4a; border-radius: 4px; background: #1c1c1c; color: #ddd; font-size: 12px; min-width: 190px; }
+  .version { font-size: 11px; color: #a9a9a9; margin-bottom: 10px; }
+  .version b { color: #e8b45a; }
+  .points { font-size: 20px; font-weight: 700; color: #e8b45a; margin-bottom: 8px; }
+  .points small { font-size: 11px; color: #a9a9a9; font-weight: 400; }
+  .tree { position: relative; height: 318px; border: 1px solid #3d3d3d; border-radius: 6px; background: radial-gradient(circle at 50% 50%, #28303c 0%, #1b1f27 70%); overflow: hidden; }
+  .tree .line { position: absolute; height: 1px; background: #4a5263; transform-origin: left center; }
+  .nd { position: absolute; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; border: 2px solid #6b7486; background: #343c4b; cursor: pointer; }
+  .nd.on { border-color: #d9a441; background: #6b5526; box-shadow: 0 0 10px rgba(217,164,65,.5); }
+  .nd.keystone { width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 6px; border-color: #a98fe0; }
+  .nd.gateway { border-style: dashed; border-color: #7fb0a0; }
+  .tree-hint { position: absolute; left: 12px; bottom: 10px; font-size: 11px; color: #8b95a8; }
+  .v-icon { font-family: serif; font-style: normal; color: #c9c9c9; }
+  .tip { border: 1px solid #6b5a2e; background: rgba(10,10,14,.94); padding: 10px 14px; border-radius: 3px; font-size: 12px; line-height: 1.65; text-align: center; }
+  .tip-name { color: #d0a84c; font-weight: 700; font-size: 14px; }
+  .tip-base { color: #a98fe0; font-size: 11px; }
+  .tip-sep { height: 1px; background: linear-gradient(90deg, transparent, #6b5a2e, transparent); margin: 7px 0; }
+  .tip-mod { color: #8f9bd0; font-size: 12px; }
+  .tip-flavour { color: #9a9a9a; font-style: italic; font-size: 11px; }
+  .stat-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid #383838; }
+  .stat-row span:last-child { color: #e8b45a; }
+  .node-list { list-style: none; margin: 0; padding: 0; }
+  .node-list li { font-size: 12px; padding: 4px 0; border-bottom: 1px solid #383838; }
+  .node-list li b { color: #c8b273; font-weight: 600; }
+  .hint { color: #8b95a8; font-size: 11px; margin: 9px 0 0; line-height: 1.6; }
+  .foot { padding: 8px 20px 40px; color: #7d8798; font-size: 11px; }
+  .badge-zh { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #3c4b6e; color: #cfe0ff; font-size: 10px; }
+</style>
+</head>
+<body>
+<div class="switch">
+  <b>离线预览</b>
+  <span>当前：PoE Planner · Atlas Tree</span>
+  <a href="preview.html">FilterBlade 预览 →</a>
+  <a href="preview-ninja.html">poe.ninja 预览 →</a>
+  <span>右下角「汉」可切换中文 / 双语 / 原文</span>
+</div>
+
+<div class="appbar">
+  <span class="logo">PoE Planner</span>
+  <a>My Builds</a>
+  <a>Planner</a>
+  <a>Atlas Tree</a>
+  <a>Royale</a>
+  <a>Mods</a>
+  <span class="spacer"></span>
+  <span class="pill">v2.10.8.4</span>
+  <a>Changelog</a>
+  <a>Contact</a>
+  <a>Login</a>
+</div>
+
+<div class="layout">
+  <div class="nav">
+    <div class="card">
+      <h3>Path of Exile</h3>
+      <a>Planner</a>
+      <a class="on">Atlas Tree</a>
+      <a>Royale</a>
+      <a>Mods</a>
+      <hr>
+      <h3>Miscellaneous</h3>
+      <a>Changelog</a>
+      <a>Contact</a>
+      <hr>
+      <a>Privacy policy</a>
+      <p class="hint">This product isn't affiliated with or endorsed by Grinding Gear Games in any way.</p>
+      <p class="hint">Consider supporting us on Patreon.</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <h2>Atlas Tree</h2>
+      <div class="toolbar">
+        <span class="btn">Notes</span>
+        <span class="btn">Import/Export</span>
+        <span class="spacer"></span>
+        <span class="btn">Collapse all <i class="v-icon material-icons">expand_less</i></span>
+        <span class="btn">Expand all <i class="v-icon material-icons">expand_more</i></span>
+        <input type="text" placeholder="Search nodes..." aria-label="Search nodes...">
+        <span class="btn">clear</span>
+        <span class="btn">Reset</span>
+        <span class="btn primary">Save as new</span>
+      </div>
+      <div class="version">Atlas Tree Version <b>3.30.0</b> · <span id="login-hint">Login to save builds!</span></div>
+      <div class="points">0 / 150 <small>Allocated Nodes</small></div>
+      <div class="tree" id="tree">
+        <div class="nd on keystone" style="left:50%;top:50%" title="Destructive Play"></div>
+        <div class="nd on" style="left:38%;top:36%" title="The Light of Dawn"></div>
+        <div class="nd" style="left:62%;top:36%" title="Incursion Pack Size"></div>
+        <div class="nd" style="left:30%;top:62%" title="Abyss Monster Count"></div>
+        <div class="nd on" style="left:70%;top:62%" title="The Paths Not Taken"></div>
+        <div class="nd gateway" style="left:50%;top:20%" title="Cryptic Gateway"></div>
+        <div class="nd gateway" style="left:50%;top:80%" title="Mortal Gateway"></div>
+        <div class="nd" style="left:20%;top:44%" title="Overloaded Circuits"></div>
+        <div class="nd" style="left:80%;top:44%" title="Exotic Repositories"></div>
+        <span class="tree-hint">Allocated Nodes: 3 · Keystone / Notable / Small / Mastery / Gateway</span>
+      </div>
+      <p class="hint">天赋树本体为 canvas 渲染，节点名与说明显示在悬浮提示中；下方展示三个真实节点的提示框汉化效果。搜索节点请使用英文（或按 Alt+Z 切到原文模式）。</p>
+    </div>
+
+    <div class="card" id="tooltips">
+      <h3>Node Tooltips</h3>
+      <div class="tip" style="margin-bottom:10px">
+        <div class="tip-name">Destructive Play</div>
+        <div class="tip-base">Keystone</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">The Maven casts Up the Stakes, summoning 1 to 3 additional Atlas Bosses</div>
+        <div class="tip-mod">when Witnessing Map Bosses</div>
+        <div class="tip-mod">The number of additional Bosses summoned is higher if there</div>
+        <div class="tip-mod">are fewer monsters remaining in the Map</div>
+        <div class="tip-mod">Modifiers to the Final Map Boss in each Map also apply to these summoned Bosses</div>
+        <div class="tip-sep"></div>
+        <div class="tip-flavour">The Atlas remembers every battle.</div>
+      </div>
+      <div class="tip" style="margin-bottom:10px">
+        <div class="tip-name">Incursion Pack Size</div>
+        <div class="tip-base">Notable</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">Incursions in your Maps have 4% increased Pack Size</div>
+      </div>
+      <div class="tip">
+        <div class="tip-name">Abyss Monster Count</div>
+        <div class="tip-base">Small</div>
+        <div class="tip-sep"></div>
+        <div class="tip-mod">Abysses in your Maps spawn 8% increased Monsters</div>
+        <div class="tip-mod">Your Maps have 8% chance to be inhabited by a Mercenary</div>
+      </div>
+      <p class="hint">带数值的说明由 # 占位模板回填实际数字；数值个数不匹配时保持英文，不会输出错位译文。</p>
+    </div>
+
+    <div class="card" id="dynamic-area">
+      <h3>Async Rendering</h3>
+      <div id="dynamic-slot"></div>
+      <p class="hint">MutationObserver 会翻译异步插入的节点：<span id="dynamic-status">waiting…</span></p>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card">
+      <h3>Pinned Stats</h3>
+      <div class="stat-row"><span>Allocated Nodes</span><span>3</span></div>
+      <div class="stat-row"><span>Map Pack Size</span><span>+4%</span></div>
+      <div class="stat-row"><span>Item Rarity</span><span>+6%</span></div>
+    </div>
+    <div class="card">
+      <h3>Cumulative Stats</h3>
+      <div class="stat-row"><span>Quantity of Items</span><span>+12%</span></div>
+      <div class="stat-row"><span>Monster Pack Size</span><span>+8%</span></div>
+      <div class="stat-row"><span>Divination Card Chance</span><span>+20%</span></div>
+    </div>
+    <div class="card">
+      <h3>Node Breakdown</h3>
+      <ul class="node-list">
+        <li><b>Keystone</b> · Destructive Play</li>
+        <li><b>Notable</b> · The Light of Dawn</li>
+        <li><b>Small</b> · Abyss Monster Count</li>
+        <li><b>Gateway</b> · Cryptic Gateway</li>
+        <li><b>Mastery</b> · Gateway</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Import Atlas Tree</h3>
+      <p class="hint">Official Path of Exile Atlas Tree URL · PoE Planner Atlas Tree URL · From an URL · From Path of Building</p>
+      <p class="hint">GGG removed the ability to import atlas tree by account name</p>
+      <p class="hint">There are no atlas trees here...</p>
+      <p class="hint">Atlas tree saved successfully</p>
+    </div>
+    <div class="card">
+      <h3>Icon Safety</h3>
+      <p class="hint"><i class="v-icon material-icons">expand_more</i> <i class="v-icon material-icons">folder</i> <i class="v-icon material-icons">warning</i> 图标 ligature 文本不应被翻译，否则图标会消失。</p>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <span class="badge-zh">汉</span>
+  PoE Planner · Atlas Tree · 本页为离线汉化效果预览，英文原文来自站点公开资源，中文译文来自流放之路编年史与人工校对。
+  <br>This product isn't affiliated with or endorsed by Grinding Gear Games in any way. · Privacy policy
+</div>
+
+<script>
+window.FBZH_DICT = __DICT__;
+window.FBZH_SHORT_WORDS = __SHORT__;
+window.FBZH_HOST_DICT = __HOST__;
+window.FBZH_MOD_TPL = __MODTPL__;
+window.FBZH_MOD_PREFIX = __MODPREFIX__;
+window.FBZH_CSS = __CSS__;
+// 离线预览以 file:// 打开，location.hostname 为空，host 作用域不会自动生效。
+// 这里把 poeplanner 作用域显式并入主词典，模拟真实站点上的注入结果。
+(function () {
+  var scoped = (window.FBZH_HOST_DICT || {})['poeplanner.com'] || {};
+  Object.keys(scoped).forEach(function (en) { window.FBZH_DICT[en] = scoped[en]; });
+})();
+</script>
+<script>__ENGINE__</script>
+<script>__PANEL__</script>
+<script>
+// 模拟站点异步渲染的节点提示，供 MutationObserver 测试
+setTimeout(function () {
+  var slot = document.getElementById('dynamic-slot');
+  if (!slot) return;
+  var tip = document.createElement('div');
+  tip.className = 'tip';
+  tip.id = 'async-tip';
+  tip.innerHTML = '<div class="tip-name">The Light of Dawn</div>' +
+    '<div class="tip-base">Notable</div><div class="tip-sep"></div>' +
+    '<div class="tip-mod">Your Maps have 25% chance to contain a Trial of Ascendancy</div>';
+  slot.appendChild(tip);
+  var st = document.getElementById('dynamic-status');
+  if (st) st.textContent = 'inserted';
+}, 30);
+</script>
+</body>
+</html>
