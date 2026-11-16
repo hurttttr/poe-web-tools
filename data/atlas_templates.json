@@ -272,6 +272,7 @@
  "your maps have #% chance to contain ore deposits": "你的地图有 #% 几率包含矿脉",
  "your maps have #% increased chance to contain a mirror of delirium": "你的地图出现谵妄之镜的几率提高 #%",
  "your maps have #% reduced chance to contain a mirror of delirium": "你的地图出现谵妄之镜的几率降低 #%",
+ "your maps have #% increased pack size from allocated notable atlas passive skills": "你的地图有 #% 提高的怪物群规模，来自已配置的显著异界天赋",
  "the maven has a #% chance to cast up the stakes summoning # to # additional atlas bosses when witnessing map bosses the number of additional bosses summoned is higher if there are fewer monsters remaining in the map modifiers to the final map boss in each map also apply to these summoned bosses": "贤主有 #% 几率施放赌注加码，额外召唤 # 到 # 个异界首领 在目睹地图首领时 若地图中剩余怪物较少 则额外召唤的首领数量会更多 每张地图最终首领的词缀也会作用于这些被召唤的首领",
  "the maven casts up the stakes, summoning # to # additional atlas bosses when witnessing map bosses the number of additional bosses summoned is higher if there are fewer monsters remaining in the map modifiers to the final map boss in each map also apply to these summoned bosses": "贤主施放赌注加码，额外召唤 # 到 # 个异界首领 在目睹地图首领时 若地图中剩余怪物较少 则额外召唤的首领数量会更多 每张地图最终首领的词缀也会作用于这些被召唤的首领",
  "number of explosives is one #% increased explosive radius in your maps expedition monsters in your maps spawn with an additional #% of life missing #% increased explosive placement range in your maps": "炸药数量为一个 你地图中的炸药爆炸半径扩大 #% 你地图中的先祖秘藏怪物生成时额外损失 #% 生命 你地图中的炸药放置范围扩大 #%",

@@ -50,10 +50,16 @@
   .tip-flavour { color: #9a9a9a; font-style: italic; font-size: 11px; }
   .stat-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; border-bottom: 1px solid #383838; }
   .stat-row span:last-child { color: #e8b45a; }
+  .stat-line { font-size: 12px; line-height: 1.5; padding: 5px 0; border-bottom: 1px solid #383838; white-space: pre-line; }
+  .stat-line .textAugmented { color: #7fd1a8; }
+  code { background: #1c1c1c; padding: 1px 4px; border-radius: 3px; font-size: 11px; color: #b9c4d6; }
   .node-list { list-style: none; margin: 0; padding: 0; }
   .node-list li { font-size: 12px; padding: 4px 0; border-bottom: 1px solid #383838; }
   .node-list li b { color: #c8b273; font-weight: 600; }
   .hint { color: #8b95a8; font-size: 11px; margin: 9px 0 0; line-height: 1.6; }
+  .toolbar .v-text-field { display: flex; align-items: center; }
+  .nd.hit { outline: 2px solid #7fd1a8; outline-offset: 2px; box-shadow: 0 0 12px rgba(127,209,168,.45); }
+  .stat-line code, .stat-line .echo { color: #9fd2b4; font-size: 11px; word-break: break-all; }
   .foot { padding: 8px 20px 40px; color: #7d8798; font-size: 11px; }
   .badge-zh { display: inline-block; padding: 1px 6px; border-radius: 3px; background: #3c4b6e; color: #cfe0ff; font-size: 10px; }
 </style>
@@ -103,13 +109,13 @@
   <div class="main">
     <div class="card">
       <h2>Atlas Tree</h2>
-      <div class="toolbar">
+      <div class="toolbar atlas-tree-toolbar">
         <span class="btn">Notes</span>
         <span class="btn">Import/Export</span>
         <span class="spacer"></span>
         <span class="btn">Collapse all <i class="v-icon material-icons">expand_less</i></span>
         <span class="btn">Expand all <i class="v-icon material-icons">expand_more</i></span>
-        <input type="text" placeholder="Search nodes..." aria-label="Search nodes...">
+        <div class="v-text-field"><input type="text" placeholder="Search nodes..." aria-label="Search nodes..."></div>
         <span class="btn">clear</span>
         <span class="btn">Reset</span>
         <span class="btn primary">Save as new</span>
@@ -117,18 +123,18 @@
       <div class="version">Atlas Tree Version <b>3.30.0</b> · <span id="login-hint">Login to save builds!</span></div>
       <div class="points">0 / 150 <small>Allocated Nodes</small></div>
       <div class="tree" id="tree">
-        <div class="nd on keystone" style="left:50%;top:50%" title="Destructive Play"></div>
-        <div class="nd on" style="left:38%;top:36%" title="The Light of Dawn"></div>
-        <div class="nd" style="left:62%;top:36%" title="Incursion Pack Size"></div>
-        <div class="nd" style="left:30%;top:62%" title="Abyss Monster Count"></div>
-        <div class="nd on" style="left:70%;top:62%" title="The Paths Not Taken"></div>
-        <div class="nd gateway" style="left:50%;top:20%" title="Cryptic Gateway"></div>
-        <div class="nd gateway" style="left:50%;top:80%" title="Mortal Gateway"></div>
-        <div class="nd" style="left:20%;top:44%" title="Overloaded Circuits"></div>
-        <div class="nd" style="left:80%;top:44%" title="Exotic Repositories"></div>
+        <div class="nd on keystone" data-node="Destructive Play" style="left:50%;top:50%" title="Destructive Play"></div>
+        <div class="nd on" data-node="The Light of Dawn" style="left:38%;top:36%" title="The Light of Dawn"></div>
+        <div class="nd" data-node="Incursion Pack Size" style="left:62%;top:36%" title="Incursion Pack Size"></div>
+        <div class="nd" data-node="Abyss Monster Count" style="left:30%;top:62%" title="Abyss Monster Count"></div>
+        <div class="nd on" data-node="The Paths Not Taken" style="left:70%;top:62%" title="The Paths Not Taken"></div>
+        <div class="nd gateway" data-node="Cryptic Gateway" style="left:50%;top:20%" title="Cryptic Gateway"></div>
+        <div class="nd gateway" data-node="Mortal Gateway" style="left:50%;top:80%" title="Mortal Gateway"></div>
+        <div class="nd" data-node="Overloaded Circuits" style="left:20%;top:44%" title="Overloaded Circuits"></div>
+        <div class="nd" data-node="Exotic Repositories" style="left:80%;top:44%" title="Exotic Repositories"></div>
         <span class="tree-hint">Allocated Nodes: 3 · Keystone / Notable / Small / Mastery / Gateway</span>
       </div>
-      <p class="hint">天赋树本体为 canvas 渲染，节点名与说明显示在悬浮提示中；下方展示三个真实节点的提示框汉化效果。搜索节点请使用英文（或按 Alt+Z 切到原文模式）。</p>
+      <p class="hint">天赋树本体为 canvas 渲染，节点名与说明显示在悬浮提示中；下方展示三个真实节点的提示框汉化效果。左下角搜索框可直接输入中文（试试「毁灭游戏」「跳跃点」「穿越」），引擎会把中文反查成英文节点名再交给站点搜索。</p>
     </div>
 
     <div class="card" id="tooltips">
@@ -175,11 +181,13 @@
       <div class="stat-row"><span>Map Pack Size</span><span>+4%</span></div>
       <div class="stat-row"><span>Item Rarity</span><span>+6%</span></div>
     </div>
-    <div class="card">
+    <div class="card" id="cumulative">
       <h3>Cumulative Stats</h3>
-      <div class="stat-row"><span>Quantity of Items</span><span>+12%</span></div>
-      <div class="stat-row"><span>Monster Pack Size</span><span>+8%</span></div>
-      <div class="stat-row"><span>Divination Card Chance</span><span>+20%</span></div>
+      <div class="stat-line" id="stat-line-1">Your Maps have <span class="textAugmented">8%</span> chance to be inhabited by a Mercenary</div>
+      <div class="stat-line" id="stat-line-2">Your Maps have <span class="textAugmented">24%</span> increased Pack Size from Allocated Notable Atlas Passive Skills</div>
+      <div class="stat-line" id="stat-line-3">Abysses in your Maps spawn <span class="textAugmented">8%</span> increased Monsters
+Your Maps have <span class="textAugmented">8%</span> chance to be inhabited by a Mercenary</div>
+      <p class="hint">站点把数值包进 <code>&lt;span&gt;</code> 再 <code>v-html</code> 渲染，一条统计会被切成多个文本节点；引擎按「整行」拼合后再翻译，多条说明用换行拼接也能逐行处理。</p>
     </div>
     <div class="card">
       <h3>Node Breakdown</h3>
@@ -197,6 +205,12 @@
       <p class="hint">GGG removed the ability to import atlas tree by account name</p>
       <p class="hint">There are no atlas trees here...</p>
       <p class="hint">Atlas tree saved successfully</p>
+    </div>
+    <div class="card" id="search-demo">
+      <h3>Search Bridge</h3>
+      <div class="stat-line">站点收到的检索串：<code id="search-echo">（空）</code></div>
+      <div class="stat-line">高亮结果：<span id="search-hit">（空）</span></div>
+      <p class="hint">站点把搜索框里的字符串直接当正则，只匹配英文节点名与英文说明。这里用中文名 / 中文说明反查出节点，再把英文名拼成正则喂回去，站点的高亮逻辑完全不用改。</p>
     </div>
     <div class="card">
       <h3>Icon Safety</h3>
@@ -218,6 +232,9 @@ window.FBZH_HOST_DICT = __HOST__;
 window.FBZH_MOD_TPL = __MODTPL__;
 window.FBZH_MOD_PREFIX = __MODPREFIX__;
 window.FBZH_CSS = __CSS__;
+window.FBZH_ATLAS_SEARCH = __ATLASSEARCH__;
+// 预览页是 file://，host 不匹配；显式打开中文搜索桥
+window.FBZH_ATLAS_SEARCH_FORCE = true;
 // 离线预览以 file:// 打开，location.hostname 为空，host 作用域不会自动生效。
 // 这里把 poeplanner 作用域显式并入主词典，模拟真实站点上的注入结果。
 (function () {
@@ -227,6 +244,30 @@ window.FBZH_CSS = __CSS__;
 </script>
 <script>__ENGINE__</script>
 <script>__PANEL__</script>
+<script>__ATLASSEARCH_JS__</script>
+<script>
+// 模拟站点自身的搜索：把输入串当正则，匹配节点英文名（真实站点匹配 canvas 里的节点数据）
+(function () {
+  var siteInput = document.querySelector('.atlas-tree-toolbar input');
+  var echo = document.getElementById('search-echo');
+  var hitOut = document.getElementById('search-hit');
+  if (!siteInput) return;
+  siteInput.addEventListener('input', function () {
+    var v = siteInput.value;
+    if (echo) echo.textContent = v || '（空）';
+    var re = null;
+    if (v) { try { re = new RegExp(v, 'i'); } catch (e) { re = null; } }
+    var hit = 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.nd'), function (nd) {
+      var name = nd.getAttribute('data-node') || '';
+      var matched = !!(re && re.test(name));
+      nd.classList.toggle('hit', matched);
+      if (matched) hit++;
+    });
+    if (hitOut) hitOut.textContent = v ? ('高亮 ' + hit + ' 个节点') : '（空）';
+  });
+})();
+</script>
 <script>
 // 模拟站点异步渲染的节点提示，供 MutationObserver 测试
 setTimeout(function () {

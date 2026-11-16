@@ -1,7 +1,7 @@
 Chrome / Edge：打开 chrome://extensions（Edge 为 edge://extensions），开启「开发者模式」，点击「加载已解压的扩展程序」，选择本 extension 文件夹即可。
 把扩展固定到工具栏后，点击图标即可在三个站点之间跳转，并开关汉化 / 切换中文·双语·原文。
 支持站点：https://www.filterblade.xyz/?game=Poe1 、https://poe.ninja/ 、https://poeplanner.com/atlas-tree 。
-PoE Planner 的异界天赋树为 canvas 渲染，节点名与说明在悬浮提示中汉化；站内「搜索节点」按英文匹配，需要英文时按 Alt+Z 切到原文模式。
+PoE Planner 的异界天赋树为 canvas 渲染，节点名与说明在悬浮提示中汉化；右侧统计栏整行翻译，左下角搜索框可直接输入中文（自动反查成英文节点名再交给站点）。
 页面右下角会出现「汉」按钮（中英对照查询、导出未译文本）。词典已内联，无需联网。
 
 【可选】MCP 本地桥：运行 python mcp/fb_mcp.py 后，扩展会自动连到 127.0.0.1:8765，

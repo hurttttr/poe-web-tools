@@ -274,15 +274,48 @@ EN 模板  Adds # Passive Skills   →  CN 模板  增加 # 个天赋技能
 
 ### 9.5 站点专属作用域，而不是塞进主词典
 
-- 整句词条（620 条）写进 `atlas_terms.json`，由 `build_dist.py` 以 `{"poeplanner.com": {...}}` 注入 `FBZH_HOST_DICT`。引擎 `buildIndex()` 后处理 host 词条，因此**可以覆盖主词典同名键**：主词典 `Clear=清澈`（物品词缀语境），PoE Planner 用 `Clear=清除`；其他站点不受影响。
-- 带数值的模板（288 条）合并进 `FBZH_MOD_TPL`，但**只补现有词典没有的骨架**（`setdefault`），因为模板表是全局的，覆盖会伤到 FilterBlade。
+- 整句词条（635 条）写进 `atlas_terms.json`，由 `build_dist.py` 以 `{"poeplanner.com": {...}}` 注入 `FBZH_HOST_DICT`。引擎 `buildIndex()` 后处理 host 词条，因此**可以覆盖主词典同名键**：主词典 `Clear=清澈`（物品词缀语境），PoE Planner 用 `Clear=清除`；其他站点不受影响。
+- 带数值的模板（289 条）合并进 `FBZH_MOD_TPL`，但**只补现有词典没有的骨架**（`setdefault`），因为模板表是全局的，覆盖会伤到 FilterBlade。
 - `# 模板` 是全局表而 `host_terms` 是站点表的这个不对称，是刻意设计：模板键本身已经高度特化（句子级），撞车概率极低。
 
-### 9.6 已知边界
+### 9.6 统计栏为什么一直是英文（整行翻译）
 
-天赋树本体是 canvas / WebGL，节点名与说明只在悬浮提示（DOM）里，DOM 注入能覆盖；但**站内「搜索节点」按英文匹配**，中文搜不到 —— 这是运行时显示层汉化的固有限制，README 与安装说明里都提示用户按 `Alt+Z` 切原文模式搜索。不要为了这个去改站点逻辑。
+右侧 Pinned / Cumulative Stats 的文案来自 `getTextsForStatValues(stats, "textAugmented")`：站点在 `getTextForValues()` 里把每个数值包成 `<span class="textAugmented">8%</span>`，再 `v-html` 塞进列表项。于是**一条说明被切成多个文本节点**：
 
-### 9.7 离线预览页的一个测试陷阱
+```
+"Your Maps have " + <span>8%</span> + " chance to be inhabited by a Mercenary"
+```
+
+逐文本节点查词典必然全部落空（左边半句、中间 `8%`、右边半句都不成句）。修法是引擎新增「整行级」翻译 `translateInlineLine()`：
+
+1. 只处理「子元素全是行内标签」的容器（`LINE_TAGS`），且子元素数量 ≤ 12、整行长度 ≤ 240；
+2. 含 `a/button/input/svg/img/.v-icon/.fbzh-ui` 的容器直接跳过（`LINE_BLOCKERS`），否则会把交互 / 图标 / 我们自己的面板一起抹掉；
+3. 用 `textContent` 拼回整行再查词典 / `#` 模板，命中才改写；
+4. 改写时把译文里同位置的数值按原 span 的 class 重新包回去，**数值高亮不丢**；
+5. 存 `innerHTML` 到 `lineOriginal`，原文模式 / 点击交互时还原；存 `lineApplied` 判断站点是否重渲染过（`v-html` 刷新后要重新翻）。
+
+配套改动：MutationObserver 的 `childList` 记录现在把 `rec.target`（被替换的容器）也纳入重扫，否则新增的子节点是文本 / `<span>`，容器本身永远不会被重新检查；`characterData` 记录也带上 `parentElement`。
+
+### 9.7 中文搜索：只喂英文，不动站点
+
+站点搜索实现是 `setSearchString(e) → treeRenderState.searchText → new RegExp(searchText, 'i')`，然后用这个正则去 `getNodeName()` / `getNodeText()`（都是英文）上测。输入中文永远匹配不到 —— 这**不是词典缺词**，改词典没用。
+
+`src/atlas-search.js` 的做法：在站点搜索框上叠一个自己的输入框（隐藏原 input，但保留其尺寸用于对齐），用户输入中文时：
+
+1. 用 `data/atlas_search.json`（英文节点名 → 中文名 / 中文说明，数字统一成 `#`）反查命中的英文节点名；
+2. 拼成 `(?:NameA|NameB|…)` 写进站点真正的 input（`Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set` + 派发 `input`），站点照旧用它的正则高亮；
+3. 英文输入原样透传，站点行为不变；
+4. 无命中时喂 `(?!)`（永不匹配），并提示「没有匹配的天赋节点」。
+
+注意几个坑：`#` 与数字都要当成 `\d[\d,]*`（词典里数值是 `#` 占位）；节点名里的 `'` `,` `-` 必须转义；叠层 input 要带 `.fbzh-ui` / `data-fbzh-skip`，否则引擎会去翻它、交互保护也会误触发；站点重渲染换掉 input 时靠 `field.isConnected` + 定时 `syncBox()` 重新绑定。
+
+### 9.8 已知边界
+
+- 天赋树本体是 canvas / WebGL，节点名与说明只在悬浮提示（DOM）里，DOM 注入能覆盖。
+- 中文搜索按「节点名 + 该节点说明」匹配后**高亮整个节点**，做不到在说明文本里做局部高亮；也只覆盖 `/atlas-tree` 页面。
+- 整行翻译会把容器的子节点合成纯文本（数值按原 class 包回），如果站点依赖行内节点结构做样式以外的逻辑，需先确认再放行。
+
+### 9.9 离线预览页的一个测试陷阱
 
 预览页把整份词典内联在 `<script>` 里，`document.body.textContent` **包含词典 JSON 文本**。用它做断言会出现假阳性（词典里本来就有中文）和假阴性（切原文模式后 `Collapse all` 仍能在词典里找到）。测试必须先 clone body、移除 `script/style/noscript/.fbzh-ui` 再取 `textContent`。本次差点被这个坑误导。
 

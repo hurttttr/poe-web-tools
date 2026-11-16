@@ -150,6 +150,7 @@ def main() -> int:
 
     terms: dict[str, str] = {}          # 整句精确匹配（站点专属）
     templates: dict[str, str] = {}      # 带 # 的数值模板
+    search_nodes: dict[str, dict] = {}  # 英文节点名 -> 中文名 / 中文说明（供中文搜索桥使用）
     stat_names = 0
     stat_tpl = 0
     skipped = 0
@@ -169,6 +170,20 @@ def main() -> int:
             stat_names += 1
         # 描述按位置一一配对；顺序错位时宁可丢，不产出错误译文
         zh_mods = cn_mods if (use_cn and len(cn_mods) == len(en_mods)) else tw_mods
+        # 中文搜索索引：说明文本不要求与英文逐条对齐（对不上只是少一条搜索结果），
+        # 只要是有意义的中文句子就收进去，供 src/atlas-search.js 反查出英文节点名。
+        search_lines = []
+        for zh_raw in zh_mods:
+            line = NUM.sub("#", t2s(clean(zh_raw)))
+            if CJK.search(line) and not BAD.search(line) and len(line) <= 160:
+                search_lines.append(line)
+        entry: dict = {}
+        if en_name in terms:
+            entry["n"] = terms[en_name]
+        if search_lines:
+            entry["t"] = list(dict.fromkeys(search_lines))
+        if entry:
+            search_nodes[en_name] = entry
         if len(en_mods) != len(zh_mods):
             skipped += 1
             continue
@@ -289,6 +304,17 @@ def main() -> int:
         json.dumps(terms, ensure_ascii=False, indent=1), encoding="utf-8")
     (DATA / "atlas_templates.json").write_text(
         json.dumps(templates, ensure_ascii=False, indent=1), encoding="utf-8")
+    # 中文搜索索引：中文检索词 -> 英文节点名（站点搜索只认英文，见 src/atlas-search.js）
+    (DATA / "atlas_search.json").write_text(
+        json.dumps({
+            "_meta": {
+                "source": "编年史 us / cn / tw 异界天赋页按 slug 对齐后的中文天赋名与中文说明",
+                "scope": "poeplanner.com",
+                "note": "键为 poeplanner 的英文节点名；n 为中文天赋名，t 为中文说明（数字统一成 #）。"
+                        "供 src/atlas-search.js 把中文检索词反查成英文节点名后喂给站点搜索。",
+            },
+            "nodes": search_nodes,
+        }, ensure_ascii=False, indent=1), encoding="utf-8")
     (DATA / "atlas_report.json").write_text(json.dumps({
         "poedb_aligned": len(common),
         "node_names": stat_names,
@@ -298,9 +324,11 @@ def main() -> int:
         "extra_manual": extra_count,
         "terms": len(terms),
         "templates": len(templates),
+        "search_nodes": len(search_nodes),
         "stat_total": len(stats),
         "stat_covered": len(covered),
     }, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"中文搜索索引 {len(search_nodes)} 个节点")
     return 0
 
 

@@ -3,6 +3,30 @@
 本项目遵循[语义化版本](https://semver.org/lang/zh-CN/)，格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 发布时由 `.github/workflows/release.yml` 自动抽取对应版本段落，写入 GitHub Release 说明。
 
+## [1.0.3] - 2026-11-17
+
+### 修复
+
+- **异界天赋树右侧统计栏残留英文**：poeplanner 把统计数值包进 `<span class="textAugmented">` 再用 `v-html` 渲染，一条说明被切成多个文本节点（`Your Maps have ` + `<span>8%</span>` + ` chance to …`），逐节点匹配必然落空。引擎新增「整行级」翻译：对只含行内标签的容器按整行拼合后再查词典 / `#` 模板，并把译文里同位置的数值按原 class 包回去，数值高亮不丢；多条说明用 `\n` 拼接时逐行翻译。
+- 站点整段重渲染（`v-html` 刷新、列表更新）后能重新整行翻译：MutationObserver 现在把被替换的容器（`rec.target`）一并纳入重扫，不再只处理新增节点。
+- 统计栏分组标题补齐国服译名：Map Bosses / Atlas Bosses / Influenced Monsters / Scourge / Metamorph / Perandus / Tempest / Warbands / Torment / Bloodlines / Invasion / Nemesis / Domination / Anarchy / Misc。
+
+### 新增
+
+- **异界天赋树中文搜索**：`src/atlas-search.js` 在站点搜索框上叠一层输入框。输入中文时用 `data/atlas_search.json`（352 个节点的中文名 + 中文说明）反查出命中的英文节点名，拼成 `(?:A|B|…)` 写进站点真正的 input 并派发 `input` 事件 —— 站点仍按自己的正则高亮，逻辑零改动；英文输入原样透传。`8%` 这类数字检索按 `#` 占位匹配，回车 / `Esc` / `×` 可清除。
+- 预览页新增两块演示：统计栏（数值被 `<span>` 包住）与中文搜索（输入「毁灭游戏」「跳跃点」「穿越」可看到站点收到的检索串与高亮结果）。
+
+### 变更
+
+- `tools/build_atlas_terms.py` 追加输出 `data/atlas_search.json`，构建报告新增 `search_nodes`。
+- 测试：atlas 33 → 51 项（整行翻译 / 原文还原 / 高亮保留 / 交互容器不改写 / 中文搜索 / 数字检索）。
+- 安装说明与 Release 文案同步：搜索不再要求按 `Alt+Z` 切原文模式。
+
+### 已知边界
+
+- 中文搜索只在异界天赋树页（路径含 `atlas`）启用，其他页面的搜索框保持站点原行为。
+- 中文检索按「中文节点名 + 该节点中文说明」匹配并高亮整个节点；受限于站点只认英文，无法做到按中文词在说明里做局部高亮。
+
 ## [1.0.2] - 2026-11-17
 
 ### 新增

@@ -166,6 +166,22 @@ async function main() {
     assert.ok(body.includes('累计属性'));
     assert.ok(body.includes('节点明细'));
   });
+  ok('统计行：数值被 <span> 包住也整行汉化', () => {
+    assert.ok(txt('#stat-line-1').includes('你的地图有 8% 几率出现佣兵'));
+    const t2 = txt('#stat-line-2');
+    assert.ok(t2.includes('来自已配置的显著异界天赋'), t2);
+    assert.ok(!t2.includes('Allocated Notable'), t2);
+  });
+  ok('统计行：多条说明换行拼接时逐行翻译', () => {
+    const t = txt('#stat-line-3');
+    assert.ok(t.includes('你的地图有 8% 几率出现佣兵'), t);
+    assert.ok(!t.includes('Abysses in your Maps'), t);
+  });
+  ok('统计行：数值高亮 span 被保留', () => {
+    const sp = d.querySelector('#stat-line-1 span.textAugmented');
+    assert.ok(sp, '翻译后仍应保留数值高亮 span');
+    assert.ok(/\d/.test(sp.textContent), sp.textContent);
+  });
   ok('侧栏节点分级 Keystone / Notable / Gateway / Mastery', () => {
     assert.ok(body.includes('跳跃点'));
     assert.ok(body.includes('专精'));
@@ -209,6 +225,52 @@ async function main() {
     assert.ok(s.stats.nodes > 50);
   });
 
+  console.log('\nE. 左下角搜索框：中文检索桥');
+  const siteInput = d.querySelector('.atlas-tree-toolbar input');
+  const ovl = d.querySelector('.fbzh-atlas-search');
+  const ovlInput = ovl && ovl.querySelector('input');
+  const typeQuery = (v) => {
+    ovlInput.value = v;
+    ovlInput.dispatchEvent(new preview.window.Event('input', { bubbles: true }));
+  };
+  ok('中文搜索框接管站点输入框', () => {
+    assert.ok(ovl, '叠层输入框应存在');
+    assert.strictEqual(d.querySelector('.v-text-field').style.visibility, 'hidden');
+    assert.ok(ovl.getAttribute('data-fbzh-skip'));
+  });
+  ok('中文「毁灭游戏」反查成英文节点名', () => {
+    typeQuery('毁灭游戏');
+    assert.strictEqual(siteInput.value, '(?:Destructive Play)', siteInput.value);
+    assert.strictEqual(ovl.querySelector('.fbzh-as-hint').textContent, '匹配 1 个节点');
+  });
+  ok('预览页按站点正则高亮命中节点', () => {
+    const hits = [...d.querySelectorAll('.nd.hit')].map((e) => e.getAttribute('data-node'));
+    assert.deepStrictEqual(hits, ['Destructive Play']);
+  });
+  ok('中文「跳跃点」命中多个跳跃点节点', () => {
+    typeQuery('跳跃点');
+    assert.ok(siteInput.value.includes('Cryptic Gateway'), siteInput.value);
+    assert.ok(siteInput.value.includes('Mortal Gateway'), siteInput.value);
+  });
+  ok('英文输入原样透传，站点行为不变', () => {
+    typeQuery('Maven');
+    assert.strictEqual(siteInput.value, 'Maven');
+  });
+  ok('无匹配中文给出永不匹配的正则', () => {
+    typeQuery('完全不存在的天赋');
+    assert.strictEqual(siteInput.value, '(?!)');
+    assert.ok(ovl.querySelector('.fbzh-as-hint').textContent.includes('没有匹配'));
+  });
+  ok('清除按钮同时清空站点搜索', () => {
+    ovl.querySelector('.fbzh-as-clear').click();
+    assert.strictEqual(ovlInput.value, '');
+    assert.strictEqual(siteInput.value, '');
+  });
+  ok('数字检索按实际数值匹配（# 占位）', () => {
+    const names = preview.window.FBZHAtlasSearch.matchNames('8%');
+    assert.ok(names.length > 0, '数字查询应有结果');
+  });
+
   console.log('\nB. 站点专属 host 作用域');
   const planner = hostDom('https://poeplanner.com/atlas-tree');
   const pd = planner.window.document;
@@ -235,6 +297,54 @@ async function main() {
   ok('FilterBlade：图标同样保持英文', () =>
     assert.strictEqual(fd.getElementById('icon').textContent, 'expand_more'));
   fb.window.close();
+
+  console.log('\nD. 整行翻译与还原（模拟统计栏 DOM）');
+  const panelDom = new JSDOM(`<!doctype html><html><body>
+    <div id="p1">Your Maps have <span class="textAugmented">8%</span> chance to be inhabited by a Mercenary</div>
+    <div id="p2">Abysses in your Maps spawn <span class="textAugmented">8%</span> increased Monsters
+Your Maps have <span class="textAugmented">8%</span> chance to be inhabited by a Mercenary</div>
+    <div id="p3">Your Maps have <span class="textAugmented">8%</span> chance <button>ok</button></div>
+  </body></html>`, { url: 'https://poeplanner.com/atlas-tree', runScripts: 'outside-only', pretendToBeVisual: true });
+  const pw = panelDom.window;
+  pw.FBZH_DICT = dict;
+  pw.FBZH_SHORT_WORDS = shortWords;
+  pw.FBZH_HOST_DICT = hostTerms;
+  pw.FBZH_MOD_TPL = modTpl;
+  pw.FBZH_MOD_PREFIX = modPrefix;
+  pw.FBZH_CSS = '';
+  pw.eval(engine);
+  pw.FBZH.init();
+  await sleep(160);
+  const pdoc = pw.document;
+  ok('跨 span 的统计行整行翻译', () =>
+    assert.strictEqual(pdoc.getElementById('p1').textContent.trim(), '你的地图有 8% 几率出现佣兵'));
+  ok('翻译后数值高亮 span 仍在', () => {
+    const sp = pdoc.querySelector('#p1 span.textAugmented');
+    assert.ok(sp && /\d/.test(sp.textContent), sp && sp.outerHTML);
+  });
+  ok('多条说明换行拼接时逐行翻译', () => {
+    const t = pdoc.getElementById('p2').textContent;
+    assert.ok(t.includes('你的地图有 8% 几率出现佣兵'), t);
+    assert.ok(!/Abysses in your Maps/.test(t), t);
+  });
+  ok('含交互元素的容器不整体改写', () => {
+    const el = pdoc.getElementById('p3');
+    assert.ok(el.querySelector('button'), '按钮必须保留');
+    assert.ok(el.textContent.includes('ok'));
+  });
+  ok('整行翻译计入统计', () => assert.ok(pw.FBZH.getStatus().stats.lines >= 2));
+  pw.FBZH.setSettings({ mode: 'en' });
+  await sleep(160);
+  ok('原文模式还原原始 <span> 结构', () => {
+    const html = pdoc.getElementById('p1').innerHTML;
+    assert.ok(html.includes('Your Maps have'), html);
+    assert.ok(html.includes('textAugmented'), html);
+  });
+  pw.FBZH.setSettings({ mode: 'zh' });
+  await sleep(220);
+  ok('切回中文后重新整行翻译', () =>
+    assert.ok(pdoc.getElementById('p1').textContent.includes('你的地图有 8% 几率出现佣兵')));
+  panelDom.window.close();
 
   console.log(`\n通过 ${passed} 项`);
   preview.window.close();

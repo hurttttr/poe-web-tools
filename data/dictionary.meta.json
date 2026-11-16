@@ -37,6 +37,8 @@
     "stat_total": 338,
     "stat_covered": 338,
     "multiline_merged": 24,
+    "search_nodes": 352,
+    "search_index": "data/atlas_search.json：英文节点名 -> 中文名 / 中文说明（数字统一成 #），供 src/atlas-search.js 把中文检索词反查成站点认的英文节点名",
     "sources": "poeplanner CDN atlastree.bin / atlastranslations.bin / app.js 英文原文；编年史 /us/ /cn/ /tw/ Atlas_passive_skill 按 slug 对齐；atlas_ui_manual.json 与 atlas_extra.json 人工精翻",
     "note": "主词典 entries 不含这些站点专属词条；运行时按 host 注入，只在 poeplanner.com 生效"
   }

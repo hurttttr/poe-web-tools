@@ -20,6 +20,13 @@
   var SKIP_SELECTOR = 'script,style,noscript,textarea,code,pre,svg,canvas,iframe,input,select,option,[contenteditable],[data-fbzh-skip],.CodeMirror,.ace_editor,.fbzh-ui,.v-icon,.material-icons,[class*="v-icon"]';
   var ATTRS = ['placeholder', 'title', 'aria-label'];
   var WHITESPACE = /\s+/g;
+  // 一条说明被站点用行内标签（多半是给数值上色的 <span>）切开时，逐文本节点匹配必然落空
+  // （"Your Maps have " + <span>8%</span> + " chance to ..."）。这些常量用于「整行级」补翻。
+  var LINE_TAGS = /^(SPAN|B|STRONG|I|EM|SMALL|U|BR|SUB|SUP|FONT|MARK|WBR)$/;
+  var LINE_HOSTS = 'div,span,p,li,td,th,label,small,b,strong,em,i,dd,dt,h1,h2,h3,h4,h5,h6';
+  // 整行改写会替换容器内容，凡是可能承载交互 / 图形 / 我们自己的 UI 的容器一律不动
+  var LINE_BLOCKERS = 'a,button,input,select,textarea,svg,canvas,img,iframe,video,' +
+    '[contenteditable],[data-fbzh-skip],.fbzh-ui,.v-icon,.material-icons,[class*="v-icon"]';
 
   var state = {
     enabled: true,
@@ -40,6 +47,9 @@
 
   var originalText = new WeakMap();   // Text -> 英文原文
   var originalAttr = new WeakMap();   // Element -> {attr: 英文原文}
+  var lineOriginal = new WeakMap();   // Element -> 整行改写前的 innerHTML
+  var lineApplied = new WeakMap();    // Element -> 我们写入的 innerHTML（判断站点是否重渲染）
+  var rewrittenLines = new Set();
   var translatedNodes = new Set();    // 便于整体还原
   var translatedElements = new Set();
 
@@ -49,7 +59,7 @@
   var deferredDiscard = false;
   var pending = new Set();
   var scheduled = false;
-  var stats = { nodes: 0, attributes: 0 };
+  var stats = { nodes: 0, attributes: 0, lines: 0 };
 
   /* ---------------------------------------------------------------- utils */
 
@@ -67,6 +77,10 @@
 
   function escapeRegExp(s) {
     return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function escapeHTML(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   }
 
   function loadSettings() {
@@ -271,6 +285,24 @@
     return null;
   }
 
+  // 统一入口：整串 -> 「按行拆开再逐行翻译」（poeplanner 的统计栏会把多条说明用 \n 拼在一起）
+  function translateAny(raw) {
+    var key = normalize(raw);
+    if (!key) return null;
+    var zh = lookup(key) || lookupTemplate(key) || lookupPrefix(key);
+    if (zh) return zh;
+    if (!/[\n\r]/.test(raw)) return null;
+    var lines = raw.split(/[\n\r]+/).map(function (s) { return s.trim(); }).filter(Boolean);
+    if (lines.length < 2) return null;
+    var out = [];
+    for (var i = 0; i < lines.length; i++) {
+      var one = lookup(lines[i]) || lookupTemplate(lines[i]) || lookupPrefix(lines[i]);
+      if (!one) return null;   // 有一行没覆盖就整段保持英文，避免半中半英
+      out.push(one);
+    }
+    return out.join('\n');
+  }
+
   /* --------------------------------------------------------------- walking */
 
   function isSkipped(el) {
@@ -318,6 +350,78 @@
     }
   }
 
+  /* ------------------------------------------- 整行翻译（跨行内标签 / 跨行文本） */
+
+  function walkLines(root, cb) {
+    if (!root) return;
+    // root 自身可能就是那个被整段替换的容器（MutationObserver 的 rec.target）
+    if (root.nodeType === 1) cb(root);
+    if (!root.querySelectorAll) return;
+    var list;
+    try { list = root.querySelectorAll(LINE_HOSTS); } catch (e) { return; }
+    for (var i = 0; i < list.length; i++) cb(list[i]);
+  }
+
+  function translateInlineLine(el) {
+    if (!el || el.nodeType !== 1) return;
+    if (el.childElementCount === 0) return;          // 纯文本交给 translateTextNode
+    if (el.childElementCount > 12) return;           // 子元素太多说明是布局容器，不是一行说明
+    if (isSkipped(el)) return;
+    // 已改写过：内容没变就跳过；站点重渲染过（innerHTML 变了）就当作全新内容再翻一次
+    var applied = lineApplied.get(el);
+    if (applied !== undefined) {
+      if (el.innerHTML === applied) return;
+      lineOriginal.delete(el);
+      lineApplied.delete(el);
+    }
+    var raw = (el.textContent || '').trim();
+    if (raw.length < 5 || raw.length > 240) return;
+    if (hasCJK(raw) || !/[A-Za-z]{3}/.test(raw)) return;
+    try { if (el.querySelector(LINE_BLOCKERS)) return; } catch (e) { return; }
+    // 只处理「一行」：允许行内标签，出现块级子元素说明是布局容器，不该整体替换
+    var kids = el.getElementsByTagName('*');
+    for (var i = 0; i < kids.length; i++) {
+      if (!LINE_TAGS.test(kids[i].tagName)) return;
+    }
+    var zh = translateAny(raw);
+    if (!zh || zh === raw) return;
+    lineOriginal.set(el, el.innerHTML);
+    // 站点给数值单独上色（<span class="textAugmented">8%</span>）。
+    // 整行改写成纯文本会丢掉这个高亮，这里把译文中同位置的数值按同样 class 包回去。
+    var html = escapeHTML(zh);
+    var cls = null;
+    var spans = el.getElementsByTagName('span');
+    for (var s = 0; s < spans.length; s++) {
+      var t = (spans[s].textContent || '').trim();
+      if (spans[s].className && /^[+\-]?\d[\d,]*(?:\.\d+)?%?$/.test(t)) {
+        cls = spans[s].className;
+        break;
+      }
+    }
+    if (cls) {
+      html = html.replace(/\d[\d,]*(?:\.\d+)?%?/g, function (m) {
+        return '<span class="' + cls + '">' + m + '</span>';
+      });
+    }
+    el.innerHTML = html;                             // 统一重写，避免出现半中半英
+    lineApplied.set(el, el.innerHTML);
+    el.setAttribute('data-fbzh', '1');
+    rewrittenLines.add(el);
+    stats.lines++;
+  }
+
+  function restoreLine(el) {
+    var html = lineOriginal.get(el);
+    if (html === undefined) return;
+    runSuppressed(function () {
+      try { el.innerHTML = html; } catch (e) {}
+    });
+    lineOriginal.delete(el);
+    lineApplied.delete(el);
+    rewrittenLines.delete(el);
+    try { el.removeAttribute('data-fbzh'); } catch (e) {}
+  }
+
   /* ------------------------------------------------------------ translating */
 
   function translateTextNode(node) {
@@ -332,8 +436,7 @@
     var trimmed = raw.trim();
     // 顺序很重要：整串词条 -> 词缀模板（会吃掉数值）-> 长文本局部短语替换。
     // 若先做短语替换，模板里剩下的英文数字句就再也匹配不上了。
-    var zh = hasCJK(trimmed) ? null
-      : (lookup(trimmed) || lookupTemplate(trimmed) || lookupPrefix(trimmed));
+    var zh = hasCJK(trimmed) ? null : translateAny(raw);
     if (!zh && state.phrase) {
       var mixed = replacePhrases(trimmed);
       if (mixed !== trimmed) zh = mixed;
@@ -370,6 +473,8 @@
   function translate(root) {
     if (!state.enabled || state.mode === 'en') return;
     runSuppressed(function () {
+      // 整行优先：站点把数值包进 <span> 时，单个文本节点永远匹配不上整句
+      walkLines(root, translateInlineLine);
       walkText(root, translateTextNode);
       if (state.attributes) walkElements(root, translateAttributes);
     });
@@ -421,6 +526,13 @@
 
   function restoreAll() {
     runSuppressed(function () {
+      Array.from(rewrittenLines).forEach(function (el) {
+        var html = lineOriginal.get(el);
+        if (html !== undefined) { try { el.innerHTML = html; } catch (e) {} }
+        lineOriginal.delete(el);
+        lineApplied.delete(el);
+      });
+      rewrittenLines.clear();
       Array.from(translatedNodes).forEach(function (n) {
         var raw = originalText.get(n);
         if (raw !== undefined) { try { n.nodeValue = raw; } catch (e) {} }
@@ -438,7 +550,7 @@
       var marks = document.querySelectorAll('[data-fbzh]');
       for (var i = 0; i < marks.length; i++) marks[i].removeAttribute('data-fbzh');
     });
-    stats.nodes = 0; stats.attributes = 0;
+    stats.nodes = 0; stats.attributes = 0; stats.lines = 0;
   }
 
   function retranslate() {
@@ -455,6 +567,13 @@
   function restoreHost(host) {
     if (!host || !host.querySelectorAll) return false;
     var changed = false;
+    // 整行改写过（<span> 包数值的统计行）时，还原的是整个容器的 HTML
+    Array.from(rewrittenLines).forEach(function (el) {
+      if (el === host || (host.contains && host.contains(el))) {
+        restoreLine(el);
+        changed = true;
+      }
+    });
     runSuppressed(function () {
       Array.from(translatedNodes).forEach(function (n) {
         if (host === n || (host.contains && host.contains(n))) {
@@ -544,9 +663,15 @@
         rec.addedNodes.forEach(function (n) {
           if (n.nodeType === 1 || n.nodeType === 3) roots.add(n);
         });
+        // 站点常用 v-html 整段替换容器内容（统计栏的数值 <span>），
+        // 只有把容器本身也纳入重扫，「整行」才拼得回来。
+        if (rec.target && rec.target.nodeType === 1) roots.add(rec.target);
       } else if (rec.type === 'characterData') {
         var node = rec.target;
-        if (node && node.nodeType === 3 && !originalText.has(node)) roots.add(node);
+        if (node && node.nodeType === 3 && !originalText.has(node)) {
+          roots.add(node);
+          if (node.parentElement) roots.add(node.parentElement);
+        }
       } else if (rec.type === 'attributes') {
         if (!originalAttr.has(rec.target)) roots.add(rec.target);
       }
@@ -579,8 +704,9 @@
       entries: Object.keys(DICT).length,
       templates: tplMap.size,
       translatedNodes: translatedNodes.size,
+      translatedLines: rewrittenLines.size,
       translatedAttributes: translatedElements.size,
-      stats: { nodes: stats.nodes, attributes: stats.attributes }
+      stats: { nodes: stats.nodes, attributes: stats.attributes, lines: stats.lines }
     };
   }
 

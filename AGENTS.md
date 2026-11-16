@@ -17,7 +17,7 @@ python tests/check_dictionary.py       # 词典校验
 node tests/engine.test.js              # 引擎（30 项）
 node tests/preview.test.js             # FilterBlade 预览页（17 项）
 node tests/ninja.test.js               # poe.ninja 预览页（57 项）
-node tests/atlas.test.js               # PoE Planner 异界天赋树（33 项）
+node tests/atlas.test.js               # PoE Planner 异界天赋树（51 项）
 python tests/check_mcp.py              # MCP Server 与本地桥（13 项）
 ```
 
@@ -60,6 +60,8 @@ python tools/build_dist.py
 10. **MCP 不构造 changeGroups**：`{changeType, changeValue}` 的格式随站点版本变，一律先 `fb_get_state` 读站点自己生成的 `simplifySaveStateContent()`、只做字段级修改再整体回写；要新建规则先用 `fb_import_sample` 拿真实模板。桥接只在 `127.0.0.1`，不碰 OAuth / 账号同步 / 站点后端。
 11. **Vuetify 图标不可翻译**：`.v-icon` / `.material-icons` 用 ligature 文本渲染图标（`expand_more` / `folder` / `warning` …），引擎必须跳过整棵子树；`atlas_ui_manual.json` 也不要收录这些小写图标词（构建脚本另有黑名单兜底）。
 12. **PoE Planner 词条走站点作用域**：天赋名 / 界面文案放 `atlas_terms.json`（按 `poeplanner.com` 注入，可覆盖主词典同名键），带数值的说明放 `atlas_templates.json`（`#` 模板）；不要塞进主词典污染另外两个站点。中文术语口径：**编年史简体页 `/cn/` 优先，繁中 `/tw/` 补齐并转简**。
+13. **整行翻译（跨 `<span>`）**：站点把数值包进行内标签再用 `v-html` 渲染时（poeplanner 统计栏），逐文本节点永远匹配不上。`translateInlineLine()` 负责按整行拼合再查词典，`LINE_BLOCKERS` 里的交互 / 图形 / 我们自己的 UI 容器**绝不能被整体改写**；改写前必须存 `innerHTML` 以便原文模式还原。
+14. **中文搜索只喂英文名**：`src/atlas-search.js` 不改站点搜索逻辑，只把中文反查成英文节点名（`data/atlas_search.json`）拼成正则写回站点 input 并派发 `input`。数字检索走 `#` 占位（`#` 与数字都当 `\d[\d,]*`），与词典骨架口径保持一致。
 
 ## 已知易错点
 
@@ -67,7 +69,8 @@ python tools/build_dist.py
 - 译文数值错位 → 检查 `#` 数量与骨架大小写。
 - 扩展路径失效 → 目录改名 / 移动后需在扩展页移除并重新加载 `dist/extension`。
 - 新赛季长文案缺口 → 直接抓站点 `.options` / `faqContent.json` 真实文案源，不要照截图手抄。
-- PoE Planner 天赋树是 canvas / WebGL，节点名与说明只在悬浮提示（DOM）里；「搜索节点」按英文匹配，属已知边界，不要试图改站点搜索逻辑。
+- PoE Planner 天赋树是 canvas / WebGL，节点名与说明只在悬浮提示（DOM）里；站内搜索只认英文，中文检索由 `src/atlas-search.js` 反查后喂英文节点名解决 —— **不要改站点搜索逻辑**，否则站点更新必崩。
+- 统计栏 / 汇总行的英文反复出现 → 先看是不是 `<span>` 把数值和文字切开了（`v-html` + `textAugmented`），不要往词典里盲加整句。
 - `atlastranslations.bin` 会把一段说明拆成多行：既要保留**逐行片段**译文，也要由构建脚本拼出**整串**译文，否则 DOM 合并成一个文本节点时会漏翻。骨架比较前必须把连续空白折成单空格（对齐引擎 `normalize()`）。
 - 编年史 `Atlas_passive_skill` 的 `/cn/` 只有 150 条、`/tw/` 与 `/us/` 有 352 条；按 slug 对齐，别按页面顺序配对。
 

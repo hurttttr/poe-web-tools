@@ -38,6 +38,7 @@ def main() -> int:
     meta = json.loads(read(DATA / "dictionary.meta.json"))
     engine = read(SRC / "engine.js")
     panel = read(SRC / "panel.js")
+    atlas_search = read(SRC / "atlas-search.js") if (SRC / "atlas-search.js").exists() else ""
     css = read(SRC / "style.css")
 
     short_words = json.loads(read(DATA / "short_words.json"))["terms"]
@@ -60,12 +61,21 @@ def main() -> int:
         json.loads(read(atlas_terms_path)) if atlas_terms_path.exists() else {}
     )
     host_js = json.dumps(host_terms, ensure_ascii=False, separators=(",", ":"))
+    # 中文搜索索引：中文检索词 -> 英文节点名，供 src/atlas-search.js 反查
+    atlas_search_path = DATA / "atlas_search.json"
+    atlas_search_js = "{}"
+    if atlas_search_path.exists():
+        doc = json.loads(read(atlas_search_path))
+        atlas_search_js = json.dumps(
+            {"nodes": doc.get("nodes", {})}, ensure_ascii=False, separators=(",", ":")
+        )
     dict_js = (
         "window.FBZH_DICT = " + json.dumps(dictionary, ensure_ascii=False, separators=(",", ":")) + ";\n"
         + "window.FBZH_SHORT_WORDS = " + json.dumps(short_words, ensure_ascii=False, separators=(",", ":")) + ";\n"
         + "window.FBZH_HOST_DICT = " + host_js + ";\n"
         + "window.FBZH_MOD_TPL = " + mod_tpl_js + ";\n"
         + "window.FBZH_MOD_PREFIX = " + mod_prefix_js + ";\n"
+        + "window.FBZH_ATLAS_SEARCH = " + atlas_search_js + ";\n"
     )
     # 版本号：命令行参数 -> 环境变量 BUILD_VERSION / GITHUB_REF_NAME -> manifest.json
     manifest_src = json.loads(read(EXT_SRC / "manifest.json"))
@@ -106,7 +116,7 @@ def main() -> int:
         + "/* 词典 " + str(meta["entries"]) + " 条，来源见项目 README */\n"
         + dict_js
         + "window.FBZH_CSS = " + js_literal(css) + ";\n\n"
-        + engine + "\n\n" + panel + "\n"
+        + engine + "\n\n" + panel + "\n\n" + atlas_search + "\n"
     )
     (DIST / "poe-web-tools.user.js").write_text(user_js, encoding="utf-8")
     # 清理旧版本命名的产物，避免安装时选错文件
@@ -116,7 +126,7 @@ def main() -> int:
             legacy.unlink()
 
     # ---------- 2. 浏览器扩展 ----------
-    ext_js = dict_js + "window.FBZH_CSS = '';\n\n" + engine + "\n\n" + panel + "\n"
+    ext_js = dict_js + "window.FBZH_CSS = '';\n\n" + engine + "\n\n" + panel + "\n\n" + atlas_search + "\n"
     (EXT_DST / "content.js").write_text(ext_js, encoding="utf-8")
     shutil.copyfile(SRC / "style.css", EXT_DST / "content.css")
     shutil.copyfile(EXT_SRC / "popup.html", EXT_DST / "popup.html")
@@ -142,7 +152,7 @@ def main() -> int:
         "支持站点：https://www.filterblade.xyz/?game=Poe1 、https://poe.ninja/ 、"
         "https://poeplanner.com/atlas-tree 。\n"
         "PoE Planner 的异界天赋树为 canvas 渲染，节点名与说明在悬浮提示中汉化；"
-        "站内「搜索节点」按英文匹配，需要英文时按 Alt+Z 切到原文模式。\n"
+        "右侧统计栏整行翻译，左下角搜索框可直接输入中文（自动反查成英文节点名再交给站点）。\n"
         "页面右下角会出现「汉」按钮（中英对照查询、导出未译文本）。词典已内联，无需联网。\n"
         "\n"
         "【可选】MCP 本地桥：运行 python mcp/fb_mcp.py 后，扩展会自动连到 127.0.0.1:8765，\n"
@@ -165,6 +175,8 @@ def main() -> int:
             .replace("__CSS__", js_literal(css))
             .replace("__ENGINE__", engine)
             .replace("__PANEL__", panel)
+            .replace("__ATLASSEARCH__", atlas_search_js)
+            .replace("__ATLASSEARCH_JS__", atlas_search)
         )
         (DIST / out_name).write_text(rendered, encoding="utf-8")
         return out_name

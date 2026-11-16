@@ -6,8 +6,8 @@
 FilterBlade · poe.ninja · PoE Planner 异界天赋树，一个扩展全部搞定</p>
 
 <p>
-  <img alt="version" src="https://img.shields.io/badge/version-1.0.2-f0b429?style=flat-square">
-  <img alt="entries" src="https://img.shields.io/badge/entries-22%2C004%2B908-7c3aed?style=flat-square">
+  <img alt="version" src="https://img.shields.io/badge/version-1.0.3-f0b429?style=flat-square">
+  <img alt="entries" src="https://img.shields.io/badge/entries-22%2C004%2B924-7c3aed?style=flat-square">
   <img alt="sites" src="https://img.shields.io/badge/sites-FilterBlade%20%C2%B7%20poe.ninja%20%C2%B7%20PoE%20Planner-f0b429?style=flat-square">
   <img alt="manifest" src="https://img.shields.io/badge/Manifest-V3-4285F4?style=flat-square&amp;logo=googlechrome&amp;logoColor=white">
   <img alt="python" src="https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&amp;logo=python&amp;logoColor=white">
@@ -61,7 +61,7 @@ FilterBlade · poe.ninja · PoE Planner 异界天赋树，一个扩展全部搞�
 
 直接用浏览器打开 `dist/preview.html`（FilterBlade 3.29）、`dist/preview-ninja.html`（poe.ninja 经济 / 流派）或 `dist/preview-atlas.html`（PoE Planner 异界天赋树）。三页顶部可互相切换，内置完整词典与引擎，可现场试模式切换、中英对照查询与点击还原。
 
-> PoE Planner 预览页模拟了 atlas-tree 的界面、节点悬浮提示与异步渲染。真实站点的天赋树本体由 canvas / WebGL 绘制，节点名与说明在悬浮提示里汉化；**站内「搜索节点」按英文匹配**，需要英文时按 `Alt+Z` 切到原文模式。
+> PoE Planner 预览页模拟了 atlas-tree 的界面、节点悬浮提示、统计栏与异步渲染。真实站点的天赋树本体由 canvas / WebGL 绘制，节点名与说明在悬浮提示里汉化；**站内搜索框可直接输入中文**（站点只认英文，扩展会把中文反查成英文节点名再交给它）。
 
 ---
 
@@ -71,6 +71,8 @@ FilterBlade · poe.ninja · PoE Planner 异界天赋树，一个扩展全部搞�
 | --- | --- |
 | 三种模式 | 中文 / 双语 / 原文；**原文模式**用于站内搜索、新增规则等需要英文的场景 |
 | `Alt + Z` | 在「中文 ↔ 原文」间快速切换 |
+| 中文搜索异界天赋树 | 在 PoE Planner 搜索框直接输入中文（「毁灭游戏」「跳跃点」「裂隙」…），扩展反查成英文节点名后交给站点高亮，站点逻辑不改 |
+| 统计栏整行翻译 | 站点把数值包进 `<span>` 再 `v-html` 渲染，扩展按「整行」拼合后翻译，并保留数值高亮 |
 | 中英对照查询 | 输入中文或英文，点击结果即复制英文名，可直接粘到站内搜索 |
 | 导出未译文本 | 导出当前页面仍为英文的清单（JSON），用于补词典 |
 | 交互保护 | 点击瞬间自动还原英文，站点逻辑读到原文，松手恢复中文 |
@@ -177,7 +179,7 @@ cd tests && npm install jsdom --no-save --no-package-lock
 node tests/engine.test.js                     # 引擎（30 项）
 node tests/preview.test.js                    # FilterBlade 预览页（17 项）
 node tests/ninja.test.js                      # poe.ninja 预览页（57 项）
-node tests/atlas.test.js                      # PoE Planner 异界天赋树（33 项）
+node tests/atlas.test.js                      # PoE Planner 异界天赋树（51 项）
 python tests/check_mcp.py                     # MCP Server 与本地桥（13 项）
 ```
 
