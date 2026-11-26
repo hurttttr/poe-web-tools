@@ -99,7 +99,7 @@ jobs:
           | 交互还原 | 点击交互元素瞬间自动还原英文，站点逻辑不受影响 |
           | 导出未译文本 | 导出当前页面仍是英文的文本清单（JSON），用来补词典 |
 
-          **词典规模**：主词典 22,004 条 + poeplanner 站点专属 635 条整句 / 289 条数值模板 / 352 个节点的中文搜索索引，来源：编年史 · 官方交易站词缀 · poe.ninja 官方繁中转简 · 社区底稿 · 人工校对
+          **词典规模**：__DICT_STATS__，来源：编年史 · 官方交易站词缀 · poe.ninja 官方繁中转简 · 社区底稿 · 人工校对
 
           ---
 
@@ -121,13 +121,26 @@ jobs:
           EOF
 
           python3 - <<'PY'
+          import json
           from pathlib import Path
 
           body = Path('/tmp/release_notes_body.md').read_text(encoding='utf-8')
           section = Path('/tmp/changelog_section.md').read_text(encoding='utf-8').strip()
           if not section:
               section = '本次发布以稳定性与文档为主，详见仓库 CHANGELOG.md。'
-          Path('/tmp/release_notes.md').write_text(body.replace('__CHANGELOG__', section), encoding='utf-8')
+          body = body.replace('__CHANGELOG__', section)
+
+          # 词典规模从构建产物动态读取，避免每版手改 Release 模板。
+          meta = json.loads(Path('data/dictionary.meta.json').read_text(encoding='utf-8'))
+          atlas = meta.get('atlas', {})
+          stats = (
+              f"主词典 {meta['entries']:,} 条"
+              f" + poeplanner 站点专属 {atlas.get('terms', 0)} 条整句"
+              f" / {atlas.get('templates', 0)} 条数值模板"
+              f" / {atlas.get('search_nodes', 0)} 个节点的中文搜索索引"
+          )
+          body = body.replace('__DICT_STATS__', stats)
+          Path('/tmp/release_notes.md').write_text(body, encoding='utf-8')
           PY
 
       - name: Create GitHub Release
