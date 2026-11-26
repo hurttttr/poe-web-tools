@@ -1,8 +1,23 @@
 {
-  "generated_at": "2026-11-13T22:36:32+08:00",
-  "entries": 22004,
+  "atlas": {
+    "generated_by": "tools/build_atlas_terms.py",
+    "scope": "poeplanner.com",
+    "poedb_aligned_slugs": 352,
+    "cn_preferred_names": 146,
+    "terms": 620,
+    "templates": 288,
+    "stat_total": 338,
+    "stat_covered": 338,
+    "multiline_merged": 24,
+    "search_nodes": 352,
+    "search_index": "data/atlas_search.json：英文节点名 -> 中文名 / 中文说明（数字统一成 #），供 src/atlas-search.js 把中文检索词反查成站点认的英文节点名",
+    "sources": "poeplanner CDN atlastree.bin / atlastranslations.bin / app.js 英文原文；编年史 /us/ /cn/ /tw/ Atlas_passive_skill 按 slug 对齐；atlas_ui_manual.json 与 atlas_extra.json 人工精翻",
+    "note": "主词典 entries 不含这些站点专属词条；运行时按 host 注入，只在 poeplanner.com 生效"
+  },
+  "generated_at": "2026-11-26T21:19:26+08:00",
+  "entries": 22037,
   "by_source": {
-    "ninja_terms": 939,
+    "ninja_terms": 972,
     "site_terms": 505,
     "community": 2952,
     "mod_plain": 8125,
@@ -26,20 +41,5 @@
     "passive_names": "编年史天赋树（关键天赋 / 名人 / 专精 / 符文嫁接）的译名（见 passive_terms.json 的 names）",
     "ninja_terms": "poe.ninja 官方繁體中文语言包按 Lingui id 与英文 message 配对、转简并校正术语（见 ninja_terms.json）"
   },
-  "policy": "物品/道具译名以编年史简体中文为准；界面文案以站点原文精翻与人工校对表为准；overrides 优先级最高",
-  "atlas": {
-    "generated_by": "tools/build_atlas_terms.py",
-    "scope": "poeplanner.com",
-    "poedb_aligned_slugs": 352,
-    "cn_preferred_names": 146,
-    "terms": 620,
-    "templates": 288,
-    "stat_total": 338,
-    "stat_covered": 338,
-    "multiline_merged": 24,
-    "search_nodes": 352,
-    "search_index": "data/atlas_search.json：英文节点名 -> 中文名 / 中文说明（数字统一成 #），供 src/atlas-search.js 把中文检索词反查成站点认的英文节点名",
-    "sources": "poeplanner CDN atlastree.bin / atlastranslations.bin / app.js 英文原文；编年史 /us/ /cn/ /tw/ Atlas_passive_skill 按 slug 对齐；atlas_ui_manual.json 与 atlas_extra.json 人工精翻",
-    "note": "主词典 entries 不含这些站点专属词条；运行时按 host 注入，只在 poeplanner.com 生效"
-  }
+  "policy": "物品/道具译名以编年史简体中文为准；界面文案以站点原文精翻与人工校对表为准；overrides 优先级最高"
 }

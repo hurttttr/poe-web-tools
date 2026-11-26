@@ -83,6 +83,8 @@ poe.ninja 同为客户端动态渲染，且官方**只有繁體中文、没有�
 3. OpenCC 繁转简 + 台湾用语→大陆用语（资料→数据、连结→链接、登入→登录、刊登→挂单）+ 术语校正（传奇→暗金、舆图→异界）+ `ninja_ui_manual.json` 人工补列头（`Chaos Value → 混沌石价值`、`Listings → 挂单量`、`Divine Value → 神圣石价值`）；
 4. 生成的 `ninja_terms.json` 以**最低优先级**并入，编年史译名始终优先；物品 / 通货 / 技能名复用编年史词条。
 
+**赛季换新的坑（3.30 Covens 实测）**：物品名来自站点 API 的游戏数据，**不在 Lingui 语言包里**，重抓 i18n 也补不到；每季新物品必须在 `data/ninja_ui_manual.json` 按英文原文人工补列（该文件同时承载界面文案与 ninja 站点专属物品名，只在 ninja 站点注入主词典的 `ninja_terms` 来源里）。译名一律取编年史简体页 `/cn/`，不要用官方繁中的「綢帶」硬转（国服口径是「丝线」）。注意区分同名旧机制：3.29 的 `Memory Strands` 是「记忆丝缕」，3.30 的 `Threads`（替代圣甲虫的新机制）是「丝线」，`Dextral/Sinistral Threads` 从旧一口径「右旋记忆丝缕」改为「右旋/左旋丝线」。抓取时 poe.ninja 主站有 Cloudflare（curl/urllib 全 403），但 `assets.poe.ninja/_astro/*.mjs` 静态资源可直连下载，语言包文件名由脚本从 chunk 动态解析。
+
 ### 3.4 宝石技能名与说明（一个正则 bug）
 
 流派页左侧「物品 + 主要技能」不是界面文案，是游戏数据，UI 词典翻不到，单独补两块：
@@ -170,7 +172,7 @@ EN 模板  Adds # Passive Skills   →  CN 模板  增加 # 个天赋技能
 | 单个术语纠偏（最高优先级） | `data/overrides.json` |
 | 界面常用词、槽位、稀有度组合 | `data/manual_terms.json` |
 | 站点长文案 / FAQ 标题 | `data/site_manual.json`（主维护文件） |
-| poe.ninja 表格列头、时间范围 | `data/ninja_ui_manual.json` |
+| poe.ninja 表格列头、时间范围、新赛季物品名（丝线等 API 数据，不在语言包里） | `data/ninja_ui_manual.json` |
 | 词缀模板 / 前缀规则 / 珠宝说明 | `data/mod_manual.json` |
 | 过滤器关键字黑名单 | `data/stoplist.json` |
 | 中英混排短词白名单 | `data/short_words.json` |

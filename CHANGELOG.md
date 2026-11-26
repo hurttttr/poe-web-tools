@@ -3,6 +3,19 @@
 本项目遵循[语义化版本](https://semver.org/lang/zh-CN/)，格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 发布时由 `.github/workflows/release.yml` 自动抽取对应版本段落，写入 GitHub Release 说明。
 
+## [1.0.4] - 2026-11-27
+
+### 新增
+
+- **poe.ninja 3.30 Covens 赛季汉化**：适配新赛季的「丝线 Threads」机制（替代圣甲虫）及其物品体系，补齐 11 种丝线物品（磨损 / 军团 / 深渊 / 猎魔 / 背叛者 / 菌潮 / 裂隙 / 先祖秘藏 / 穿越 / 仪式 / 致命贪婪丝线），以及丝线之贤主钉、丝线的雾魇宝珠、灵魂核心 ×4、欺瞒精华、阿法鲁遮蔽水晶等新通货与分类名。译名按编年史简体页 `/cn/` 国服口径，不使用官方繁中的「綢帶」硬转。
+- 区分同名旧机制：3.29 的 `Memory Strands`（记忆丝缕）与 3.30 的 `Threads`（丝线）分别处理，`Dextral/Sinistral Threads` 校正为「右旋 / 左旋丝线」。
+
+### 变更
+
+- 主词典 22,004 → 22,037 条；`data/ninja_ui_manual.json` 承载 ninja 站点专属的新赛季物品名（游戏数据来自 API，不在 Lingui 语言包内，重抓 i18n 补不到）。
+- `tools/build_dictionary.py` 重建时保留 `dictionary.meta.json` 中由其它脚本维护的段（如 `atlas`），不再冲掉。
+- 测试：ninja 57 → 75 项（丝线物品、新分类与新通货断言）。
+
 ## [1.0.3] - 2026-11-17
 
 ### 修复

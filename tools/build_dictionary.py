@@ -147,7 +147,21 @@ def main() -> int:
     for en in final:
         by_source[origin.get(en, "?")] = by_source.get(origin.get(en, "?"), 0) + 1
 
+    # 保留由其它构建脚本（如 build_atlas_terms.py）维护的段，避免本脚本重建时把它们冲掉。
+    meta_path = DATA / "dictionary.meta.json"
+    preserved: dict = {}
+    if meta_path.exists():
+        try:
+            prev = json.loads(meta_path.read_text(encoding="utf-8"))
+            preserved = {k: v for k, v in prev.items() if k not in {
+                "generated_at", "entries", "by_source", "traditional_to_simplified",
+                "filtered_out", "conflicts_poedb_vs_community", "sources", "policy",
+            }}
+        except (ValueError, OSError):
+            preserved = {}
+
     meta = {
+        **preserved,
         "generated_at": dt.datetime.now().astimezone().isoformat(timespec="seconds"),
         "entries": len(final),
         "by_source": by_source,

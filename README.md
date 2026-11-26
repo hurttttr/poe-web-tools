@@ -91,7 +91,7 @@ FilterBlade · poe.ninja · PoE Planner 异界天赋树，一个扩展全部搞�
 
 ## 📚 词典
 
-主词典 `data/dictionary.json` 共 **22,004 条**，优先级从高到低：
+主词典 `data/dictionary.json` 共 **22,037 条**，优先级从高到低：
 
 `overrides` › `manual` › `site_terms` › `gem_desc` › **编年史** › `mod_plain` › `passive_names` › 社区底稿 › `ninja_terms`
 

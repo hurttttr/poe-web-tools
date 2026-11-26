@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "PoE Web Tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "流放之路常用网页工具：FilterBlade、poe.ninja 与 PoE Planner 异界天赋树简体中文界面、站点快捷跳转。术语以编年史为准，支持中文 / 双语 / 原文切换，不影响站点功能。",
   "author": "WorkBuddy",
   "content_scripts": [
